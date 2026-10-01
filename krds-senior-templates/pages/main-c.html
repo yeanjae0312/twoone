@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>메인 (자립형) | ○○기관 민원포털</title>
+	<meta name="description" content="○○기관 민원포털 자립형 메인. KRDS 없이 CSS·JS 한 벌로 구성한 고령층 친화 디자인.">
+	<link rel="icon" href="../vendor/krds/img/component/favicon/favicon.svg" type="image/svg+xml">
+
+	<!-- 자립형: 이 두 파일이 전부다. KRDS 자산을 쓰지 않는다. -->
+	<link rel="stylesheet" href="../css/standalone.css">
+	<!-- defer 를 쓰지 않는다. 첫 화면이 그려지기 전에 글자크기·고대비를 적용해야 깜빡이지 않는다. -->
+	<script src="../js/standalone.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<!-- 아이콘 모음. 화면에는 보이지 않고 아래에서 use 로 가져다 쓴다. -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+	<defs>
+		<g id="i-base" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></g>
+		<symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+			<path d="M14 3v5h5"/>
+			<path d="M9 13h6M9 17h4"/>
+		</symbol>
+		<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="11" cy="11" r="7"/>
+			<path d="m20 20-3.6-3.6"/>
+		</symbol>
+		<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M12 3v12"/>
+			<path d="m7 11 5 5 5-5"/>
+			<path d="M4 20h16"/>
+		</symbol>
+		<symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="9" cy="8" r="3.2"/>
+			<path d="M3 20a6 6 0 0 1 12 0"/>
+			<path d="M16.2 5.6a3.2 3.2 0 0 1 0 5"/>
+			<path d="M18.6 20a6.2 6.2 0 0 0-2.8-5"/>
+		</symbol>
+		<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M6.5 3h3l1.5 4-2 1.5a12.5 12.5 0 0 0 6.5 6.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2C10.8 19.3 4.7 13.2 3.5 5.2A2 2 0 0 1 5.5 3z"/>
+		</symbol>
+		<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M4 12h15"/>
+			<path d="m12 5 7 7-7 7"/>
+		</symbol>
+		<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+			<path d="M4 7h16M4 12h16M4 17h16"/>
+		</symbol>
+		<symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+			<path d="m6 6 12 12M18 6 6 18"/>
+		</symbol>
+		<symbol id="i-contrast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+			<circle cx="12" cy="12" r="9"/>
+			<path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/>
+		</symbol>
+	</defs>
+</svg>
+
+<!-- ===================== 헤더 ===================== -->
+<header class="site-header">
+	<div class="utility-bar">
+		<div class="wrap">
+			<!-- 글자크기: 드롭다운 대신 항상 보이는 버튼 3개. 한 번에 고를 수 있다.
+			     좁은 화면에서는 글자만 '가' 세 개로 줄인다. 읽어 주는 내용은 aria-label 로 유지한다. -->
+			<div class="size-group" role="group" aria-label="글자 크기 조절">
+				<span class="size-group-label">글자 크기</span>
+				<button type="button" class="size-btn" data-size-set="md" aria-pressed="true" aria-label="글자 크기 보통">
+					<span class="size-full">보통</span><span class="size-short" aria-hidden="true">가</span>
+				</button>
+				<button type="button" class="size-btn" data-size-set="lg" aria-pressed="false" aria-label="글자 크기 크게">
+					<span class="size-full">크게</span><span class="size-short" aria-hidden="true">가</span>
+				</button>
+				<button type="button" class="size-btn" data-size-set="xlg" aria-pressed="false" aria-label="글자 크기 가장 크게">
+					<span class="size-full">가장 크게</span><span class="size-short" aria-hidden="true">가</span>
+				</button>
+			</div>
+			<button type="button" class="btn btn-quiet" data-contrast-toggle aria-pressed="false">
+				<svg aria-hidden="true"><use href="#i-contrast"/></svg>
+				<span data-contrast-label>고대비 켜기</span>
+			</button>
+		</div>
+	</div>
+
+	<div class="header-main">
+		<div class="wrap">
+			<!-- 좁은 화면에서는 뒤쪽 '민원포털'을 접어 기관명만 남긴다 -->
+			<a class="brand" href="./main-c.html">
+				<span class="brand-mark" aria-hidden="true">○</span>
+				<span>○○기관<span class="brand-tail"> 민원포털</span></span>
+			</a>
+
+			<nav class="site-nav" aria-label="주메뉴">
+				<ul>
+					<li><a href="#">민원안내·신청</a></li>
+					<li><a href="#">정보공개</a></li>
+					<li><a href="#">기관소개</a></li>
+				</ul>
+			</nav>
+
+			<!-- 좁은 화면에서는 숨기고 전체메뉴 맨 위로 옮긴다 (헤더 한 줄에 다 들어가지 않는다) -->
+			<a class="btn btn-outline header-login" href="#">로그인</a>
+
+			<button type="button" class="btn btn-outline menu-toggle" data-menu-open-btn aria-controls="menu-panel">
+				<svg aria-hidden="true"><use href="#i-menu"/></svg>
+				메뉴
+			</button>
+		</div>
+	</div>
+</header>
+
+<!-- ===================== 모바일 전체메뉴 ===================== -->
+<div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+	<div class="menu-head">
+		<p class="menu-title">전체 메뉴</p>
+		<button type="button" class="btn btn-outline" data-menu-close-btn>
+			<svg aria-hidden="true"><use href="#i-close"/></svg>
+			닫기
+		</button>
+	</div>
+	<div class="menu-login">
+		<a class="btn btn-primary" href="#">로그인</a>
+	</div>
+	<nav class="menu-list" aria-label="전체 메뉴 목록">
+		<a href="#">민원 신청하기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+		<a href="#">신청 현황 보기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+		<a href="#">서식 내려받기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+		<a href="#">담당 부서 찾기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+		<a href="#">정보공개 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+		<a href="#">기관소개 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+	</nav>
+	<div class="menu-close-bottom">
+		<button type="button" class="btn btn-primary" data-menu-close-btn>
+			<svg aria-hidden="true"><use href="#i-close"/></svg>
+			메뉴 닫기
+		</button>
+	</div>
+</div>
+
+<!-- ===================== 본문 ===================== -->
+<main id="main">
+
+	<!-- 히어로 -->
+	<section class="hero">
+		<div class="wrap">
+			<div>
+				<span class="hero-eyebrow">○○기관 민원포털</span>
+				<h1 class="hero-title">복잡한 민원,<br><em>한 번에</em> 끝내세요.</h1>
+				<p class="hero-lead">휴대전화만 있으면 집에서 신청하실 수 있습니다. 어려우시면 전화 한 통으로 처음부터 안내해 드립니다.</p>
+				<div class="hero-actions">
+					<a class="btn btn-primary" href="#">
+						<svg aria-hidden="true"><use href="#i-doc"/></svg>
+						민원 신청하기
+					</a>
+					<a class="btn btn-outline" href="#">
+						<svg aria-hidden="true"><use href="#i-search"/></svg>
+						신청 현황 보기
+					</a>
+				</div>
+			</div>
+
+			<div class="today-card">
+				<div class="today-head">
+					<h2>오늘의 안내</h2>
+					<span class="today-date">2026년 9월 23일 수요일</span>
+				</div>
+				<ul class="today-list">
+					<li><span class="today-key">대표 전화</span><span class="today-val">1234-5678</span></li>
+					<li><span class="today-key">상담 시간</span><span class="today-val">평일 09:00 ~ 18:00</span></li>
+					<li><span class="today-key">오늘 처리한 민원</span><span class="today-val">128건</span></li>
+				</ul>
+				<a class="btn btn-primary" href="tel:1234-5678">
+					<svg aria-hidden="true"><use href="#i-phone"/></svg>
+					전화로 문의하기
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 할 일 -->
+	<section class="section" aria-labelledby="task-title">
+		<div class="wrap">
+			<div class="section-head">
+				<div>
+					<h2 class="section-title" id="task-title">무엇을 도와드릴까요?</h2>
+					<p class="section-desc">누르시면 바로 그 화면으로 갑니다.</p>
+				</div>
+			</div>
+
+			<div class="task-grid">
+				<a class="task task-feature" href="#">
+					<span class="task-icon"><svg aria-hidden="true"><use href="#i-doc"/></svg></span>
+					<span class="task-body">
+						<span class="task-label">가장 많이 찾는 일</span>
+						<span class="task-name">민원 신청하기</span>
+						<span class="task-desc">본인 확인을 하고 신청서를 쓰시면 됩니다. 약 10분 걸립니다.</span>
+					</span>
+					<span class="task-go">시작하기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+				</a>
+
+				<a class="task" href="#">
+					<span class="task-icon"><svg aria-hidden="true"><use href="#i-search"/></svg></span>
+					<span class="task-name">신청 현황 보기</span>
+					<span class="task-desc">접수, 검토, 완료 중 지금 어느 단계인지 알려 드립니다.</span>
+					<span class="task-go">조회 <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+				</a>
+
+				<a class="task" href="#">
+					<span class="task-icon"><svg aria-hidden="true"><use href="#i-download"/></svg></span>
+					<span class="task-name">서식 내려받기</span>
+					<span class="task-desc">손으로 쓰실 분은 서식을 내려받아 인쇄하세요.</span>
+					<span class="task-go">내려받기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+				</a>
+
+				<a class="task" href="#">
+					<span class="task-icon"><svg aria-hidden="true"><use href="#i-people"/></svg></span>
+					<span class="task-name">담당 부서 찾기</span>
+					<span class="task-desc">어느 부서에 물어볼지 부서별 전화번호를 찾아 드립니다.</span>
+					<span class="task-go">찾기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 새소식 -->
+	<section class="section" aria-labelledby="news-title">
+		<div class="wrap">
+			<div class="section-head">
+				<h2 class="section-title" id="news-title">새소식</h2>
+				<a class="section-more" href="#">전체 보기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+			</div>
+			<ul class="news">
+				<li>
+					<a href="#">
+						<span class="news-date"><span class="sr-only">게시일 </span>2026.09.18</span>
+						<span class="news-title">추석 연휴 기간 민원 처리 일정 안내</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="news-date"><span class="sr-only">게시일 </span>2026.09.10</span>
+						<span class="news-title">온라인 민원신청 간편인증(PASS·카카오·네이버) 추가</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="news-date"><span class="sr-only">게시일 </span>2026.09.01</span>
+						<span class="news-title">사전정보공표 목록 정기 갱신(2026년 3분기)</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- 전화 안내 -->
+	<section class="section" aria-labelledby="call-title">
+		<div class="wrap">
+			<div class="callout">
+				<div>
+					<h2 id="call-title">어려우시면 전화 주세요</h2>
+					<p>평일 09:00 ~ 18:00, 상담원이 처음부터 끝까지 안내해 드립니다.</p>
+				</div>
+				<a class="callout-tel" href="tel:1234-5678">
+					<svg aria-hidden="true"><use href="#i-phone"/></svg>
+					1234-5678
+				</a>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<!-- ===================== 푸터 ===================== -->
+<footer class="site-footer">
+	<div class="wrap">
+		<div class="footer-top">
+			<div>
+				<p class="footer-brand">○○기관</p>
+				<p class="footer-addr">(00000) ○○시 ○○구 ○○로 00</p>
+				<p class="footer-tel"><strong>대표전화 1234-5678</strong> (평일 09시~18시)</p>
+			</div>
+			<nav class="footer-links" aria-label="이용 안내">
+				<a class="strong" href="#">개인정보처리방침</a>
+				<a href="#">저작권 정책</a>
+				<a href="#">웹 접근성 품질인증 마크</a>
+				<a href="#">찾아오시는 길</a>
+			</nav>
+		</div>
+		<p class="footer-bottom">© 2026 ○○기관. All rights reserved.</p>
+	</div>
+</footer>
+
+<!-- ===================== 모바일 하단 고정 바 ===================== -->
+<nav class="quick-bar" aria-label="빠른 이동">
+	<ul>
+		<li><a href="#"><svg aria-hidden="true"><use href="#i-doc"/></svg>민원신청</a></li>
+		<li><a href="#"><svg aria-hidden="true"><use href="#i-search"/></svg>현황조회</a></li>
+		<li><a href="tel:1234-5678"><svg aria-hidden="true"><use href="#i-phone"/></svg>전화</a></li>
+		<li><button type="button" data-menu-open-btn aria-controls="menu-panel"><svg aria-hidden="true"><use href="#i-menu"/></svg>전체메뉴</button></li>
+	</ul>
+</nav>
+
+</body>
+</html>

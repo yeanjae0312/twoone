@@ -1,0 +1,774 @@
+@charset "UTF-8";
+/* =====================================================================
+   standalone.css — 비(非)KRDS 자립형 템플릿
+   KRDS CSS·JS를 전혀 쓰지 않는다. 이 파일 하나 + standalone.js 하나로 끝난다.
+   고령층 규격(20px 이상, 48px 이상, 4.5:1 이상, 3px 포커스)은 그대로 지킨다.
+
+   KRDS판과 다른 점
+   - 확대를 body zoom 이 아니라 루트 글꼴 크기로 한다. 확대해도 레이아웃이
+     다시 배치되므로 가로 스크롤이 생기지 않는다.
+   - 글자크기는 드롭다운이 아니라 항상 보이는 버튼 3개다.
+   - 색은 회색 계열 대신 따뜻한 미색과 갈색 계열을 쓴다.
+
+   접두어: 없음(자립형이라 충돌 대상이 없다). 상태는 data-* 속성으로 둔다.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. 글꼴
+   KRDS 패키지의 폰트 파일을 그대로 쓴다. 다른 글꼴로 바꾸려면 여기만 고친다.
+   --------------------------------------------------------------------- */
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 400;
+  font-display: swap;
+  src: url("../vendor/krds/fonts/PretendardGOV-Regular.subset.woff2") format("woff2"),
+       url("../vendor/krds/fonts/PretendardGOV-Regular.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 500;
+  font-display: swap;
+  src: url("../vendor/krds/fonts/PretendardGOV-Medium.subset.woff2") format("woff2"),
+       url("../vendor/krds/fonts/PretendardGOV-Medium.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../vendor/krds/fonts/PretendardGOV-Bold.subset.woff2") format("woff2"),
+       url("../vendor/krds/fonts/PretendardGOV-Bold.subset.woff") format("woff");
+}
+
+/* ---------------------------------------------------------------------
+   2. 토큰
+   1rem = 루트 글꼴 크기. 글자크기 단계가 이 값만 바꾸면 전체가 함께 커진다.
+   --------------------------------------------------------------------- */
+:root {
+  --ink: #1c1917;
+  --ink-soft: #57534e;
+  --cream: #fbf8f3;
+  --surface: #ffffff;
+  --line: #e4ddd1;
+  --accent: #92400e;
+  --accent-deep: #78350f;
+  --accent-tint: #fdf0dc;
+  --focus: #92400e;
+
+  --radius: 1rem;
+  --radius-lg: 1.4rem;
+  --tap: 2.8rem;
+  --page: 1240px;   /* 본문 폭은 px 로 고정한다. 글자만 커지고 단 폭은 유지되어야 읽기 좋다 */
+  --shadow: 0 0.2rem 0.8rem rgba(28, 25, 23, .06);
+  --shadow-lift: 0 0.6rem 1.8rem rgba(28, 25, 23, .12);
+}
+
+html { font-size: 20px; }
+html[data-text-size="lg"] { font-size: 25px; }
+html[data-text-size="xlg"] { font-size: 30px; }
+
+/* 고대비 */
+html[data-contrast="on"] {
+  --ink: #ffffff;
+  --ink-soft: #ffffff;
+  --cream: #000000;
+  --surface: #000000;
+  --line: #ffffff;
+  --accent: #ffe600;
+  --accent-deep: #ffe600;
+  --accent-tint: #000000;
+  --focus: #ffe600;
+  --shadow: none;
+  --shadow-lift: none;
+}
+
+/* ---------------------------------------------------------------------
+   3. 기본
+   --------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Pretendard GOV", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  /* keep-all 로 단어를 붙여 두되, 한 낱말이 칸보다 길 때만 쪼갠다.
+     anywhere 를 쓰면 확대했을 때 '전화로' 같은 낱말이 가운데서 잘린다. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+/* 포커스: 3px + 여백. 배경색과 무관하게 보이도록 바깥에 흰/검 테두리를 덧댄다 */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 0.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 건너뛰기 링크 */
+.skip-link {
+  position: absolute;
+  left: 0.6rem;
+  top: -10rem;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 1rem;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--cream);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top .15s;
+}
+.skip-link:focus { top: 0.6rem; }
+
+/* ---------------------------------------------------------------------
+   4. 버튼
+   --------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: var(--tap);
+  padding: 0.5rem 1.2rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn svg { width: 1.2rem; height: 1.2rem; flex: 0 0 auto; }
+
+.btn-primary {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--ink); border-color: var(--ink); }
+
+.btn-outline {
+  background: var(--surface);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn-outline:hover { background: var(--accent-tint); }
+
+.btn-quiet {
+  background: none;
+  border-color: transparent;
+  color: var(--ink-soft);
+  font-weight: 500;
+  padding: 0.4rem 0.7rem;
+  min-height: var(--tap);
+}
+.btn-quiet:hover { background: var(--accent-tint); color: var(--ink); }
+
+html[data-contrast="on"] .btn-primary { background: var(--accent); color: #000; }
+html[data-contrast="on"] .btn-primary:hover { background: #fff; border-color: #fff; color: #000; }
+html[data-contrast="on"] .btn-outline:hover,
+html[data-contrast="on"] .btn-quiet:hover { background: #333; color: #fff; }
+
+/* 글자크기 버튼 묶음 / 고대비 토글: 눌린 상태를 색과 테두리로 함께 보여 준다 */
+[aria-pressed="true"].btn-quiet,
+[aria-pressed="true"].size-btn {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+  font-weight: 700;
+}
+html[data-contrast="on"] [aria-pressed="true"].btn-quiet,
+html[data-contrast="on"] [aria-pressed="true"].size-btn {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+}
+
+/* ---------------------------------------------------------------------
+   5. 헤더
+   --------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+.utility-bar { border-bottom: 1px solid var(--line); }
+.utility-bar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.size-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.size-group-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.size-btn {
+  min-height: var(--tap);
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--line);
+  border-radius: 0.6rem;
+  background: var(--surface);
+  font-weight: 500;
+  cursor: pointer;
+}
+.size-btn { white-space: nowrap; }
+.size-btn:nth-of-type(1) { font-size: 0.8rem; }
+.size-btn:nth-of-type(2) { font-size: 0.95rem; }
+.size-btn:nth-of-type(3) { font-size: 1.1rem; }
+.size-btn:hover { background: var(--accent-tint); }
+.size-short { display: none; }
+
+.header-main .wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--tap);
+  margin-right: auto;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 0.5rem;
+  background: var(--accent-deep);
+  color: #fff;
+  font-size: 0.9rem;
+}
+html[data-contrast="on"] .brand-mark { background: var(--accent); color: #000; }
+
+.site-nav ul { display: flex; gap: 0.3rem; }
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 0.8rem;
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-nav a:hover { background: var(--accent-tint); }
+html[data-contrast="on"] .site-nav a:hover { background: #333; }
+
+.menu-toggle { display: none; }
+.menu-login { display: none; }
+
+@media (max-width: 767px) {
+  /* 좁은 화면에서는 머리말을 고정하지 않는다. 늘 보여야 하는 기능은 하단 고정 바가 맡으므로
+     머리말까지 붙잡아 두면 화면만 좁아진다. */
+  .site-header { position: static; }
+
+  .site-nav,
+  .header-login,
+  .brand-tail { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .menu-login { display: block; padding: 1rem 1.2rem 0; }
+  .menu-login .btn { width: 100%; min-height: 3rem; }
+
+  .brand { font-size: 1.15rem; white-space: nowrap; }
+  .menu-toggle { white-space: nowrap; }
+
+  /* 유틸 바: 글자는 '가' 세 개로 줄여 한 줄에 담는다 */
+  .utility-bar .wrap { justify-content: space-between; }
+  .size-group-label {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .size-full { display: none; }
+  .size-short { display: inline; }
+  .size-btn { min-width: var(--tap); padding: 0.3rem 0.5rem; text-align: center; }
+  .size-btn:nth-of-type(1) { font-size: 0.85rem; }
+  .size-btn:nth-of-type(2) { font-size: 1.05rem; }
+  .size-btn:nth-of-type(3) { font-size: 1.3rem; }
+}
+
+/* ---------------------------------------------------------------------
+   6. 모바일 전체메뉴 (자체 구현)
+   --------------------------------------------------------------------- */
+.menu-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  background: var(--cream);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.menu-panel[data-open="true"] { display: block; }
+body[data-menu-open="true"] { overflow: hidden; }
+
+.menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.menu-title { font-size: 1.2rem; font-weight: 700; }
+.menu-list { padding: 0.8rem 1.2rem 2rem; }
+.menu-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3rem;
+  padding: 0.8rem 0.4rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.menu-list a:hover { background: var(--accent-tint); }
+.menu-list svg { width: 1rem; height: 1rem; color: var(--accent); }
+.menu-close-bottom { margin: 1.2rem 1.2rem 2.4rem; }
+.menu-close-bottom .btn { width: 100%; min-height: 3rem; }
+
+/* ---------------------------------------------------------------------
+   7. 히어로
+   --------------------------------------------------------------------- */
+.hero { padding: 2.4rem 0 2rem; }
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  align-items: center;
+}
+/* 격자·가로배치 칸이 한글 낱말의 최소 너비에 밀려 늘어나지 않도록 막는다.
+   이게 없으면 글자를 키웠을 때 칸이 화면보다 넓어져 가로 스크롤이 생긴다. */
+.hero .wrap > *,
+.task-grid > *,
+.task-feature .task-body,
+.quick-bar li { min-width: 0; }
+
+.hero-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 10rem;
+  background: var(--accent-tint);
+  border: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.hero-title {
+  font-size: 2.9rem;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--accent);
+  border-bottom: 0.14em solid var(--accent-tint);
+}
+html[data-contrast="on"] .hero-title em { border-bottom-color: var(--accent); }
+.hero-lead {
+  margin-top: 1rem;
+  max-width: 22em;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+.hero-actions .btn { min-height: 3rem; padding: 0.5rem 1.4rem; font-size: 1.05rem; }
+
+/* 오늘의 안내 카드 */
+.today-card {
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.today-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+.today-head h2 { font-size: 1.05rem; font-weight: 700; }
+.today-date { font-size: 0.8rem; color: var(--ink-soft); }
+/* 글자를 키우면 이름과 값이 한 줄에 못 들어간다. 그때는 아래로 내려 쌓이게 둔다. */
+.today-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+.today-key { color: var(--ink-soft); }
+.today-val { font-weight: 700; }
+.today-card .btn { width: 100%; margin-top: 1.1rem; min-height: 3rem; font-size: 1.15rem; }
+
+@media (max-width: 767px) {
+  .hero { padding: 1.6rem 0 1.2rem; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 1.4rem; }
+  .hero-title { font-size: 1.9rem; }
+  .hero-lead { font-size: 1rem; }
+  .hero-actions .btn { width: 100%; }
+  .today-head { flex-direction: column; align-items: flex-start; gap: 0.1rem; }
+}
+
+/* ---------------------------------------------------------------------
+   8. 섹션 공통
+   --------------------------------------------------------------------- */
+.section { padding: 2.4rem 0; }
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+.section-desc { margin-top: 0.4rem; font-size: 1rem; color: var(--ink-soft); }
+.section-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: var(--tap);
+  padding: 0 0.6rem;
+  border-radius: var(--radius);
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.section-more:hover { background: var(--accent-tint); }
+.section-more svg { width: 0.9rem; height: 0.9rem; }
+@media (max-width: 767px) {
+  .section-title { font-size: 1.5rem; }
+  .section-head { flex-wrap: wrap; }
+}
+
+/* ---------------------------------------------------------------------
+   9. 할 일 카드 — 첫 카드만 채워서 주 동작을 드러낸다
+   --------------------------------------------------------------------- */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 9rem;
+  padding: 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.task:hover, .task:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lift);
+}
+.task-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.7rem;
+  background: var(--accent-tint);
+  color: var(--accent);
+}
+.task-icon svg { width: 1.35rem; height: 1.35rem; }
+.task-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+.task-name { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+.task-desc { flex: 1 1 auto; font-size: 0.95rem; color: var(--ink-soft); }
+.task-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.task-go svg { width: 0.85rem; height: 0.85rem; }
+
+/* 주 동작 카드: 가로로 눕히고 안쪽 문구만 세로로 쌓는다 */
+.task-feature {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.4rem;
+  min-height: 7rem;
+  padding: 1.5rem;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+.task-feature .task-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.task-feature .task-label,
+.task-feature .task-name,
+.task-feature .task-desc { display: block; }
+.task-feature .task-icon { width: 3rem; height: 3rem; }
+.task-feature .task-icon svg { width: 1.7rem; height: 1.7rem; }
+.task-feature .task-icon { background: rgba(255, 255, 255, .14); color: #fff; }
+.task-feature .task-label,
+.task-feature .task-desc { color: #e7e0d6; }
+.task-feature .task-go { color: #fff; }
+.task-feature .task-name { font-size: 1.5rem; }
+.task-feature .task-body { flex: 1 1 auto; min-width: 0; }
+.task-feature:hover, .task-feature:focus-visible { border-color: var(--accent); }
+html[data-contrast="on"] .task-feature {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+html[data-contrast="on"] .task-feature .task-icon { background: #333; }
+html[data-contrast="on"] .task-feature .task-label,
+html[data-contrast="on"] .task-feature .task-desc { color: #fff; }
+html[data-contrast="on"] .task-feature .task-go { color: var(--accent); }
+
+@media (max-width: 767px) {
+  .task-grid { grid-template-columns: 1fr; }
+  .task-feature { grid-column: auto; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .task-feature .task-name { font-size: 1.3rem; }
+}
+
+/* ---------------------------------------------------------------------
+   10. 새소식
+   --------------------------------------------------------------------- */
+.news li + li { border-top: 1px solid var(--line); }
+.news a {
+  display: block;
+  padding: 1.1rem 0.4rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.news a:hover .news-title,
+.news a:focus-visible .news-title { text-decoration: underline; text-underline-offset: 0.2em; }
+.news-date {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+.news-title { display: block; margin-top: 0.25rem; font-size: 1.15rem; font-weight: 700; line-height: 1.4; }
+
+/* ---------------------------------------------------------------------
+   11. 전화 안내
+   --------------------------------------------------------------------- */
+.callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding: 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--accent-tint);
+}
+.callout h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.callout p { margin-top: 0.4rem; font-size: 1rem; color: var(--ink-soft); }
+.callout-tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.2rem;
+  padding: 0.5rem 1.4rem;
+  border-radius: var(--radius);
+  background: var(--accent-deep);
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.callout-tel svg { width: 1.3rem; height: 1.3rem; }
+.callout-tel:hover { background: var(--ink); }
+html[data-contrast="on"] .callout { background: #000; border-color: #fff; }
+html[data-contrast="on"] .callout-tel { background: var(--accent); color: #000; }
+@media (max-width: 767px) {
+  .callout { padding: 1.4rem; }
+  .callout-tel {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: normal;
+    padding: 0.5rem 0.8rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   12. 푸터
+   --------------------------------------------------------------------- */
+.site-footer {
+  margin-top: 1.6rem;
+  padding: 2.4rem 0 2rem;
+  background: var(--ink);
+  color: #e7e0d6;
+}
+html[data-contrast="on"] .site-footer { background: #000; border-top: 2px solid #fff; color: #fff; }
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+}
+.footer-brand { font-size: 1.15rem; font-weight: 700; color: #fff; }
+.footer-addr { margin-top: 0.4rem; font-size: 0.9rem; }
+.footer-tel { margin-top: 0.2rem; font-size: 0.9rem; }
+.footer-tel strong { color: #fff; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.2rem 0.6rem; }
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  color: #e7e0d6;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.footer-links a:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+.footer-links a.strong { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 0.25em; }
+.footer-bottom { padding-top: 1.2rem; font-size: 0.85rem; }
+
+/* ---------------------------------------------------------------------
+   13. 모바일 하단 고정 바
+   --------------------------------------------------------------------- */
+.quick-bar { display: none; }
+@media (max-width: 767px) {
+  body { padding-bottom: calc(3.4rem + env(safe-area-inset-bottom, 0px)); }
+  body[data-menu-open="true"] .quick-bar { display: none; }
+  .quick-bar {
+    display: block;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -0.2rem 0.8rem rgba(28, 25, 23, .1);
+  }
+  html[data-contrast="on"] .quick-bar { background: #000; border-top: 2px solid #fff; }
+  .quick-bar ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .quick-bar a, .quick-bar button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    width: 100%;
+    min-height: 3.4rem;
+    padding: 0.3rem 0.2rem;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .quick-bar svg { width: 1.2rem; height: 1.2rem; }
+  .quick-bar a:active, .quick-bar button:active { background: var(--accent-tint); color: var(--accent); }
+}

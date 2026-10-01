@@ -1,0 +1,582 @@
+@charset "UTF-8";
+/* =====================================================================
+   senior.css — KRDS 고령층(70대 이상) 오버라이드 레이어
+   로드 순서: krds_tokens.css → output.css → senior.css (마지막)
+   근거: 초고령층 웹 서비스 UX 및 퍼블리싱 전략 / KWCAG 2.2
+   커스텀 클래스 접두어: snr-
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. 웹폰트 (KRDS 패키지에는 폰트 파일만 있고 @font-face 선언이 없음)
+   --------------------------------------------------------------------- */
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 400;
+  font-display: swap;
+  src: url("../vendor/krds/fonts/PretendardGOV-Regular.subset.woff2") format("woff2"),
+       url("../vendor/krds/fonts/PretendardGOV-Regular.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 500;
+  font-display: swap;
+  src: url("../vendor/krds/fonts/PretendardGOV-Medium.subset.woff2") format("woff2"),
+       url("../vendor/krds/fonts/PretendardGOV-Medium.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../vendor/krds/fonts/PretendardGOV-Bold.subset.woff2") format("woff2"),
+       url("../vendor/krds/fonts/PretendardGOV-Bold.subset.woff") format("woff");
+}
+
+/* ---------------------------------------------------------------------
+   2. 타이포 토큰: 본문 최소 20px (1rem = 10px 기준)
+      KRDS 기본 body-medium 1.7rem(17px) → 2.0rem(20px)
+   --------------------------------------------------------------------- */
+:root {
+  /* PC */
+  --krds-pc-font-size-body-xsmall: 1.7rem;
+  --krds-pc-font-size-body-small: 1.9rem;
+  --krds-pc-font-size-body-medium: 2rem;
+  --krds-pc-font-size-body-large: 2.3rem;
+  --krds-pc-font-size-label-xsmall: 1.7rem;
+  --krds-pc-font-size-label-small: 1.9rem;
+  --krds-pc-font-size-label-medium: 2rem;
+  --krds-pc-font-size-label-large: 2.3rem;
+  --krds-pc-font-size-heading-xxsmall: 1.9rem;
+  --krds-pc-font-size-heading-xsmall: 2rem;
+  --krds-pc-font-size-heading-small: 2.3rem;
+  --krds-pc-font-size-heading-medium: 2.8rem;
+  --krds-pc-font-size-heading-large: 3.6rem;
+  --krds-pc-font-size-heading-xlarge: 4.4rem;
+  --krds-pc-font-size-navigation-depth-small: 1.9rem;
+  --krds-pc-font-size-navigation-depth-small-bold: 1.9rem;
+  --krds-pc-font-size-navigation-depth-medium: 2rem;
+  --krds-pc-font-size-navigation-depth-medium-bold: 2rem;
+  --krds-pc-font-size-navigation-title-small: 2.3rem;
+  --krds-pc-font-size-navigation-title-medium: 2.8rem;
+
+  /* Mobile */
+  --krds-mobile-font-size-body-xsmall: 1.7rem;
+  --krds-mobile-font-size-body-small: 1.9rem;
+  --krds-mobile-font-size-body-medium: 2rem;
+  --krds-mobile-font-size-body-large: 2.3rem;
+  --krds-mobile-font-size-label-xsmall: 1.7rem;
+  --krds-mobile-font-size-label-small: 1.9rem;
+  --krds-mobile-font-size-label-medium: 2rem;
+  --krds-mobile-font-size-label-large: 2.3rem;
+  --krds-mobile-font-size-heading-xxsmall: 1.9rem;
+  --krds-mobile-font-size-heading-xsmall: 2rem;
+  --krds-mobile-font-size-heading-small: 2.3rem;
+  --krds-mobile-font-size-heading-medium: 2.6rem;
+  --krds-mobile-font-size-heading-large: 3rem;
+  --krds-mobile-font-size-heading-xlarge: 3.4rem;
+  --krds-mobile-font-size-navigation-depth-small: 1.9rem;
+  --krds-mobile-font-size-navigation-depth-small-bold: 1.9rem;
+  --krds-mobile-font-size-navigation-depth-medium: 2rem;
+  --krds-mobile-font-size-navigation-depth-medium-bold: 2rem;
+  --krds-mobile-font-size-navigation-title-small: 2.3rem;
+  --krds-mobile-font-size-navigation-title-medium: 2.6rem;
+
+  /* 화면크기 3단계: 보통 / 크게 / 가장 크게 (KRDS 5단계 중 md·lg·xlg만 노출) */
+  --krds-zoom-medium: 1;
+  --krds-zoom-large: 1.25;
+  --krds-zoom-xlarge: 1.5;
+
+  /* 고령층 전용 보조 토큰 */
+  --snr-tap-size: 4.8rem;
+  --snr-focus-width: 3px;
+  --snr-focus-color: var(--krds-color-light-primary-60);
+  --snr-radius: 1.2rem;
+}
+
+/* ---------------------------------------------------------------------
+   3. 터치·클릭 영역 48px 이상
+   --------------------------------------------------------------------- */
+.krds-btn {
+  --krds-button--size-height-xsmall: var(--snr-tap-size);
+  --krds-button--size-height-small: var(--snr-tap-size);
+  --krds-button--size-height-medium: var(--snr-tap-size);
+  --krds-button--size-height-large: 5.6rem;
+  --krds-button--size-height-xlarge: 6.4rem;
+}
+.krds-input {
+  --krds-input--size-height-small: var(--snr-tap-size);
+  --krds-input--size-height-medium: var(--snr-tap-size);
+  --krds-input--size-height-large: 5.6rem;
+  --krds-input--size-height-xlarge: 6.4rem;
+}
+#krds-header .btn-navi,
+#krds-header .utility-list .krds-btn,
+#krds-header .gnb-main-trigger,
+#krds-header .gnb-sub-trigger,
+#krds-header .drop-list .item-link,
+#krds-footer .f-menu a,
+#krds-footer .link-go .krds-btn {
+  min-height: var(--snr-tap-size);
+}
+#krds-footer .f-menu a {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------
+   4. 포커스: 3px 고대비 테두리
+   --------------------------------------------------------------------- */
+*:focus-visible {
+  outline: var(--snr-focus-width) solid var(--snr-focus-color) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 calc(var(--snr-focus-width) + 2px) #fff !important;
+}
+[data-krds-mode="high-contrast"] *:focus-visible {
+  outline-color: var(--krds-high-contrast-color-border-primary, #ffff00) !important;
+  box-shadow: 0 0 0 calc(var(--snr-focus-width) + 2px) #000 !important;
+}
+
+/* 움직임 최소화 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   5. 헤더 보정
+   --------------------------------------------------------------------- */
+/* KRDS 로고는 배경 이미지(sr-only). 기관명을 텍스트로 노출 */
+#krds-header .header-branding .logo {
+  width: auto;
+  max-width: none;
+  white-space: nowrap;
+}
+#krds-header .header-branding .logo a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--snr-tap-size);
+  width: auto;
+  background: none;
+  text-decoration: none;
+}
+.snr-logo-text {
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: 700;
+  color: var(--krds-color-light-gray-90);
+  letter-spacing: -0.02em;
+}
+@media (max-width: 767px) {
+  /* 확대(150%) 상태에서 한 줄 고정이면 가로로 넘치므로 줄바꿈 허용 */
+  #krds-header .header-branding .logo {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: normal;
+  }
+  .snr-logo-text {
+    font-size: var(--krds-mobile-font-size-heading-small);
+    line-height: 1.25;
+  }
+}
+[data-krds-mode="high-contrast"] .snr-logo-text { color: #fff; }
+
+/* 고대비: KRDS가 로고 자리에 자기 로고 이미지를 다시 깔므로 제거하고, 회색 텍스트를 흰색으로 */
+[data-krds-mode="high-contrast"] #krds-header .header-container .logo a,
+[data-krds-mode="high-contrast"] #krds-footer .f-logo {
+  background-image: none;
+}
+[data-krds-mode="high-contrast"] #krds-footer .f-logo {
+  color: #fff;
+}
+
+/* 커스텀 블록 안 마스크 아이콘은 글자색을 따라감 */
+.snr-card-more .svg-icon,
+.snr-contact-tel .svg-icon,
+.snr-search-row .krds-btn .svg-icon {
+  background-color: currentColor;
+}
+
+/* 모바일: 20px 글자로는 헤더 우측 3개가 들어가지 않는다.
+   검색은 본문 대형 검색창이, 전체메뉴는 하단 고정 바가 맡으므로 로그인만 남긴다 */
+@media (max-width: 767px) {
+  #krds-header .header-actions .btn-navi.sch,
+  #krds-header .header-actions .btn-navi.all {
+    display: none;
+  }
+}
+
+/* 모바일 전체메뉴 닫기: 오른쪽 위 X 는 글자와 함께 48px 이상, 맨 아래에는 전체 폭 닫기 버튼 */
+.krds-main-menu-mobile .gnb-wrap #close-nav.snr-close-nav {
+  min-height: var(--snr-tap-size);
+  padding: 0 1.2rem;
+  font-size: var(--krds-mobile-font-size-label-medium);
+  font-weight: 700;
+}
+.krds-main-menu-mobile .snr-menu-bottom {
+  padding: 2.4rem 1.6rem calc(2.4rem + env(safe-area-inset-bottom, 0px));
+}
+.krds-main-menu-mobile .snr-menu-close {
+  width: 100%;
+  min-height: 5.6rem;
+}
+
+/* 고대비 토글 버튼 상태 표시 */
+.snr-contrast-btn[aria-pressed="true"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+/* ---------------------------------------------------------------------
+   6. 메인 페이지 블록 (1단 상하 스크롤)
+   --------------------------------------------------------------------- */
+.snr-section {
+  padding: 5.6rem 0;
+}
+.snr-section + .snr-section {
+  padding-top: 0;
+}
+.snr-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+.snr-section-title {
+  font-size: var(--krds-pc-font-size-heading-large);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--krds-color-light-gray-90);
+}
+.snr-section-desc {
+  margin-top: 0.8rem;
+  font-size: var(--krds-pc-font-size-body-large);
+  color: var(--krds-color-light-gray-70);
+}
+
+/* 6-1. 대형 검색 */
+.snr-hero {
+  background: var(--krds-color-light-primary-5);
+  padding: 6.4rem 0;
+}
+.snr-hero .snr-section-title {
+  text-align: center;
+}
+.snr-search {
+  max-width: 88rem;
+  margin: 3.2rem auto 0;
+}
+.snr-search-label {
+  display: block;
+  margin-bottom: 1.2rem;
+  font-size: var(--krds-pc-font-size-label-large);
+  font-weight: 700;
+  color: var(--krds-color-light-gray-90);
+}
+.snr-search-row {
+  display: flex;
+  gap: 1.2rem;
+}
+.snr-search-row .krds-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: #fff;
+}
+.snr-search-row .krds-btn {
+  flex: 0 0 auto;
+  min-width: 14rem;
+}
+.snr-search-hint {
+  margin-top: 1.2rem;
+  font-size: var(--krds-pc-font-size-body-medium);
+  color: var(--krds-color-light-gray-70);
+}
+.snr-search-hint a {
+  color: var(--krds-color-light-primary-60);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  font-weight: 700;
+}
+@media (max-width: 767px) {
+  .snr-hero { padding: 4rem 0; }
+  .snr-search-row { flex-direction: column; }
+  .snr-search-row .krds-btn { width: 100%; }
+}
+
+/* 6-2. 대형 바로가기 카드 */
+.snr-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 1023px) {
+  .snr-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .snr-card-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+}
+.snr-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-height: 20rem;
+  padding: 2.8rem 2.4rem;
+  border: 2px solid var(--krds-color-light-gray-20);
+  border-radius: var(--snr-radius);
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.snr-card:hover,
+.snr-card:focus-visible {
+  border-color: var(--krds-color-light-primary-60);
+  box-shadow: 0 0.4rem 1.6rem rgba(11, 80, 208, .12);
+}
+.snr-card-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--krds-color-light-primary-60);
+  color: #fff;
+  font-size: var(--krds-pc-font-size-body-medium);
+  font-weight: 700;
+}
+.snr-card-title {
+  font-size: var(--krds-pc-font-size-heading-small);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--krds-color-light-gray-90);
+}
+.snr-card-desc {
+  flex: 1 1 auto;
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.5;
+  color: var(--krds-color-light-gray-70);
+}
+.snr-card-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--krds-pc-font-size-label-medium);
+  font-weight: 700;
+  color: var(--krds-color-light-primary-60);
+}
+[data-krds-mode="high-contrast"] .snr-card {
+  background: #000;
+  border-color: #fff;
+}
+[data-krds-mode="high-contrast"] .snr-card-title,
+[data-krds-mode="high-contrast"] .snr-card-desc,
+[data-krds-mode="high-contrast"] .snr-section-title,
+[data-krds-mode="high-contrast"] .snr-section-desc,
+[data-krds-mode="high-contrast"] .snr-search-label,
+[data-krds-mode="high-contrast"] .snr-search-hint,
+[data-krds-mode="high-contrast"] .snr-notice-title,
+[data-krds-mode="high-contrast"] .snr-notice-date,
+[data-krds-mode="high-contrast"] .snr-contact-title,
+[data-krds-mode="high-contrast"] .snr-contact-desc {
+  color: #fff;
+}
+[data-krds-mode="high-contrast"] .snr-card-more,
+[data-krds-mode="high-contrast"] .snr-search-hint a,
+[data-krds-mode="high-contrast"] .snr-contact-tel {
+  color: #ffff00;
+}
+[data-krds-mode="high-contrast"] .snr-card-step {
+  background: #ffff00;
+  color: #000;
+}
+[data-krds-mode="high-contrast"] .snr-hero,
+[data-krds-mode="high-contrast"] .snr-contact {
+  background: #000;
+  border: 2px solid #fff;
+}
+
+/* 6-3. 새소식 목록 */
+.snr-notice-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--krds-color-light-gray-90);
+}
+.snr-notice-list li {
+  border-bottom: 1px solid var(--krds-color-light-gray-20);
+}
+.snr-notice-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+  min-height: 7.2rem;
+  padding: 1.6rem 0.8rem;
+  color: inherit;
+  text-decoration: none;
+}
+.snr-notice-link:hover .snr-notice-title,
+.snr-notice-link:focus-visible .snr-notice-title {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.snr-notice-title {
+  font-size: var(--krds-pc-font-size-body-large);
+  font-weight: 500;
+  color: var(--krds-color-light-gray-90);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.snr-notice-date {
+  flex: 0 0 auto;
+  font-size: var(--krds-pc-font-size-body-medium);
+  color: var(--krds-color-light-gray-70);
+}
+@media (max-width: 767px) {
+  .snr-notice-link { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .snr-notice-title { white-space: normal; }
+}
+
+/* 6-4. 전화 문의 */
+.snr-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding: 3.2rem;
+  border-radius: var(--snr-radius);
+  background: var(--krds-color-light-gray-5);
+}
+.snr-contact-title {
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: 700;
+  color: var(--krds-color-light-gray-90);
+}
+.snr-contact-desc {
+  margin-top: 0.8rem;
+  font-size: var(--krds-pc-font-size-body-medium);
+  color: var(--krds-color-light-gray-70);
+}
+.snr-contact-tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 6.4rem;
+  padding: 0 2.4rem;
+  border-radius: var(--snr-radius);
+  background: #fff;
+  border: 2px solid var(--krds-color-light-primary-60);
+  font-size: var(--krds-pc-font-size-heading-large);
+  font-weight: 700;
+  color: var(--krds-color-light-primary-60);
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .snr-contact { flex-direction: column; align-items: stretch; padding: 2.4rem; }
+  .snr-contact-tel {
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: normal;
+    padding: 1.2rem 1.6rem;
+    font-size: var(--krds-mobile-font-size-heading-medium);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   7. 모바일 하단 고정 바 (한 손 도달 범위에 주요 동작 배치)
+   --------------------------------------------------------------------- */
+.snr-bottom-bar {
+  display: none;
+}
+@media (max-width: 767px) {
+  body {
+    /* 고정 바에 본문·푸터가 가려지지 않도록 */
+    padding-bottom: calc(6.8rem + env(safe-area-inset-bottom, 0px));
+  }
+  .snr-bottom-bar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* KRDS 모바일 전체메뉴(z-index 100)보다 아래, 본문·헤더(70)보다 위 */
+    z-index: 90;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: #fff;
+    border-top: 2px solid var(--krds-color-light-gray-20);
+    box-shadow: 0 -0.4rem 1.6rem rgba(0, 0, 0, .08);
+  }
+  /* 전체메뉴가 열리면(KRDS 가 body 에 is-gnb-mobile 부여) 하단 바를 숨긴다.
+     메뉴는 #krds-header(z-index 70) 안에 있어 z-index 로는 위아래를 정리할 수 없다 */
+  body.is-gnb-mobile .snr-bottom-bar {
+    display: none;
+  }
+  .snr-bottom-bar ul {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .snr-bottom-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    min-height: 6.8rem;
+    padding: 0.8rem 0.4rem;
+    border: 0;
+    background: none;
+    color: var(--krds-color-light-gray-90);
+    font-size: var(--krds-mobile-font-size-label-small);
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .snr-bottom-item .svg-icon {
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: currentColor;
+  }
+  .snr-bottom-item:active {
+    background: var(--krds-color-light-primary-5);
+    color: var(--krds-color-light-primary-60);
+  }
+  [data-krds-mode="high-contrast"] .snr-bottom-bar {
+    background: #000;
+    border-top-color: #fff;
+  }
+  [data-krds-mode="high-contrast"] .snr-bottom-item {
+    color: #fff;
+  }
+  [data-krds-mode="high-contrast"] .snr-bottom-item:active {
+    background: #333;
+    color: #ffff00;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   8. 푸터 보정
+   --------------------------------------------------------------------- */
+#krds-footer .f-logo {
+  background: none;
+  width: auto;
+  font-size: var(--krds-pc-font-size-heading-small);
+  font-weight: 700;
+}
+#krds-footer .f-menu a.point {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}

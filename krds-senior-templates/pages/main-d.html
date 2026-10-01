@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>메인 (몰입형) | ○○기관 민원포털</title>
+	<meta name="description" content="○○기관 민원포털 몰입형 메인. 구획마다 한 문장을 크게 보여 주는 고령층 친화 디자인.">
+	<link rel="icon" href="../vendor/krds/img/component/favicon/favicon.svg" type="image/svg+xml">
+
+	<!-- 자립형: 이 두 파일이 전부다. KRDS 자산을 쓰지 않는다. -->
+	<link rel="stylesheet" href="../css/immersive.css">
+	<!-- defer 를 쓰지 않는다. 첫 화면이 그려지기 전에 글자 크기·고대비를 적용해야 깜빡이지 않는다. -->
+	<script src="../js/immersive.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<!-- 아이콘 모음. 화면에는 보이지 않고 아래에서 use 로 꺼내 쓴다. -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+	<defs>
+		<symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+			<path d="M14 3v5h5"/>
+			<path d="M9 13h6M9 17h4"/>
+		</symbol>
+		<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="11" cy="11" r="7"/>
+			<path d="m20 20-3.6-3.6"/>
+		</symbol>
+		<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M6.5 3h3l1.5 4-2 1.5a12.5 12.5 0 0 0 6.5 6.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2C10.8 19.3 4.7 13.2 3.5 5.2A2 2 0 0 1 5.5 3z"/>
+		</symbol>
+		<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+			<path d="M4 8h16M4 16h16"/>
+		</symbol>
+		<symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+			<path d="m6 6 12 12M18 6 6 18"/>
+		</symbol>
+		<symbol id="i-contrast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+			<circle cx="12" cy="12" r="9"/>
+			<path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/>
+		</symbol>
+	</defs>
+</svg>
+
+<!-- ===================== 설정 띠 ===================== -->
+<div class="util">
+	<div class="wrap">
+		<!-- 글자 크기: 드롭다운 대신 항상 보이는 단추 셋.
+		     좁은 화면에서는 글자만 '가' 셋으로 줄이고 읽어 주는 내용은 aria-label 로 남긴다. -->
+		<div class="sizes" role="group" aria-label="글자 크기 조절">
+			<span class="sizes-label">글자 크기</span>
+			<button type="button" class="size-btn" data-size-set="md" aria-pressed="true" aria-label="글자 크기 보통">
+				<span class="size-full">보통</span><span class="size-short" aria-hidden="true">가</span>
+			</button>
+			<button type="button" class="size-btn" data-size-set="lg" aria-pressed="false" aria-label="글자 크기 크게">
+				<span class="size-full">크게</span><span class="size-short" aria-hidden="true">가</span>
+			</button>
+			<button type="button" class="size-btn" data-size-set="xlg" aria-pressed="false" aria-label="글자 크기 가장 크게">
+				<span class="size-full">가장 크게</span><span class="size-short" aria-hidden="true">가</span>
+			</button>
+		</div>
+		<button type="button" class="contrast-btn" data-contrast-toggle aria-pressed="false">
+			<svg aria-hidden="true"><use href="#i-contrast"/></svg>
+			<span data-contrast-label>고대비 켜기</span>
+		</button>
+	</div>
+</div>
+
+<!-- ===================== 길잡이 띠 ===================== -->
+<header class="nav">
+	<div class="wrap">
+		<!-- 좁은 화면에서는 뒤쪽 '민원포털'을 접어 기관명만 남긴다 -->
+		<a class="brand" href="./main-d.html">
+			<span class="brand-mark" aria-hidden="true">○</span>
+			<span>○○기관<span class="brand-tail"> 민원포털</span></span>
+		</a>
+
+		<nav class="nav-menu" aria-label="주메뉴">
+			<ul>
+				<li><a href="#">민원안내·신청</a></li>
+				<li><a href="#">정보공개</a></li>
+				<li><a href="#">기관소개</a></li>
+			</ul>
+		</nav>
+
+		<!-- 좁은 화면에서는 숨기고 전체메뉴 맨 위로 옮긴다 (한 줄에 다 들어가지 않는다) -->
+		<a class="btn btn-line nav-login" href="#">로그인</a>
+
+		<button type="button" class="btn btn-line nav-toggle" data-sheet-open-btn aria-controls="sheet">
+			<svg aria-hidden="true" style="width:1.1rem;height:1.1rem"><use href="#i-menu"/></svg>
+			메뉴
+		</button>
+	</div>
+</header>
+
+<!-- ===================== 전체메뉴 ===================== -->
+<!-- 길잡이 띠 바깥에 둔다. 띠에는 뒤가 비치는 효과가 걸려 있어 그 안에서는 화면 전체를 덮지 못한다. -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+	<div class="sheet-head">
+		<p class="sheet-title">전체 메뉴</p>
+		<button type="button" class="btn btn-line" data-sheet-close-btn>
+			<svg aria-hidden="true" style="width:1.1rem;height:1.1rem"><use href="#i-close"/></svg>
+			닫기
+		</button>
+	</div>
+	<div class="sheet-body">
+		<div class="sheet-login">
+			<a class="btn btn-fill" href="#">로그인</a>
+		</div>
+		<nav class="sheet-nav" aria-label="전체 메뉴 목록">
+			<a href="#">민원 신청하기</a>
+			<a href="#">신청 현황 보기</a>
+			<a href="#">서식 내려받기</a>
+			<a href="#">담당 부서 찾기</a>
+			<a href="#">정보공개</a>
+			<a href="#">기관소개</a>
+		</nav>
+		<div class="sheet-close-bottom">
+			<button type="button" class="btn btn-line" data-sheet-close-btn>
+				<svg aria-hidden="true" style="width:1.1rem;height:1.1rem"><use href="#i-close"/></svg>
+				메뉴 닫기
+			</button>
+		</div>
+	</div>
+</div>
+
+<!-- ===================== 본문 ===================== -->
+<main id="main">
+
+	<!-- 첫 화면 -->
+	<section class="hero on-dark">
+		<div class="wrap wrap-narrow">
+			<h1 class="hero-title">민원 신청.<br><span class="glow">이제 집에서.</span></h1>
+			<p class="hero-lead">휴대전화 하나면 됩니다. 어려우시면 전화 한 통으로 끝까지 안내해 드립니다.</p>
+			<div class="hero-actions">
+				<a class="btn btn-fill" href="#">민원 신청하기</a>
+				<a class="tlink" href="#">신청 현황 보기</a>
+			</div>
+		</div>
+
+		<!-- 보여 주기용 그림. 뜻은 없어 읽어 주지 않는다. -->
+		<div class="showcase" aria-hidden="true">
+			<div class="showcase-card">
+				<div class="showcase-bar"><span></span><span></span><span></span></div>
+				<div class="showcase-body">
+					<p class="showcase-step">2단계 · 신청서 작성</p>
+					<p class="showcase-name">주민등록등본 발급</p>
+					<dl>
+						<div class="showcase-row"><dt>이름</dt><dd>홍길동</dd></div>
+						<div class="showcase-row"><dt>연락처</dt><dd>010-0000-0000</dd></div>
+						<div class="showcase-row"><dt>받는 방법</dt><dd>온라인 발급</dd></div>
+					</dl>
+					<p class="showcase-go">다음으로</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 할 일 -->
+	<section class="band band-alt" aria-labelledby="task-title">
+		<div class="wrap">
+			<div class="reveal">
+				<h2 class="statement" id="task-title">무엇을 도와드릴까요.</h2>
+				<p class="lead">누르시면 바로 그 화면으로 갑니다.</p>
+			</div>
+
+			<div class="tile-grid reveal">
+				<a class="tile tile-lead" href="#">
+					<span class="tile-body">
+						<span class="tile-eyebrow">가장 많이 찾는 일</span>
+						<span class="tile-name">민원 신청하기</span>
+						<span class="tile-desc">본인 확인을 하고 신청서를 쓰시면 됩니다. 약 10분 걸립니다.</span>
+					</span>
+					<span class="tlink">시작하기</span>
+				</a>
+
+				<a class="tile" href="#">
+					<span class="tile-eyebrow">조회</span>
+					<span class="tile-name">신청 현황 보기</span>
+					<span class="tile-desc">접수, 검토, 완료 중 지금 어느 단계인지 알려 드립니다.</span>
+					<span class="tlink">보러 가기</span>
+				</a>
+
+				<a class="tile" href="#">
+					<span class="tile-eyebrow">인쇄</span>
+					<span class="tile-name">서식 내려받기</span>
+					<span class="tile-desc">손으로 쓰실 분은 서식을 내려받아 인쇄하세요.</span>
+					<span class="tlink">내려받기</span>
+				</a>
+
+				<a class="tile" href="#">
+					<span class="tile-eyebrow">연락처</span>
+					<span class="tile-name">담당 부서 찾기</span>
+					<span class="tile-desc">어느 부서에 물어볼지 부서별 전화번호를 찾아 드립니다.</span>
+					<span class="tlink">찾아보기</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 세 단계 -->
+	<section class="band" aria-labelledby="step-title">
+		<div class="wrap">
+			<div class="reveal">
+				<h2 class="statement" id="step-title">세 단계.<br>그게 전부입니다.</h2>
+				<p class="lead">복잡한 서류도, 기관 방문도 필요 없습니다.</p>
+			</div>
+
+			<ol class="step-grid reveal">
+				<li>
+					<span class="step-num" aria-hidden="true">1</span>
+					<h3 class="step-name">본인 확인</h3>
+					<p class="step-desc">휴대전화로 하는 간편인증이면 됩니다. 공동인증서는 없어도 됩니다.</p>
+				</li>
+				<li>
+					<span class="step-num" aria-hidden="true">2</span>
+					<h3 class="step-name">신청서 작성</h3>
+					<p class="step-desc">쓰시다 멈추셔도 됩니다. 24시간 동안 그대로 남아 있습니다.</p>
+				</li>
+				<li>
+					<span class="step-num" aria-hidden="true">3</span>
+					<h3 class="step-name">접수 완료</h3>
+					<p class="step-desc">접수번호를 문자로 보내 드립니다. 처리가 끝나도 문자로 알려 드립니다.</p>
+				</li>
+			</ol>
+
+			<div class="band-actions reveal">
+				<a class="btn btn-fill" href="#">지금 신청하기</a>
+				<a class="tlink" href="#">절차 자세히 보기</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 전화 -->
+	<section class="band band-dark on-dark" aria-labelledby="call-title">
+		<div class="wrap wrap-narrow reveal" style="text-align:center">
+			<h2 class="statement" id="call-title">어려우시면<br>전화 주세요.</h2>
+			<a class="call-num" href="tel:1234-5678">
+				<svg aria-hidden="true"><use href="#i-phone"/></svg>
+				1234-5678
+			</a>
+			<p class="call-hours">평일 09:00 ~ 18:00 · 상담원이 처음부터 끝까지 안내해 드립니다.</p>
+		</div>
+	</section>
+
+	<!-- 새소식 -->
+	<section class="band band-alt" aria-labelledby="news-title">
+		<div class="wrap wrap-narrow">
+			<div class="reveal">
+				<h2 class="statement" id="news-title">새소식.</h2>
+			</div>
+			<ul class="news reveal">
+				<li>
+					<a href="#">
+						<span class="news-title">추석 연휴 기간 민원 처리 일정 안내</span>
+						<span class="news-date"><span class="sr-only">게시일 </span>2026.09.18</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="news-title">온라인 민원신청 간편인증(PASS·카카오·네이버) 추가</span>
+						<span class="news-date"><span class="sr-only">게시일 </span>2026.09.10</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="news-title">사전정보공표 목록 정기 갱신(2026년 3분기)</span>
+						<span class="news-date"><span class="sr-only">게시일 </span>2026.09.01</span>
+					</a>
+				</li>
+			</ul>
+			<div class="band-actions reveal">
+				<a class="tlink" href="#">새소식 전체 보기</a>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<!-- ===================== 꼬리말 ===================== -->
+<footer class="foot">
+	<div class="wrap">
+		<div class="foot-grid">
+			<div>
+				<p class="foot-head">민원안내·신청</p>
+				<ul class="foot-list">
+					<li><a href="#">온라인 민원신청</a></li>
+					<li><a href="#">민원 처리현황 조회</a></li>
+					<li><a href="#">서식 다운로드</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="foot-head">정보공개</p>
+				<ul class="foot-list">
+					<li><a href="#">제도 안내</a></li>
+					<li><a href="#">사전정보공표</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="foot-head">○○기관</p>
+				<p>(00000) ○○시 ○○구 ○○로 00</p>
+				<p>대표전화 1234-5678 (평일 09시~18시)</p>
+			</div>
+		</div>
+
+		<nav class="foot-legal" aria-label="이용 안내">
+			<a class="strong" href="#">개인정보처리방침</a>
+			<a href="#">저작권 정책</a>
+			<a href="#">웹 접근성 품질인증 마크</a>
+			<a href="#">찾아오시는 길</a>
+		</nav>
+		<p class="foot-copy">© 2026 ○○기관. All rights reserved.</p>
+	</div>
+</footer>
+
+<!-- ===================== 좁은 화면 아래 고정 띠 ===================== -->
+<nav class="dock" aria-label="빠른 이동">
+	<ul>
+		<li><a href="#"><svg aria-hidden="true"><use href="#i-doc"/></svg>민원신청</a></li>
+		<li><a href="#"><svg aria-hidden="true"><use href="#i-search"/></svg>현황조회</a></li>
+		<li><a href="tel:1234-5678"><svg aria-hidden="true"><use href="#i-phone"/></svg>전화</a></li>
+		<li><button type="button" data-sheet-open-btn aria-controls="sheet"><svg aria-hidden="true"><use href="#i-menu"/></svg>전체메뉴</button></li>
+	</ul>
+</nav>
+
+</body>
+</html>

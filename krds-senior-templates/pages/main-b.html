@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>메인 (큰글씨 안내형) | ○○기관 민원포털</title>
+	<meta name="description" content="○○기관 민원포털 큰글씨 안내형 메인. 순서대로 따라가는 민원 신청 안내.">
+	<link rel="icon" href="../vendor/krds/img/component/favicon/favicon.svg" type="image/svg+xml">
+
+	<!-- KRDS 1.1.0 원본 (순서 고정) -->
+	<link rel="stylesheet" href="../vendor/krds/css/token/krds_tokens.css">
+	<link rel="stylesheet" href="../vendor/krds/css/component/output.css">
+	<!-- 고령층 오버라이드 (항상 마지막) -->
+	<link rel="stylesheet" href="../css/senior.css">
+	<!-- 이 템플릿 전용 블록 -->
+	<link rel="stylesheet" href="../css/main-b.css">
+</head>
+<body>
+<div id="wrap">
+
+	<!-- 건너뛰기 링크 -->
+	<div id="krds-skip-link">
+		<a href="#container">본문 바로가기</a>
+	</div>
+	<!-- //건너뛰기 링크 -->
+
+	<!-- masthead -->
+	<div id="krds-masthead">
+		<div class="toggle-wrap">
+			<div class="toggle-head">
+				<div class="inner">
+					<span class="nuri-txt">이 누리집은 대한민국 공식 전자정부 누리집입니다.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //masthead -->
+
+	<!-- header -->
+	<header id="krds-header">
+		<div class="header-in">
+			<!-- 헤더 상단 유틸 -->
+			<div class="header-container">
+				<div class="inner">
+					<div class="header-utility">
+						<ul class="utility-list">
+							<!-- 화면크기 3단계 (KRDS krds-resize 재사용, senior.js가 선택값 저장) -->
+							<li>
+								<div class="krds-drop-wrap krds-resize" data-adjust="scale">
+									<button type="button" class="krds-btn small text drop-btn">화면크기 <i class="svg-icon ico-toggle"></i></button>
+									<div class="drop-menu">
+										<div class="drop-in">
+											<ul class="drop-list">
+												<li><button type="button" class="item-link md active" data-adjust-scale="md" aria-selected="true">보통 <span class="sr-only">선택됨</span></button></li>
+												<li><button type="button" class="item-link lg" data-adjust-scale="lg" aria-selected="false">크게 <span class="sr-only"></span></button></li>
+												<li><button type="button" class="item-link xlg" data-adjust-scale="xlg" aria-selected="false">가장 크게 <span class="sr-only"></span></button></li>
+											</ul>
+											<div class="drop-bottom">
+												<button type="button" class="krds-btn medium text" data-adjust-scale="md"><i class="svg-icon ico-reset"></i> 초기화</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<!-- 고대비 토글 (senior.js) -->
+							<li>
+								<button type="button" class="krds-btn small text snr-contrast-btn" data-snr-contrast aria-pressed="false">
+									<i class="svg-icon ico-view-mode"></i> <span data-snr-contrast-label>고대비 켜기</span>
+								</button>
+							</li>
+						</ul>
+					</div>
+					<div class="header-branding">
+						<h1 class="logo">
+							<a href="./main-b.html">
+								<span class="snr-logo-text">○○기관 민원포털</span>
+							</a>
+						</h1>
+						<div class="header-actions">
+							<button type="button" class="btn-navi sch" title="통합검색 레이어">통합검색</button>
+							<a href="#" class="btn-navi login">로그인</a>
+							<button type="button" class="btn-navi all" aria-controls="mobile-nav">전체메뉴</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //헤더 상단 유틸 -->
+
+			<!-- 메인메뉴 : 데스크탑 (사이트맵 3-Depth) -->
+			<nav class="krds-main-menu" aria-label="주메뉴">
+				<div class="inner">
+					<ul class="gnb-menu">
+						<li>
+							<button type="button" class="gnb-main-trigger" data-trigger="gnb">민원안내/신청</button>
+							<div class="gnb-toggle-wrap">
+								<div class="gnb-main-list" data-has-submenu="true">
+									<ul>
+										<li>
+											<button type="button" class="gnb-sub-trigger" data-trigger="gnb">민원신청</button>
+											<div class="gnb-sub-list">
+												<div class="gnb-sub-content">
+													<h2 class="sub-title">민원신청</h2>
+													<ul>
+														<li><a href="#">온라인 민원신청</a></li>
+														<li><a href="#">민원 처리현황 조회</a></li>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li>
+											<button type="button" class="gnb-sub-trigger" data-trigger="gnb">민원 서식</button>
+											<div class="gnb-sub-list">
+												<div class="gnb-sub-content">
+													<h2 class="sub-title">민원 서식</h2>
+													<ul>
+														<li><a href="#">서식 다운로드</a></li>
+													</ul>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li>
+							<button type="button" class="gnb-main-trigger" data-trigger="gnb">정보공개</button>
+							<div class="gnb-toggle-wrap">
+								<div class="gnb-main-list" data-has-submenu="true">
+									<ul>
+										<li>
+											<button type="button" class="gnb-sub-trigger" data-trigger="gnb">정보공개제도</button>
+											<div class="gnb-sub-list">
+												<div class="gnb-sub-content">
+													<h2 class="sub-title">정보공개제도</h2>
+													<ul>
+														<li><a href="#">제도 안내</a></li>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li>
+											<button type="button" class="gnb-sub-trigger" data-trigger="gnb">사전정보공표</button>
+											<div class="gnb-sub-list">
+												<div class="gnb-sub-content">
+													<h2 class="sub-title">사전정보공표</h2>
+													<ul>
+														<li><a href="#">공표목록</a></li>
+													</ul>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li>
+							<button type="button" class="gnb-main-trigger" data-trigger="gnb">기관소개</button>
+							<div class="gnb-toggle-wrap">
+								<div class="gnb-main-list" data-has-submenu="true">
+									<ul>
+										<li>
+											<button type="button" class="gnb-sub-trigger" data-trigger="gnb">조직안내</button>
+											<div class="gnb-sub-list">
+												<div class="gnb-sub-content">
+													<h2 class="sub-title">조직안내</h2>
+													<ul>
+														<li><a href="#">조직도 및 연락처</a></li>
+													</ul>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- //메인메뉴 : 데스크탑 -->
+		</div>
+		<!-- //header-in : 이 안에는 transform 이 걸려 있어 position:fixed 인 모바일 메뉴를 넣으면 뷰포트가 아닌 헤더 기준으로 잡힌다. 모바일 메뉴는 반드시 header-in 바깥에 둘 것 -->
+
+			<!-- 메인메뉴 : 모바일 -->
+			<div id="mobile-nav" class="krds-main-menu-mobile">
+				<div class="gnb-wrap">
+					<div class="gnb-header">
+						<!-- 모바일에서는 헤더 유틸이 숨겨지므로 화면크기·고대비를 여기에도 둔다 -->
+						<div class="gnb-utils">
+							<ul class="utility-list">
+								<li>
+									<div class="krds-drop-wrap krds-resize" data-adjust="scale">
+										<button type="button" class="krds-btn xsmall text drop-btn">화면크기 <i class="svg-icon ico-toggle"></i></button>
+										<div class="drop-menu">
+											<div class="drop-in">
+												<ul class="drop-list">
+													<li><button type="button" class="item-link md active" data-adjust-scale="md" aria-selected="true">보통 <span class="sr-only">선택됨</span></button></li>
+													<li><button type="button" class="item-link lg" data-adjust-scale="lg" aria-selected="false">크게 <span class="sr-only"></span></button></li>
+													<li><button type="button" class="item-link xlg" data-adjust-scale="xlg" aria-selected="false">가장 크게 <span class="sr-only"></span></button></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<button type="button" class="krds-btn xsmall text snr-contrast-btn" data-snr-contrast aria-pressed="false">
+										<i class="svg-icon ico-view-mode"></i> <span data-snr-contrast-label>고대비 켜기</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+						<div class="gnb-login">
+							<a href="#" class="krds-btn large text"><i class="svg-icon ico-log"></i> 로그인</a>
+						</div>
+					</div>
+					<div class="gnb-body">
+						<div class="gnb-menu">
+							<div class="menu-wrap">
+								<ul>
+									<li><a href="#mGnb-anchor1" class="gnb-main-trigger">민원안내/신청</a></li>
+									<li><a href="#mGnb-anchor2" class="gnb-main-trigger">정보공개</a></li>
+									<li><a href="#mGnb-anchor3" class="gnb-main-trigger">기관소개</a></li>
+								</ul>
+							</div>
+							<div class="submenu-wrap">
+								<div class="gnb-sub-list" id="mGnb-anchor1">
+									<h2 class="sub-title">민원안내/신청</h2>
+									<ul>
+										<li><a href="#" class="gnb-sub-trigger">온라인 민원신청</a></li>
+										<li><a href="#" class="gnb-sub-trigger">민원 처리현황 조회</a></li>
+										<li><a href="#" class="gnb-sub-trigger">서식 다운로드</a></li>
+									</ul>
+								</div>
+								<div class="gnb-sub-list" id="mGnb-anchor2">
+									<h2 class="sub-title">정보공개</h2>
+									<ul>
+										<li><a href="#" class="gnb-sub-trigger">제도 안내</a></li>
+										<li><a href="#" class="gnb-sub-trigger">공표목록</a></li>
+									</ul>
+								</div>
+								<div class="gnb-sub-list" id="mGnb-anchor3">
+									<h2 class="sub-title">기관소개</h2>
+									<ul>
+										<li><a href="#" class="gnb-sub-trigger">조직도 및 연락처</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- 스크롤 끝에서도 빠져나갈 수 있는 큰 닫기 버튼 (senior.js 가 #close-nav 를 대신 누름) -->
+						<div class="gnb-bottom snr-menu-bottom">
+							<button type="button" class="krds-btn large secondary snr-menu-close" data-snr-close-menu>
+								<i class="svg-icon ico-popup-close"></i> 메뉴 닫기
+							</button>
+						</div>
+					</div>
+					<!-- 오른쪽 위 닫기: 아이콘만 두지 않고 글자를 함께 노출 -->
+					<button type="button" class="krds-btn medium text snr-close-nav" id="close-nav">
+						<i class="svg-icon ico-popup-close"></i> 닫기
+					</button>
+				</div>
+			</div>
+			<!-- //메인메뉴 : 모바일 -->
+	</header>
+	<!-- //header -->
+
+	<!-- 본문 -->
+	<main id="container">
+
+		<!-- 1. 인사 + 진행 순서 안내 -->
+		<section class="snb-greeting" aria-labelledby="greet-title">
+			<div class="inner">
+				<h2 class="snb-greeting-title" id="greet-title">안녕하세요.<br>무엇을 도와드릴까요?</h2>
+				<p class="snb-greeting-desc">아래 순서대로 따라오시면 민원 신청이 끝납니다. 어려우시면 언제든 전화 주세요.</p>
+
+				<div class="snb-steps">
+					<p class="snb-steps-caption" id="steps-caption">민원 신청은 3단계로 끝납니다</p>
+					<ol class="krds-step-wrap" aria-labelledby="steps-caption">
+						<li class="active">
+							<span>
+								<em class="sr-only">현재단계</em>
+								<i class="step">1단계</i>
+								<span class="step-tit">본인 확인</span>
+							</span>
+						</li>
+						<li>
+							<span>
+								<i class="step">2단계</i>
+								<span class="step-tit">신청서 작성</span>
+							</span>
+						</li>
+						<li>
+							<span>
+								<i class="step">3단계</i>
+								<span class="step-tit">접수 완료</span>
+							</span>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+
+		<!-- 2. 세로 대형 블록 메뉴 -->
+		<section class="snb-section" aria-labelledby="task-title">
+			<div class="inner">
+				<h2 class="snb-section-title" id="task-title">하실 일을 골라 주세요</h2>
+				<ul class="snb-blocks">
+					<li>
+						<a href="#" class="snb-block">
+							<span class="snb-block-num" aria-hidden="true">1</span>
+							<span class="snb-block-text">
+								<span class="snb-block-title">민원 신청하기</span>
+								<span class="snb-block-desc">본인 확인을 한 뒤 신청서를 쓰고 서류를 올립니다. 약 10분 걸립니다.</span>
+							</span>
+							<span class="snb-block-go">신청 <i class="svg-icon ico-angle right"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="snb-block">
+							<span class="snb-block-num" aria-hidden="true">2</span>
+							<span class="snb-block-text">
+								<span class="snb-block-title">신청한 민원 확인하기</span>
+								<span class="snb-block-desc">접수, 검토, 완료 중 지금 어느 단계인지 보여 드립니다.</span>
+							</span>
+							<span class="snb-block-go">조회 <i class="svg-icon ico-angle right"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="snb-block">
+							<span class="snb-block-num" aria-hidden="true">3</span>
+							<span class="snb-block-text">
+								<span class="snb-block-title">서식 내려받아 인쇄하기</span>
+								<span class="snb-block-desc">직접 손으로 쓰실 분은 서식을 내려받아 인쇄하세요.</span>
+							</span>
+							<span class="snb-block-go">내려받기 <i class="svg-icon ico-angle right"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="snb-block">
+							<span class="snb-block-num" aria-hidden="true">4</span>
+							<span class="snb-block-text">
+								<span class="snb-block-title">담당 부서에 전화하기</span>
+								<span class="snb-block-desc">어느 부서에 물어봐야 할지 부서별 전화번호를 찾아 드립니다.</span>
+							</span>
+							<span class="snb-block-go">찾기 <i class="svg-icon ico-angle right"></i></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- 3. 진행 중인 신청 (로그인 상태 예시) -->
+		<section class="snb-section" aria-labelledby="status-title" style="padding-top:0">
+			<div class="inner">
+				<h2 class="snb-section-title" id="status-title">진행 중인 신청</h2>
+				<div class="snb-status">
+					<div class="snb-status-text">
+						<p class="snb-status-title">
+							<span class="krds-badge bg-secondary">검토 중</span>
+							주민등록등본 발급 신청
+						</p>
+						<p class="snb-status-meta">
+							<span>접수번호 PET-20260919-0012</span>
+							<span>접수일 2026.09.19</span>
+						</p>
+					</div>
+					<a href="#" class="krds-btn large secondary">자세히 보기</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- 4. 자주 묻는 질문 -->
+		<section class="snb-section" aria-labelledby="faq-title" style="padding-top:0">
+			<div class="inner">
+				<h2 class="snb-section-title" id="faq-title">자주 묻는 질문</h2>
+				<div class="krds-accordion">
+					<div class="accordion-item">
+						<h3 class="accordion-header">
+							<button type="button" id="faqHead01" class="btn-accordion" aria-controls="faqBody01">공동인증서가 없어도 신청할 수 있나요?</button>
+						</h3>
+						<div id="faqBody01" class="accordion-collapse collapse" aria-labelledby="faqHead01">
+							<div class="accordion-body">
+								네, 할 수 있습니다. 휴대전화로 하는 간편인증(PASS, 카카오, 네이버)을 쓰시면 됩니다. 휴대전화 번호와 성함만 있으면 됩니다.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h3 class="accordion-header">
+							<button type="button" id="faqHead02" class="btn-accordion" aria-controls="faqBody02">신청하다가 중간에 그만두면 처음부터 다시 해야 하나요?</button>
+						</h3>
+						<div id="faqBody02" class="accordion-collapse collapse" aria-labelledby="faqHead02">
+							<div class="accordion-body">
+								아닙니다. 신청서 아래 임시 저장 단추를 누르시면 24시간 동안 쓰신 내용이 남아 있습니다. 다시 들어오셔서 이어서 쓰시면 됩니다.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h3 class="accordion-header">
+							<button type="button" id="faqHead03" class="btn-accordion" aria-controls="faqBody03">처리가 다 되면 어떻게 알 수 있나요?</button>
+						</h3>
+						<div id="faqBody03" class="accordion-collapse collapse" aria-labelledby="faqHead03">
+							<div class="accordion-body">
+								신청하실 때 적어 주신 휴대전화로 문자를 보내 드립니다. 이 누리집의 신청한 민원 확인하기에서도 보실 수 있습니다.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 5. 전화 안내 -->
+		<section class="snb-section" aria-labelledby="help-title" style="padding-top:0">
+			<div class="inner">
+				<div class="snb-help">
+					<h2 class="snb-help-title" id="help-title">어려우시면 전화 주세요</h2>
+					<p class="snb-help-desc">평일 09:00 ~ 18:00, 상담원이 처음부터 끝까지 안내해 드립니다.</p>
+					<a href="tel:1234-5678" class="snb-help-tel"><i class="svg-icon ico-call"></i> 1234-5678</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- 6. 하단 보조 검색 -->
+		<section class="snb-search" aria-labelledby="search-title">
+			<div class="inner">
+				<h2 class="sr-only" id="search-title">검색</h2>
+				<form role="search" action="#" method="get">
+					<label class="snb-search-label" for="sub-search">찾으시는 내용을 직접 입력하실 수도 있습니다</label>
+					<div class="snb-search-row">
+						<input type="search" id="sub-search" name="q" class="krds-input large" placeholder="예) 주민등록등본" autocomplete="off">
+						<button type="submit" class="krds-btn large primary"><i class="svg-icon ico-sch"></i> 검색</button>
+					</div>
+				</form>
+			</div>
+		</section>
+
+	</main>
+	<!-- //본문 -->
+
+	<!-- footer -->
+	<footer id="krds-footer">
+		<div class="inner">
+			<div class="f-logo">○○기관</div>
+			<div class="f-cnt">
+				<div class="f-info">
+					<p class="info-addr">(00000) ○○시 ○○구 ○○로 00 ○○기관</p>
+					<ul class="info-cs">
+						<li><strong class="strong">대표전화 1234-5678</strong><span class="span">(평일 09시~18시)</span></li>
+					</ul>
+				</div>
+				<div class="f-link">
+					<div class="link-go">
+						<a href="#" class="krds-btn medium text">찾아오시는 길 <i class="svg-icon ico-angle right"></i></a>
+						<a href="#" class="krds-btn medium text">이용안내 <i class="svg-icon ico-angle right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="f-btm">
+				<div class="f-btm-text">
+					<div class="f-menu">
+						<a href="#" class="point">개인정보처리방침</a>
+						<a href="#">저작권 정책</a>
+						<a href="#">웹 접근성 품질인증 마크</a>
+					</div>
+					<p class="f-copy">© 2026 ○○기관. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+
+	<!-- 모바일 하단 고정 바 (767px 이하에서만 표시, senior.css) -->
+	<nav class="snr-bottom-bar" aria-label="빠른 이동">
+		<ul>
+			<li>
+				<a href="#" class="snr-bottom-item">
+					<i class="svg-icon ico-file" aria-hidden="true"></i>
+					<span>민원신청</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="snr-bottom-item">
+					<i class="svg-icon ico-sch" aria-hidden="true"></i>
+					<span>처리조회</span>
+				</a>
+			</li>
+			<li>
+				<a href="tel:1234-5678" class="snr-bottom-item">
+					<i class="svg-icon ico-call" aria-hidden="true"></i>
+					<span>전화</span>
+				</a>
+			</li>
+			<li>
+				<button type="button" class="snr-bottom-item" data-snr-open-menu>
+					<i class="svg-icon ico-all" aria-hidden="true"></i>
+					<span>전체메뉴</span>
+				</button>
+			</li>
+		</ul>
+	</nav>
+	<!-- //모바일 하단 고정 바 -->
+
+</div>
+
+<!-- KRDS JS → 고령층 JS (순서 고정) -->
+<script src="../vendor/krds/js/krds.js"></script>
+<script src="../js/senior.js"></script>
+</body>
+</html>

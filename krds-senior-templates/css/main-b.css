@@ -1,0 +1,377 @@
+@charset "UTF-8";
+/* =====================================================================
+   main-b.css — 큰글씨 1단 안내형 전용 블록
+   로드 순서: krds_tokens.css → output.css → senior.css → main-b.css
+   A(main.html)와 같은 KRDS 자산·같은 고령층 규격을 쓰되 본문 구성만 다르다.
+   A: 검색 우선 + 카드 그리드로 "찾게" 한다.
+   B: 순서 안내 + 세로 대형 블록으로 "따라오게" 한다.
+   접두어: snb-
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. 인사 영역
+   --------------------------------------------------------------------- */
+.snb-greeting {
+  padding: 5.6rem 0 4rem;
+  background: var(--krds-color-light-secondary-5);
+  border-bottom: 1px solid var(--krds-color-light-gray-20);
+}
+.snb-greeting-title {
+  font-size: var(--krds-pc-font-size-heading-xlarge);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--krds-color-light-gray-90);
+}
+.snb-greeting-desc {
+  margin-top: 1.6rem;
+  font-size: var(--krds-pc-font-size-body-large);
+  line-height: 1.6;
+  color: var(--krds-color-light-gray-70);
+}
+@media (max-width: 767px) {
+  .snb-greeting { padding: 3.2rem 0 2.4rem; }
+  .snb-greeting-title { font-size: var(--krds-mobile-font-size-heading-xlarge); }
+}
+[data-krds-mode="high-contrast"] .snb-greeting {
+  background: #000;
+  border-bottom-color: #fff;
+}
+[data-krds-mode="high-contrast"] .snb-greeting-title,
+[data-krds-mode="high-contrast"] .snb-greeting-desc,
+[data-krds-mode="high-contrast"] .snb-section-title,
+[data-krds-mode="high-contrast"] .snb-block-title,
+[data-krds-mode="high-contrast"] .snb-block-desc,
+[data-krds-mode="high-contrast"] .snb-status-title,
+[data-krds-mode="high-contrast"] .snb-help-title,
+[data-krds-mode="high-contrast"] .snb-help-desc {
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------------
+   2. 진행 순서 안내 (KRDS step 컴포넌트 위에 여백만 조정)
+   --------------------------------------------------------------------- */
+.snb-steps {
+  margin-top: 3.2rem;
+  padding: 2.4rem;
+  border-radius: 1.2rem;
+  background: #fff;
+  border: 1px solid var(--krds-color-light-gray-20);
+}
+.snb-steps-caption {
+  margin-bottom: 1.6rem;
+  font-size: var(--krds-pc-font-size-label-large);
+  font-weight: 700;
+  color: var(--krds-color-light-gray-90);
+}
+[data-krds-mode="high-contrast"] .snb-steps {
+  background: #000;
+  border-color: #fff;
+}
+[data-krds-mode="high-contrast"] .snb-steps-caption { color: #fff; }
+
+/* KRDS 는 좁은 화면에서 단계 이름을 숨기고 점만 남긴다.
+   이 템플릿은 단계 안내가 핵심이라 점 대신 이름을 세로로 되살린다. */
+@media (max-width: 767px) {
+  .snb-steps .krds-step-wrap {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .snb-steps .krds-step-wrap > li {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .snb-steps .krds-step-wrap > li::after,
+  .snb-steps .krds-step-wrap > li > span::before,
+  .snb-steps .krds-step-wrap > li > span::after {
+    display: none;
+  }
+  .snb-steps .krds-step-wrap > li > span {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0 !important;
+  }
+  .snb-steps .krds-step-wrap > li .step,
+  .snb-steps .krds-step-wrap > li .step-tit {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+  }
+  .snb-steps .krds-step-wrap > li .step {
+    flex: 0 0 auto;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 8rem;
+    min-height: 3.6rem;
+    padding: 0 1.2rem !important;
+    border-radius: 10rem;
+    background: var(--krds-color-light-gray-20);
+    color: var(--krds-color-light-gray-80);
+    font-size: var(--krds-mobile-font-size-label-medium);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .snb-steps .krds-step-wrap > li.active .step {
+    background: var(--krds-color-light-primary-60);
+    color: #fff;
+  }
+  .snb-steps .krds-step-wrap > li .step-tit {
+    font-size: var(--krds-mobile-font-size-body-large);
+    font-weight: 700;
+    color: var(--krds-color-light-gray-90);
+  }
+  [data-krds-mode="high-contrast"] .snb-steps .krds-step-wrap > li .step {
+    background: #333;
+    color: #fff;
+  }
+  [data-krds-mode="high-contrast"] .snb-steps .krds-step-wrap > li.active .step {
+    background: #ffff00;
+    color: #000;
+  }
+  [data-krds-mode="high-contrast"] .snb-steps .krds-step-wrap > li .step-tit { color: #fff; }
+}
+
+/* ---------------------------------------------------------------------
+   3. 세로 대형 블록 (이 템플릿의 핵심)
+      한 줄에 하나. 행 전체가 링크. 높이 16rem 이상.
+   --------------------------------------------------------------------- */
+.snb-section {
+  padding: 5.6rem 0;
+}
+.snb-section-title {
+  margin-bottom: 2.4rem;
+  font-size: var(--krds-pc-font-size-heading-large);
+  font-weight: 700;
+  color: var(--krds-color-light-gray-90);
+}
+.snb-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.snb-block {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  min-height: 16rem;
+  padding: 2.4rem 2.8rem;
+  border: 2px solid var(--krds-color-light-gray-20);
+  border-left-width: 1rem;
+  border-left-color: var(--krds-color-light-primary-60);
+  border-radius: 1.2rem;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color .15s, border-color .15s;
+}
+.snb-block:hover,
+.snb-block:focus-visible {
+  background: var(--krds-color-light-primary-5);
+  border-color: var(--krds-color-light-primary-60);
+  border-left-color: var(--krds-color-light-primary-60);
+}
+.snb-block-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 50%;
+  background: var(--krds-color-light-primary-60);
+  color: #fff;
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: 700;
+}
+.snb-block-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.snb-block-title {
+  display: block;
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--krds-color-light-gray-90);
+}
+.snb-block-desc {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: var(--krds-pc-font-size-body-large);
+  line-height: 1.55;
+  color: var(--krds-color-light-gray-70);
+}
+.snb-block-go {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: var(--krds-pc-font-size-label-large);
+  font-weight: 700;
+  color: var(--krds-color-light-primary-60);
+  white-space: nowrap;
+}
+.snb-block-go .svg-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  background-color: currentColor;
+}
+@media (max-width: 767px) {
+  .snb-section { padding: 3.2rem 0; }
+  .snb-section-title { font-size: var(--krds-mobile-font-size-heading-large); }
+  .snb-block {
+    flex-wrap: wrap;
+    gap: 1.2rem 1.6rem;
+    min-height: 0;
+    padding: 2rem;
+    border-left-width: 0.8rem;
+  }
+  .snb-block-num { width: 5.2rem; height: 5.2rem; }
+  .snb-block-text { flex: 1 1 100%; order: 3; }
+  .snb-block-go { margin-left: auto; }
+}
+[data-krds-mode="high-contrast"] .snb-block {
+  background: #000;
+  border-color: #fff;
+  border-left-color: #ffff00;
+}
+[data-krds-mode="high-contrast"] .snb-block:hover,
+[data-krds-mode="high-contrast"] .snb-block:focus-visible {
+  background: #333;
+}
+[data-krds-mode="high-contrast"] .snb-block-num {
+  background: #ffff00;
+  color: #000;
+}
+[data-krds-mode="high-contrast"] .snb-block-go { color: #ffff00; }
+
+/* ---------------------------------------------------------------------
+   4. 진행 중인 신청 알림
+   --------------------------------------------------------------------- */
+.snb-status {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.4rem 2.8rem;
+  border-radius: 1.2rem;
+  background: var(--krds-color-light-secondary-5);
+  border: 2px solid var(--krds-color-light-secondary-30);
+}
+.snb-status-text { flex: 1 1 auto; min-width: 0; }
+.snb-status-title {
+  font-size: var(--krds-pc-font-size-heading-small);
+  font-weight: 700;
+  color: var(--krds-color-light-gray-90);
+}
+.snb-status-meta {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.6rem;
+  font-size: var(--krds-pc-font-size-body-medium);
+  color: var(--krds-color-light-gray-70);
+}
+@media (max-width: 767px) {
+  .snb-status { flex-direction: column; align-items: stretch; padding: 2rem; }
+  .snb-status .krds-btn { width: 100%; }
+}
+[data-krds-mode="high-contrast"] .snb-status {
+  background: #000;
+  border-color: #fff;
+}
+[data-krds-mode="high-contrast"] .snb-status-meta { color: #fff; }
+
+/* ---------------------------------------------------------------------
+   5. 하단 보조 검색 (A와 반대로 맨 아래, 작게)
+   --------------------------------------------------------------------- */
+.snb-search {
+  padding: 4rem 0 5.6rem;
+  border-top: 1px solid var(--krds-color-light-gray-20);
+}
+.snb-search-label {
+  display: block;
+  margin-bottom: 1.2rem;
+  font-size: var(--krds-pc-font-size-label-large);
+  font-weight: 700;
+  color: var(--krds-color-light-gray-90);
+}
+.snb-search-row {
+  display: flex;
+  gap: 1.2rem;
+  max-width: 72rem;
+}
+.snb-search-row .krds-input { flex: 1 1 auto; min-width: 0; }
+.snb-search-row .krds-btn { flex: 0 0 auto; min-width: 12rem; }
+@media (max-width: 767px) {
+  .snb-search-row { flex-direction: column; }
+  .snb-search-row .krds-btn { width: 100%; }
+}
+[data-krds-mode="high-contrast"] .snb-search-label { color: #fff; }
+
+/* ---------------------------------------------------------------------
+   6. 전화 안내 (A보다 더 크게, 페이지 마지막 고정 메시지)
+   --------------------------------------------------------------------- */
+.snb-help {
+  padding: 4rem 2.8rem;
+  border-radius: 1.2rem;
+  background: var(--krds-color-light-primary-60);
+  color: #fff;
+  text-align: center;
+}
+.snb-help-title {
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: 700;
+  color: #fff;
+}
+.snb-help-desc {
+  margin-top: 1.2rem;
+  font-size: var(--krds-pc-font-size-body-large);
+  color: #fff;
+}
+.snb-help-tel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 2.4rem;
+  min-height: 7.2rem;
+  padding: 1.2rem 3.2rem;
+  border-radius: 1.2rem;
+  background: #fff;
+  color: var(--krds-color-light-primary-60);
+  font-size: var(--krds-pc-font-size-heading-large);
+  font-weight: 700;
+  text-decoration: none;
+}
+.snb-help-tel .svg-icon {
+  width: 3.6rem;
+  height: 3.6rem;
+  background-color: currentColor;
+}
+@media (max-width: 767px) {
+  .snb-help { padding: 3.2rem 2rem; }
+  .snb-help-tel {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1.2rem 1.6rem;
+    font-size: var(--krds-mobile-font-size-heading-medium);
+  }
+}
+[data-krds-mode="high-contrast"] .snb-help {
+  background: #000;
+  border: 2px solid #fff;
+}
+[data-krds-mode="high-contrast"] .snb-help-tel {
+  background: #ffff00;
+  color: #000;
+}
