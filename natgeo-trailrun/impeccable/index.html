@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>내셔널지오그래픽 트레일런 2027</title>
+<meta name="description" content="내셔널지오그래픽이 주최하는 트레일런 대회. 코스를 1km 단위로 확인하고 참가 신청하세요.">
+<meta name="theme-color" content="#0D0D0B">
+<link rel="preload" href="fonts/LINESeedKR-Rg.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<div class="trail" id="trail" data-on="false">
+  <div class="trail-line" data-trail aria-hidden="true"></div>
+  <p class="trail-km" aria-hidden="true"><b data-trail-km>0</b> / <span data-trail-n>50</span> km</p>
+  <a class="trail-apply" href="#" data-apply><span data-apply-label>50K 참가 신청</span></a>
+</div>
+
+<header class="hero" id="top">
+  <nav class="nav" aria-label="주 메뉴">
+    <a class="mark" href="#top">National Geographic <span>Trail Run</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">메뉴</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#cutoff">컷오프</a></li>
+      <li><a href="#courses">코스</a></li>
+      <li><a href="#guide">참가 안내</a></li>
+      <li><a href="#">대회 설명</a></li>
+      <li><a href="#">로그인</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-top">
+    <div class="hero-copy">
+      <h1>내셔널지오그래픽<br>트레일런 2027</h1>
+      <p class="lead">코스를 1km 단위로 전부 공개합니다. 오르막이 어디서 시작되고 컷오프가 어디에 걸리는지 먼저 확인하고 신청하세요.</p>
+    </div>
+
+    <div class="hero-act">
+      <div class="picker" role="group" aria-label="코스 선택">
+        <button type="button" data-course="50" aria-pressed="true">50K</button>
+        <button type="button" data-course="25" aria-pressed="false">25K</button>
+        <button type="button" data-course="10" aria-pressed="false">10K</button>
+      </div>
+      <p class="facts" data-facts></p>
+      <div class="act-row">
+        <a class="btn" href="#" data-apply><span data-apply-label>50K 참가 신청</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+        </a>
+        <a class="link" href="#">대회 설명 보기</a>
+      </div>
+      <p class="temp">일정과 장소는 미정입니다. 이 화면의 코스 수치는 시안용 임시 값입니다.</p>
+    </div>
+  </div>
+
+  <div class="profile">
+    <p class="readout" id="readout" aria-hidden="true"></p>
+    <div class="chart" id="chart" tabindex="0" role="slider" aria-label="코스 고도. 좌우 화살표로 1km씩 이동" aria-valuemin="1" aria-valuemax="50" aria-valuenow="1">
+      <div class="plot" data-plot></div>
+    </div>
+    <div class="ruler" data-ruler aria-hidden="true"></div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="sec sec-cutoff" id="cutoff">
+    <div class="sec-head">
+      <h2>컷오프는 이 시각에 닫힙니다</h2>
+      <p>체크포인트를 이 시각까지 통과하지 못하면 레이스를 계속할 수 없습니다. 페이스 계획을 세울 때 가장 먼저 볼 표입니다.</p>
+      <div class="picker picker-sm" role="group" aria-label="코스 선택">
+        <button type="button" data-course="50" aria-pressed="true">50K</button>
+        <button type="button" data-course="25" aria-pressed="false">25K</button>
+        <button type="button" data-course="10" aria-pressed="false">10K</button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>체크포인트별 컷오프 <span class="tag">임시</span></caption>
+        <thead>
+          <tr><th scope="col">지점</th><th scope="col" class="num">누적 거리</th><th scope="col" class="num">해발</th><th scope="col" class="num">컷오프</th><th scope="col" class="num">출발 후</th></tr>
+        </thead>
+        <tbody data-table></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec sec-courses" id="courses">
+    <div class="sec-head">
+      <h2>세 코스를 같은 눈금으로 <span class="tag">임시</span></h2>
+      <p>가로는 거리, 세로는 해발입니다. 세 코스 모두 같은 축척이라 길이와 높이를 그대로 비교할 수 있습니다.</p>
+    </div>
+    <ol class="compare" data-compare></ol>
+  </section>
+
+  <section class="sec sec-guide" id="guide">
+    <div class="sec-head">
+      <h2>신청 전에 확인할 것</h2>
+      <p>세부 내용은 확정되는 대로 대회 설명 페이지에 공개합니다.</p>
+    </div>
+    <div class="guide">
+      <div class="guide-item">
+        <h3>접수 일정 <span class="tag">미정</span></h3>
+        <p>접수 시작일, 마감일, 접수 방식은 아직 정해지지 않았습니다. 정해지면 이 자리에 날짜가 표시됩니다.</p>
+      </div>
+      <div class="guide-item">
+        <h3>필수 장비 <span class="tag">임시</span></h3>
+        <ul class="gear">
+          <li>헤드램프와 여분 배터리</li>
+          <li>방수 재킷</li>
+          <li>서바이벌 블랭킷</li>
+          <li>호루라기</li>
+          <li>물 1L 이상과 개인 컵</li>
+          <li>비상식</li>
+          <li>충전된 휴대전화</li>
+        </ul>
+        <p>출발 전 장비 검사에서 하나라도 없으면 출발할 수 없습니다.</p>
+      </div>
+      <div class="guide-item">
+        <h3>취소와 환불 <span class="tag">미정</span></h3>
+        <p>환불 기간과 수수료는 접수 일정과 함께 공개합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="apply">
+    <h2>코스를 확인했다면<br>출발선을 잡으세요</h2>
+    <div class="close-act">
+      <div class="picker" role="group" aria-label="코스 선택">
+        <button type="button" data-course="50" aria-pressed="true">50K</button>
+        <button type="button" data-course="25" aria-pressed="false">25K</button>
+        <button type="button" data-course="10" aria-pressed="false">10K</button>
+      </div>
+      <a class="btn btn-lg" href="#" data-apply><span data-apply-label>50K 참가 신청</span>
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p class="mark">National Geographic <span>Trail Run</span></p>
+  <ul>
+    <li><a href="#">이용약관</a></li>
+    <li><a href="#">개인정보 처리방침</a></li>
+    <li><a href="#">문의</a></li>
+  </ul>
+  <p class="foot-note">이 페이지는 참고 디자인 시안입니다. 대회명, 일정, 장소, 코스, 컷오프, 장비 목록은 확정된 내용이 아닙니다.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

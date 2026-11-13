@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-13T06:17:39.707Z",
+  "title": "Design System: 내셔널지오그래픽 트레일런",
+  "extensions": {
+    "colorMeta": {
+      "y": {
+        "role": "primary",
+        "displayName": "고도선 노랑",
+        "canonical": "#FFC800",
+        "tonalRamp": [
+          "oklch(15% 0.066 88)",
+          "oklch(27% 0.118 88)",
+          "oklch(39% 0.171 88)",
+          "oklch(51% 0.175 88)",
+          "oklch(63% 0.162 88)",
+          "oklch(75% 0.110 88)",
+          "oklch(85.7% 0.175 88)",
+          "oklch(95% 0.044 88)"
+        ]
+      },
+      "k": {
+        "role": "neutral",
+        "displayName": "바탕 검정",
+        "canonical": "#0D0D0B",
+        "tonalRamp": [
+          "oklch(15.8% 0.004 107)",
+          "oklch(27% 0.003 107)",
+          "oklch(39% 0.004 107)",
+          "oklch(51% 0.004 107)",
+          "oklch(63% 0.004 107)",
+          "oklch(75% 0.003 107)",
+          "oklch(86% 0.001 107)",
+          "oklch(95% 0.001 107)"
+        ]
+      },
+      "w": {
+        "role": "neutral",
+        "displayName": "미색",
+        "canonical": "#F0EDE3",
+        "tonalRamp": [
+          "oklch(15% 0.005 93)",
+          "oklch(27% 0.009 93)",
+          "oklch(39% 0.013 93)",
+          "oklch(51% 0.014 93)",
+          "oklch(63% 0.013 93)",
+          "oklch(75% 0.009 93)",
+          "oklch(86% 0.005 93)",
+          "oklch(94.6% 0.014 93)"
+        ]
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "보조 글자색",
+        "canonical": "#B5B09D",
+        "tonalRamp": [
+          "oklch(15% 0.010 95)",
+          "oklch(27% 0.018 95)",
+          "oklch(39% 0.026 95)",
+          "oklch(51% 0.027 95)",
+          "oklch(63% 0.025 95)",
+          "oklch(75.6% 0.027 95)",
+          "oklch(86% 0.009 95)",
+          "oklch(95% 0.007 95)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "눈금 선색",
+        "canonical": "#4A4738",
+        "tonalRamp": [
+          "oklch(15% 0.009 98)",
+          "oklch(27% 0.017 98)",
+          "oklch(39.6% 0.024 98)",
+          "oklch(51% 0.024 98)",
+          "oklch(63% 0.023 98)",
+          "oklch(75% 0.015 98)",
+          "oklch(86% 0.009 98)",
+          "oklch(95% 0.006 98)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "히어로의 대회명."
+      },
+      "display-close": {
+        "displayName": "Display (마무리)",
+        "purpose": "마무리 구역 제목."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "구역 제목."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "안내 항목 제목."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "본문. 설명문은 32~38em 폭, 보조 글자색."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "히어로 한 줄 문장. 최대 34em."
+      },
+      "note": {
+        "displayName": "Note",
+        "purpose": "표 머리글, 임시 안내, 푸터 주석."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "버튼 글자. Bold 파일을 쓰는 유일한 자리."
+      },
+      "button-lg": {
+        "displayName": "Button (큰 크기)",
+        "purpose": "마무리 구역의 큰 버튼 글자."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "임시/미정 태그."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "문장과 버튼 안의 영문 숫자 토큰(50K, CP1)."
+      },
+      "numeral-course": {
+        "displayName": "Numeral Course",
+        "purpose": "코스 비교의 코스 이름 단독 표기."
+      },
+      "numeral-value": {
+        "displayName": "Numeral Value",
+        "purpose": "코스 선택 칸과 읽기 줄의 값."
+      },
+      "numeral-data": {
+        "displayName": "Numeral Data",
+        "purpose": "표의 수치. 컷오프 시각 열만 500에 노랑."
+      },
+      "flag": {
+        "displayName": "Flag",
+        "purpose": "고도선 지점 깃발의 이름과 시각."
+      },
+      "ruler": {
+        "displayName": "Ruler",
+        "purpose": "눈금자, 해발 눈금, 기준선 글자."
+      }
+    },
+    "shadows": [
+      {
+        "name": "picker-pressed-underline",
+        "value": "inset 0 -2px 0 #FFC800",
+        "purpose": "눌린 코스 선택 칸의 아래쪽 노랑 2px 밑줄. 흐림 없는 선 대용이며 이 시스템의 유일한 box-shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "모든 전환과 애니메이션이 쓰는 하나의 이징."
+      },
+      {
+        "name": "line-draw",
+        "value": "2.4s clip-path inset, left to right",
+        "purpose": "들어올 때 고도선이 왼쪽에서 오른쪽으로 그려진다."
+      },
+      {
+        "name": "pin-show",
+        "value": "0.5s opacity, delay 0.5s + position x 1.5s",
+        "purpose": "지점 표시가 선이 닿는 순서대로 나타난다."
+      },
+      {
+        "name": "state-color",
+        "value": "0.18s background-color, color",
+        "purpose": "버튼과 코스 선택의 hover, 선택 전환."
+      },
+      {
+        "name": "arrow-nudge",
+        "value": "0.25s transform translateX(6px)",
+        "purpose": "버튼 hover에서 화살표가 오른쪽으로 간다."
+      },
+      {
+        "name": "readout-follow",
+        "value": "0.35s transform",
+        "purpose": "읽기 줄이 선택한 지점 위로 따라 움직인다."
+      },
+      {
+        "name": "strip-slide",
+        "value": "0.45s transform translateY",
+        "purpose": "첫 화면을 지나면 진행 띠가 위에서 내려와 붙는다."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "모든 전환과 애니메이션을 끈다. 진행 띠는 고정만 하고 점을 숨긴 채 선 전체를 노랑으로 둔다."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "900px"
+      },
+      {
+        "name": "phone",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "참가 신청 버튼",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "테두리만 있는 주 행동 버튼. 참가 신청 한 가지에만 쓴다. hover에서만 노랑으로 채워진다.",
+      "html": "<div class=\"ds-ground\"><a class=\"ds-btn\" href=\"#\"><span><b class=\"ds-n\">50K</b> 참가 신청</span><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/></svg></a></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-n { font-family: var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-weight: 500; font-size: 1.22em; letter-spacing: .02em; line-height: 1; } .ds-btn { display: inline-flex; align-items: center; gap: 14px; min-height: 60px; padding: 0 28px; background: transparent; color: var(--y, #FFC800); border: 1px solid var(--y, #FFC800); border-radius: var(--r, 8px); font-weight: 700; font-size: 1.125rem; text-decoration: none; transition: background-color .18s var(--ease, cubic-bezier(.16, 1, .3, 1)), color .18s var(--ease, cubic-bezier(.16, 1, .3, 1)); } .ds-btn svg { transition: transform .25s var(--ease, cubic-bezier(.16, 1, .3, 1)); } .ds-btn:hover { background: var(--y, #FFC800); color: var(--k, #0D0D0B); } .ds-btn:hover svg { transform: translateX(6px); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--y, #FFC800); outline-offset: 3px; }"
+    },
+    {
+      "name": "참가 신청 버튼 (큰 크기)",
+      "kind": "button",
+      "refersTo": "button-primary-lg",
+      "description": "마무리 구역용 큰 버튼. 같은 테두리 버튼을 76px 높이, 1.5rem 글자로 키운 것.",
+      "html": "<div class=\"ds-ground\"><a class=\"ds-btn ds-btn-lg\" href=\"#\"><span><b class=\"ds-n\">50K</b> 참가 신청</span><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/></svg></a></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-n { font-family: var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-weight: 500; font-size: 1.22em; letter-spacing: .02em; line-height: 1; } .ds-btn { display: inline-flex; align-items: center; gap: 14px; min-height: 60px; padding: 0 28px; background: transparent; color: var(--y, #FFC800); border: 1px solid var(--y, #FFC800); border-radius: var(--r, 8px); font-weight: 700; font-size: 1.125rem; text-decoration: none; transition: background-color .18s var(--ease, cubic-bezier(.16, 1, .3, 1)), color .18s var(--ease, cubic-bezier(.16, 1, .3, 1)); } .ds-btn svg { transition: transform .25s var(--ease, cubic-bezier(.16, 1, .3, 1)); } .ds-btn:hover { background: var(--y, #FFC800); color: var(--k, #0D0D0B); } .ds-btn:hover svg { transform: translateX(6px); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--y, #FFC800); outline-offset: 3px; } .ds-btn-lg { min-height: 76px; padding: 0 40px; font-size: 1.5rem; }"
+    },
+    {
+      "name": "보조 링크",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "보조 행동은 버튼이 아니라 노랑 밑줄 링크. 밑줄 2px, hover에서 4px.",
+      "html": "<div class=\"ds-ground\"><a class=\"ds-link\" href=\"#\">대회 설명 보기</a></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-link { color: var(--y, #FFC800); font-weight: 400; padding: 10px 0; text-underline-offset: .22em; text-decoration-thickness: 2px; } .ds-link:hover { text-decoration-thickness: 4px; } .ds-link:focus-visible { outline: 3px solid var(--y, #FFC800); outline-offset: 3px; }"
+    },
+    {
+      "name": "코스 선택",
+      "kind": "custom",
+      "refersTo": "picker-segment",
+      "description": "한 화면의 모든 코스 선택이 같은 값을 공유한다. 눌린 칸은 노랑 글자와 아래쪽 2px 밑줄, 채움 없음.",
+      "html": "<div class=\"ds-ground\"><div class=\"ds-picker\" role=\"group\" aria-label=\"코스 선택\"><button type=\"button\" aria-pressed=\"true\">50K</button><button type=\"button\" aria-pressed=\"false\">25K</button><button type=\"button\" aria-pressed=\"false\">10K</button></div></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-picker { display: inline-flex; border: 1px solid var(--rule, #4A4738); border-radius: var(--r, 8px); overflow: hidden; } .ds-picker button { appearance: none; border: 0; background: transparent; color: var(--dim, #B5B09D); font-family: var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-weight: 500; font-size: 1.75rem; line-height: 1; padding: 12px 22px 10px; min-width: 88px; min-height: 48px; cursor: pointer; transition: color .18s var(--ease, cubic-bezier(.16, 1, .3, 1)); } .ds-picker button + button { border-left: 1px solid var(--rule, #4A4738); } .ds-picker button:not([aria-pressed=\"true\"]):hover { color: var(--w, #F0EDE3); } .ds-picker button[aria-pressed=\"true\"] { color: var(--y, #FFC800); box-shadow: inset 0 -2px 0 var(--y, #FFC800); } .ds-picker button:focus-visible { outline: 3px solid currentColor; outline-offset: -6px; border-radius: var(--r, 8px); }"
+    },
+    {
+      "name": "임시/미정 태그",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "확정되지 않은 내용의 제목 뒤에 붙는 테두리 태그. 임시는 시안용 값, 미정은 아직 값이 없음.",
+      "html": "<div class=\"ds-ground\"><h3 class=\"ds-tag-title\">접수 일정 <span class=\"ds-tag\">미정</span></h3><h3 class=\"ds-tag-title\">필수 장비 <span class=\"ds-tag\">임시</span></h3></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-tag-title { margin: 0 0 14px; font-size: 1.5rem; font-weight: 400; line-height: 1.16; letter-spacing: -.012em; } .ds-tag { display: inline-block; vertical-align: .12em; font-size: .8125rem; font-weight: 400; line-height: 1; letter-spacing: 0; padding: 7px 12px; margin-left: 6px; border: 1px solid var(--rule, #4A4738); color: var(--y, #FFC800); }"
+    },
+    {
+      "name": "내비게이션",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "바탕 위에 바로 놓이는 메뉴. 글자 워드마크는 로고 파일이 올 때까지의 자리 표시.",
+      "html": "<div class=\"ds-ground\"><nav class=\"ds-nav\" aria-label=\"주 메뉴\"><a class=\"ds-mark\" href=\"#\">National Geographic <span>Trail Run</span></a><ul><li><a href=\"#\">컷오프</a></li><li><a href=\"#\">코스</a></li><li><a href=\"#\">참가 안내</a></li></ul></nav></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; } .ds-mark { font-family: var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-weight: 500; font-size: 1.375rem; text-transform: uppercase; letter-spacing: .06em; line-height: 1; text-decoration: none; color: var(--y, #FFC800); } .ds-mark span { font-weight: 400; } .ds-nav ul { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; } .ds-nav li a { color: var(--w, #F0EDE3); font-weight: 400; font-size: 1rem; text-decoration: none; padding: 10px 0; } .ds-nav li a:hover { color: var(--y, #FFC800); text-decoration: underline; text-underline-offset: .22em; text-decoration-thickness: 2px; } .ds-nav a:focus-visible { outline: 3px solid var(--y, #FFC800); outline-offset: 3px; }"
+    },
+    {
+      "name": "컷오프 표",
+      "kind": "custom",
+      "refersTo": "table",
+      "description": "바탕과 세로선 없는 표. 행은 눈금 선색 1px, 머리글 아래와 마지막 행 아래만 노랑 1px. 컷오프 시각 열만 노랑.",
+      "html": "<div class=\"ds-ground\"><table class=\"ds-table\"><thead><tr><th scope=\"col\">지점</th><th scope=\"col\" class=\"ds-num\">누적 거리</th><th scope=\"col\" class=\"ds-num\">컷오프</th></tr></thead><tbody><tr><th scope=\"row\">출발</th><td class=\"ds-num\">0 km</td><td class=\"ds-num ds-cut\">05:00</td></tr><tr><th scope=\"row\" class=\"ds-n\">CP1</th><td class=\"ds-num\">11 km</td><td class=\"ds-num ds-cut\">07:30</td></tr><tr><th scope=\"row\">결승</th><td class=\"ds-num\">50 km</td><td class=\"ds-num ds-cut\">17:00</td></tr></tbody></table></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-n { font-family: var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-weight: 500; font-size: 1.22em; letter-spacing: .02em; line-height: 1; } .ds-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; } .ds-table th, .ds-table td { text-align: left; padding: 18px 16px 16px 0; border-bottom: 1px solid var(--rule, #4A4738); } .ds-table thead th { font-size: .9375rem; font-weight: 400; color: var(--dim, #B5B09D); border-bottom-color: var(--y, #FFC800); padding-bottom: 10px; } .ds-table tbody th { font-weight: 400; font-size: 1.1875rem; } .ds-table .ds-num { text-align: right; padding-right: 0; padding-left: 16px; } .ds-table td.ds-num { font-family: var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-weight: 400; font-size: 1.625rem; line-height: 1.1; letter-spacing: .01em; } .ds-table td.ds-cut { font-weight: 500; color: var(--y, #FFC800); } .ds-table tbody tr:last-child th, .ds-table tbody tr:last-child td { border-bottom-color: var(--y, #FFC800); }"
+    },
+    {
+      "name": "고도선",
+      "kind": "custom",
+      "refersTo": "flag",
+      "description": "시그니처. 코스를 매끄러운 노란 선 한 줄로 그리고 해발 점선, 지점 기둥과 깃발, 선택 지점의 미색 세로선과 점, 아래 눈금자를 둔다.",
+      "html": "<div class=\"ds-ground ds-profile\"><div class=\"ds-plot\"><div class=\"ds-grid\" style=\"bottom:55.56%\"><span>1,000 m</span></div><div class=\"ds-grid\" style=\"bottom:95.24%\"><span>1,500 m</span></div><svg viewBox=\"0 0 1000 400\" preserveAspectRatio=\"none\"><path class=\"ds-line\" d=\"M0.0 361.9 C3.3 359.3 13.3 352.4 20.0 346.0 C26.7 339.7 33.3 332.8 40.0 323.8 C46.7 314.8 53.3 303.7 60.0 292.1 C66.7 280.4 73.3 265.1 80.0 254.0 C86.7 242.9 93.3 232.8 100.0 225.4 C106.7 218.0 113.3 210.1 120.0 209.5 C126.7 209.0 133.3 216.4 140.0 222.2 C146.7 228.0 153.3 237.0 160.0 244.4 C166.7 251.9 173.3 261.4 180.0 266.7 C186.7 272.0 193.3 277.2 200.0 276.2 C206.7 275.1 213.3 267.7 220.0 260.3 C226.7 252.9 233.3 242.9 240.0 231.7 C246.7 220.6 253.3 206.9 260.0 193.7 C266.7 180.4 273.3 165.6 280.0 152.4 C286.7 139.2 293.3 125.4 300.0 114.3 C306.7 103.2 313.3 92.6 320.0 85.7 C326.7 78.8 333.3 72.5 340.0 73.0 C346.7 73.5 353.3 81.5 360.0 88.9 C366.7 96.3 373.3 107.9 380.0 117.5 C386.7 127.0 393.3 138.1 400.0 146.0 C406.7 154.0 413.3 160.3 420.0 165.1 C426.7 169.8 433.3 176.2 440.0 174.6 C446.7 173.0 453.3 164.6 460.0 155.6 C466.7 146.6 473.3 132.8 480.0 120.6 C486.7 108.5 493.3 94.7 500.0 82.5 C506.7 70.4 513.3 58.2 520.0 47.6 C526.7 37.0 533.3 27.0 540.0 19.0 C546.7 11.1 553.3 1.1 560.0 0.0 C566.7 -1.1 573.3 5.8 580.0 12.7 C586.7 19.6 593.3 31.2 600.0 41.3 C606.7 51.3 613.3 63.0 620.0 73.0 C626.7 83.1 633.3 93.7 640.0 101.6 C646.7 109.5 653.3 115.9 660.0 120.6 C666.7 125.4 673.3 131.7 680.0 130.2 C686.7 128.6 693.3 119.0 700.0 111.1 C706.7 103.2 713.3 91.0 720.0 82.5 C726.7 74.1 733.3 62.4 740.0 60.3 C746.7 58.2 753.3 63.5 760.0 69.8 C766.7 76.2 773.3 87.8 780.0 98.4 C786.7 109.0 793.3 121.7 800.0 133.3 C806.7 145.0 813.3 157.7 820.0 168.3 C826.7 178.8 833.3 188.9 840.0 196.8 C846.7 204.8 853.3 214.3 860.0 215.9 C866.7 217.5 873.3 210.6 880.0 206.3 C886.7 202.1 893.3 189.9 900.0 190.5 C906.7 191.0 913.3 200.5 920.0 209.5 C926.7 218.5 933.3 231.7 940.0 244.4 C946.7 257.1 953.3 272.5 960.0 285.7 C966.7 298.9 973.3 312.2 980.0 323.8 C986.7 335.4 996.7 350.3 1000.0 355.6\"/></svg><span class=\"ds-pin\" style=\"left:22%;height:34.92%\"><i>CP1 07:30</i></span><span class=\"ds-pin ds-peak\" style=\"left:56%;height:100%\"><i>최고 1,560 m</i></span><span class=\"ds-pin\" style=\"left:84%;height:50.79%\"><i>CP4 15:30</i></span><span class=\"ds-cursor\" style=\"left:56%\"></span></div><div class=\"ds-ruler\"><span style=\"left:0\">0 km</span><span style=\"left:20%\">10</span><span style=\"left:40%\">20</span><span style=\"left:60%\">30</span><span style=\"left:80%\">40</span><span class=\"ds-end\" style=\"left:100%\">50 km</span></div></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-profile { padding: 64px 0 0; } .ds-plot { position: relative; height: 220px; } .ds-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: ds-draw 2.4s var(--ease, cubic-bezier(.16, 1, .3, 1)) backwards; } .ds-line { fill: none; stroke: var(--y, #FFC800); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; } @keyframes ds-draw { from { clip-path: inset(-20px 100% -20px 0); } to { clip-path: inset(-20px 0 -20px 0); } } .ds-grid { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--rule, #4A4738); font: 400 .9375rem/1 var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); letter-spacing: .04em; color: var(--dim, #B5B09D); } .ds-grid span { position: absolute; left: 12px; bottom: 6px; } .ds-pin { position: absolute; bottom: 0; border-left: 1px solid var(--y, #FFC800); } .ds-pin::before { content: \"\"; position: absolute; left: -5.5px; top: -5px; width: 10px; height: 10px; border-radius: 50%; background: var(--k, #0D0D0B); border: 2px solid var(--y, #FFC800); box-sizing: border-box; } .ds-pin.ds-peak::before { background: var(--y, #FFC800); } .ds-pin i { position: absolute; left: -1px; bottom: calc(100% + 14px); background: var(--k, #0D0D0B); color: var(--y, #FFC800); border: 1px solid var(--rule, #4A4738); font: 500 1.0625rem/1 var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-style: normal; letter-spacing: .03em; padding: 8px 12px 7px; white-space: nowrap; } .ds-cursor { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--w, #F0EDE3); } .ds-cursor::before { content: \"\"; position: absolute; left: -7.5px; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: var(--w, #F0EDE3); } .ds-ruler { position: relative; height: 40px; border-top: 1px solid var(--y, #FFC800); color: var(--y, #FFC800); font: 400 1rem/40px var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); letter-spacing: .04em; } .ds-ruler > span { position: absolute; top: 0; height: 100%; white-space: nowrap; padding-left: 12px; border-left: 1px solid var(--y, #FFC800); } .ds-ruler > span.ds-end { border-left: 0; border-right: 1px solid var(--y, #FFC800); padding: 0 12px 0 0; transform: translateX(-100%); } @media (prefers-reduced-motion: reduce) { .ds-plot svg { animation: none; } }"
+    },
+    {
+      "name": "코스 비교 행",
+      "kind": "custom",
+      "refersTo": "compare-row",
+      "description": "모든 코스를 같은 가로, 세로 축척으로 그리는 행. 해발 1,000m 점선 기준선을 공유한다.",
+      "html": "<div class=\"ds-ground\"><div class=\"ds-compare\"><h3>50K</h3><div class=\"ds-mini\" style=\"--ds-ref:53.85%\"><svg viewBox=\"0 0 1000 400\" preserveAspectRatio=\"none\"><path class=\"ds-mini-line\" d=\"M0.0 363.1 C3.3 360.5 13.3 353.8 20.0 347.7 C26.7 341.5 33.3 334.9 40.0 326.2 C46.7 317.4 53.3 306.7 60.0 295.4 C66.7 284.1 73.3 269.2 80.0 258.5 C86.7 247.7 93.3 237.9 100.0 230.8 C106.7 223.6 113.3 215.9 120.0 215.4 C126.7 214.9 133.3 222.1 140.0 227.7 C146.7 233.3 153.3 242.1 160.0 249.2 C166.7 256.4 173.3 265.6 180.0 270.8 C186.7 275.9 193.3 281.0 200.0 280.0 C206.7 279.0 213.3 271.8 220.0 264.6 C226.7 257.4 233.3 247.7 240.0 236.9 C246.7 226.2 253.3 212.8 260.0 200.0 C266.7 187.2 273.3 172.8 280.0 160.0 C286.7 147.2 293.3 133.8 300.0 123.1 C306.7 112.3 313.3 102.1 320.0 95.4 C326.7 88.7 333.3 82.6 340.0 83.1 C346.7 83.6 353.3 91.3 360.0 98.5 C366.7 105.6 373.3 116.9 380.0 126.2 C386.7 135.4 393.3 146.2 400.0 153.8 C406.7 161.5 413.3 167.7 420.0 172.3 C426.7 176.9 433.3 183.1 440.0 181.5 C446.7 180.0 453.3 171.8 460.0 163.1 C466.7 154.4 473.3 141.0 480.0 129.2 C486.7 117.4 493.3 104.1 500.0 92.3 C506.7 80.5 513.3 68.7 520.0 58.5 C526.7 48.2 533.3 38.5 540.0 30.8 C546.7 23.1 553.3 13.3 560.0 12.3 C566.7 11.3 573.3 17.9 580.0 24.6 C586.7 31.3 593.3 42.6 600.0 52.3 C606.7 62.1 613.3 73.3 620.0 83.1 C626.7 92.8 633.3 103.1 640.0 110.8 C646.7 118.5 653.3 124.6 660.0 129.2 C666.7 133.8 673.3 140.0 680.0 138.5 C686.7 136.9 693.3 127.7 700.0 120.0 C706.7 112.3 713.3 100.5 720.0 92.3 C726.7 84.1 733.3 72.8 740.0 70.8 C746.7 68.7 753.3 73.8 760.0 80.0 C766.7 86.2 773.3 97.4 780.0 107.7 C786.7 117.9 793.3 130.3 800.0 141.5 C806.7 152.8 813.3 165.1 820.0 175.4 C826.7 185.6 833.3 195.4 840.0 203.1 C846.7 210.8 853.3 220.0 860.0 221.5 C866.7 223.1 873.3 216.4 880.0 212.3 C886.7 208.2 893.3 196.4 900.0 196.9 C906.7 197.4 913.3 206.7 920.0 215.4 C926.7 224.1 933.3 236.9 940.0 249.2 C946.7 261.5 953.3 276.4 960.0 289.2 C966.7 302.1 973.3 314.9 980.0 326.2 C986.7 337.4 996.7 351.8 1000.0 356.9\"/></svg></div><div><p><b>누적 고도 +1,970m</b> · 최고 해발 1,560m<br>제한 12시간 · 05:00 출발 · 체크포인트 4곳</p><a href=\"#\"><b class=\"ds-n\">50K</b>로 신청하기</a></div></div></div>",
+      "css": ".ds-ground { background: var(--k, #0D0D0B); color: var(--w, #F0EDE3); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); padding: 24px; } .ds-n { font-family: var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); font-weight: 500; font-size: 1.22em; letter-spacing: .02em; line-height: 1; } .ds-compare { display: grid; grid-template-columns: 150px minmax(0, 1fr) minmax(220px, 300px); gap: 0 32px; align-items: end; padding: 34px 0 30px; border-top: 1px solid var(--y, #FFC800); border-bottom: 1px solid var(--rule, #4A4738); } .ds-compare h3 { margin: 0; font: 500 clamp(3rem, 5vw, 4.5rem)/.9 var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); letter-spacing: .01em; color: var(--y, #FFC800); } .ds-mini { position: relative; height: 132px; } .ds-mini svg { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; overflow: visible; } .ds-mini-line { fill: none; stroke: var(--y, #FFC800); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; } .ds-mini::after { content: \"1,000 m\"; position: absolute; left: 0; right: 0; bottom: var(--ds-ref); border-bottom: 1px dashed var(--rule, #4A4738); color: var(--dim, #B5B09D); font: 400 .9375rem/1.5 var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); letter-spacing: .04em; text-align: right; } .ds-compare p { margin: 0; color: var(--dim, #B5B09D); font-size: 1rem; line-height: 1.65; } .ds-compare p b { color: var(--w, #F0EDE3); font-weight: 400; } .ds-compare a { display: inline-block; margin-top: 10px; color: var(--y, #FFC800); font-weight: 400; padding: 6px 0; text-underline-offset: .22em; text-decoration-thickness: 2px; } .ds-compare a:hover { text-decoration-thickness: 4px; } .ds-compare a:focus-visible { outline: 3px solid var(--y, #FFC800); outline-offset: 3px; }"
+    },
+    {
+      "name": "진행 띠",
+      "kind": "custom",
+      "refersTo": "trail-strip",
+      "description": "첫 화면을 지나면 화면 위에 붙는 띠. 페이지를 내린 만큼 미색 점이 선을 따라 결승으로 간다. 지나온 구간은 노랑, 남은 구간은 눈금 선색.",
+      "html": "<div class=\"ds-trail\"><div class=\"ds-trail-line\"><svg viewBox=\"0 0 1000 400\" preserveAspectRatio=\"none\"><path class=\"ds-rest\" d=\"M0.0 361.9 C3.3 359.3 13.3 352.4 20.0 346.0 C26.7 339.7 33.3 332.8 40.0 323.8 C46.7 314.8 53.3 303.7 60.0 292.1 C66.7 280.4 73.3 265.1 80.0 254.0 C86.7 242.9 93.3 232.8 100.0 225.4 C106.7 218.0 113.3 210.1 120.0 209.5 C126.7 209.0 133.3 216.4 140.0 222.2 C146.7 228.0 153.3 237.0 160.0 244.4 C166.7 251.9 173.3 261.4 180.0 266.7 C186.7 272.0 193.3 277.2 200.0 276.2 C206.7 275.1 213.3 267.7 220.0 260.3 C226.7 252.9 233.3 242.9 240.0 231.7 C246.7 220.6 253.3 206.9 260.0 193.7 C266.7 180.4 273.3 165.6 280.0 152.4 C286.7 139.2 293.3 125.4 300.0 114.3 C306.7 103.2 313.3 92.6 320.0 85.7 C326.7 78.8 333.3 72.5 340.0 73.0 C346.7 73.5 353.3 81.5 360.0 88.9 C366.7 96.3 373.3 107.9 380.0 117.5 C386.7 127.0 393.3 138.1 400.0 146.0 C406.7 154.0 413.3 160.3 420.0 165.1 C426.7 169.8 433.3 176.2 440.0 174.6 C446.7 173.0 453.3 164.6 460.0 155.6 C466.7 146.6 473.3 132.8 480.0 120.6 C486.7 108.5 493.3 94.7 500.0 82.5 C506.7 70.4 513.3 58.2 520.0 47.6 C526.7 37.0 533.3 27.0 540.0 19.0 C546.7 11.1 553.3 1.1 560.0 0.0 C566.7 -1.1 573.3 5.8 580.0 12.7 C586.7 19.6 593.3 31.2 600.0 41.3 C606.7 51.3 613.3 63.0 620.0 73.0 C626.7 83.1 633.3 93.7 640.0 101.6 C646.7 109.5 653.3 115.9 660.0 120.6 C666.7 125.4 673.3 131.7 680.0 130.2 C686.7 128.6 693.3 119.0 700.0 111.1 C706.7 103.2 713.3 91.0 720.0 82.5 C726.7 74.1 733.3 62.4 740.0 60.3 C746.7 58.2 753.3 63.5 760.0 69.8 C766.7 76.2 773.3 87.8 780.0 98.4 C786.7 109.0 793.3 121.7 800.0 133.3 C806.7 145.0 813.3 157.7 820.0 168.3 C826.7 178.8 833.3 188.9 840.0 196.8 C846.7 204.8 853.3 214.3 860.0 215.9 C866.7 217.5 873.3 210.6 880.0 206.3 C886.7 202.1 893.3 189.9 900.0 190.5 C906.7 191.0 913.3 200.5 920.0 209.5 C926.7 218.5 933.3 231.7 940.0 244.4 C946.7 257.1 953.3 272.5 960.0 285.7 C966.7 298.9 973.3 312.2 980.0 323.8 C986.7 335.4 996.7 350.3 1000.0 355.6\"/></svg><div class=\"ds-trail-done\"><svg viewBox=\"0 0 1000 400\" preserveAspectRatio=\"none\"><path class=\"ds-done\" d=\"M0.0 361.9 C3.3 359.3 13.3 352.4 20.0 346.0 C26.7 339.7 33.3 332.8 40.0 323.8 C46.7 314.8 53.3 303.7 60.0 292.1 C66.7 280.4 73.3 265.1 80.0 254.0 C86.7 242.9 93.3 232.8 100.0 225.4 C106.7 218.0 113.3 210.1 120.0 209.5 C126.7 209.0 133.3 216.4 140.0 222.2 C146.7 228.0 153.3 237.0 160.0 244.4 C166.7 251.9 173.3 261.4 180.0 266.7 C186.7 272.0 193.3 277.2 200.0 276.2 C206.7 275.1 213.3 267.7 220.0 260.3 C226.7 252.9 233.3 242.9 240.0 231.7 C246.7 220.6 253.3 206.9 260.0 193.7 C266.7 180.4 273.3 165.6 280.0 152.4 C286.7 139.2 293.3 125.4 300.0 114.3 C306.7 103.2 313.3 92.6 320.0 85.7 C326.7 78.8 333.3 72.5 340.0 73.0 C346.7 73.5 353.3 81.5 360.0 88.9 C366.7 96.3 373.3 107.9 380.0 117.5 C386.7 127.0 393.3 138.1 400.0 146.0 C406.7 154.0 413.3 160.3 420.0 165.1 C426.7 169.8 433.3 176.2 440.0 174.6 C446.7 173.0 453.3 164.6 460.0 155.6 C466.7 146.6 473.3 132.8 480.0 120.6 C486.7 108.5 493.3 94.7 500.0 82.5 C506.7 70.4 513.3 58.2 520.0 47.6 C526.7 37.0 533.3 27.0 540.0 19.0 C546.7 11.1 553.3 1.1 560.0 0.0 C566.7 -1.1 573.3 5.8 580.0 12.7 C586.7 19.6 593.3 31.2 600.0 41.3 C606.7 51.3 613.3 63.0 620.0 73.0 C626.7 83.1 633.3 93.7 640.0 101.6 C646.7 109.5 653.3 115.9 660.0 120.6 C666.7 125.4 673.3 131.7 680.0 130.2 C686.7 128.6 693.3 119.0 700.0 111.1 C706.7 103.2 713.3 91.0 720.0 82.5 C726.7 74.1 733.3 62.4 740.0 60.3 C746.7 58.2 753.3 63.5 760.0 69.8 C766.7 76.2 773.3 87.8 780.0 98.4 C786.7 109.0 793.3 121.7 800.0 133.3 C806.7 145.0 813.3 157.7 820.0 168.3 C826.7 178.8 833.3 188.9 840.0 196.8 C846.7 204.8 853.3 214.3 860.0 215.9 C866.7 217.5 873.3 210.6 880.0 206.3 C886.7 202.1 893.3 189.9 900.0 190.5 C906.7 191.0 913.3 200.5 920.0 209.5 C926.7 218.5 933.3 231.7 940.0 244.4 C946.7 257.1 953.3 272.5 960.0 285.7 C966.7 298.9 973.3 312.2 980.0 323.8 C986.7 335.4 996.7 350.3 1000.0 355.6\"/></svg></div><span class=\"ds-trail-dot\"></span></div><p class=\"ds-trail-km\"><b>22</b> / 50 km</p><a class=\"ds-trail-apply\" href=\"#\">50K 참가 신청</a></div>",
+      "css": ".ds-trail { display: flex; align-items: stretch; height: 56px; background: var(--k, #0D0D0B); border-bottom: 1px solid var(--rule, #4A4738); font-family: var(--sans, \"LINE Seed Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif); } .ds-trail-line { position: relative; flex: 1; min-width: 0; margin: 10px 0 8px; } .ds-trail-line svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; } .ds-trail-line path { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; } .ds-rest { stroke: var(--rule, #4A4738); } .ds-done { stroke: var(--y, #FFC800); } .ds-trail-done { position: absolute; inset: 0; clip-path: inset(-10px 56% -10px 0); } .ds-trail-dot { position: absolute; left: 44%; top: 43.7%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--w, #F0EDE3); } .ds-trail-km { align-self: center; margin: 0; padding: 0 22px; font: 400 1.0625rem/1 var(--cond, \"Barlow Condensed\", \"LINE Seed Sans KR\", sans-serif); letter-spacing: .04em; white-space: nowrap; color: var(--dim, #B5B09D); } .ds-trail-km b { font-weight: 500; font-size: 1.625rem; color: var(--y, #FFC800); } .ds-trail-apply { display: flex; align-items: center; padding: 0 20px; margin: 8px 20px 8px 0; background: transparent; color: var(--y, #FFC800); border: 1px solid var(--y, #FFC800); border-radius: var(--r, 8px); font-weight: 700; text-decoration: none; white-space: nowrap; transition: background-color .18s var(--ease, cubic-bezier(.16, 1, .3, 1)), color .18s var(--ease, cubic-bezier(.16, 1, .3, 1)); } .ds-trail-apply:hover { background: var(--y, #FFC800); color: var(--k, #0D0D0B); } .ds-trail-apply:focus-visible { outline: 3px solid var(--y, #FFC800); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "검정 위의 고도선 한 줄",
+    "overview": "이 시스템은 코스 전체를 선 하나로 보여 준다. 페이지 전체가 검정에 가까운 바탕이고, 그 위에 노란 고도선이 출발에서 결승까지 왼쪽에서 오른쪽으로 그려진다. 방문자는 그 선을 훑어 해발, 경사, 컷오프를 확인하고 코스를 골라 신청한다. 면을 채워서 만드는 것은 없다. 선, 점, 글자만으로 화면이 선다.\n\n분위기는 조용하고 차분하다. 글자는 미색이고 굵기는 Regular이며, 숫자도 가볍다. 노랑은 선, 값으로 읽는 숫자, 주 행동에만 아껴 쓴다. 버튼은 참가 신청 버튼까지 전부 테두리만 있고 모서리가 살짝 둥글다. 사진, 그라데이션, 그림자는 없다.\n\n첫 화면을 지나면 같은 선이 화면 맨 위의 얇은 띠로 붙고, 페이지를 내린 만큼 흰 점이 선을 따라 결승으로 간다. 확정되지 않은 값은 확정된 것처럼 보이지 않게 한다. 임시 수치와 미정 항목에는 테두리 태그를 붙이고 문장으로도 밝힌다.",
+    "keyCharacteristics": [
+      "페이지 전체가 하나의 어두운 바탕. 구역은 면이 아니라 1px 선으로 나뉜다",
+      "고도는 매끄러운 노란 선 한 줄(2px). 선 아래를 채우지 않는다",
+      "미색 글자, Regular 굵기, 가벼운 숫자. 노랑은 선, 값, 주 행동에만",
+      "테두리만 있는 버튼, 버튼 계열에만 8px 모서리",
+      "숫자와 영문 토큰은 Barlow Condensed, 한글은 LINE Seed Sans KR",
+      "7:5 두 단 그리드, 좌우 끝까지 이어지는 고도선",
+      "흰 점은 언제나 \"지금 위치\""
+    ],
+    "rules": [
+      {
+        "name": "The One Ground Rule (한 바탕 규칙)",
+        "body": "바탕은 `k` 하나다. 구역마다 바탕색을 바꾸지 않고, 밝은 구역도 없다. 구역은 1px 선과 여백으로만 나눈다.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sparing Yellow Rule (아끼는 노랑 규칙)",
+        "body": "노랑은 선, 값으로 읽는 숫자, 주 행동, 링크에만 쓴다. 제목과 본문 문장은 노랑으로 적지 않는다. 멈춰 있는 화면에서 노랑으로 채운 면은 점 크기를 넘지 않고, 넓은 노랑 채움은 hover 중인 버튼뿐이다.",
+        "section": "colors"
+      },
+      {
+        "name": "The White Dot Rule (흰 점 규칙)",
+        "body": "채워진 미색 점은 \"지금 위치\"만 뜻한다. 고도선 위의 선택 지점(14px)과 진행 띠의 현재 위치(10px)가 전부다. 다른 장식에 미색 점을 쓰지 않는다.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule (두 목소리 규칙)",
+        "body": "값으로 읽는 숫자와 영문 토큰(코스 이름, 체크포인트 이름, 시각, 거리, 해발, 눈금)은 Barlow Condensed로 적는다. 값은 500, 눈금과 표의 수치는 400이다. 한글 문장은 LINE Seed Sans KR로 둔다. 같은 토큰은 어느 구역에서나 같은 글자여야 한다.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Weight Rule (조용한 굵기 규칙)",
+        "body": "제목과 본문은 Regular(400)다. 위계는 크기, 색(`w`와 `dim`), 여백으로 만든다. 굵은 제목이나 대문자 영문 소제목을 섞지 않는다. 대문자는 워드마크와 깃발의 START, FINISH 같은 데이터 표기에만 나온다.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Line Rule (평면 규칙)",
+        "body": "오프셋이나 흐림이 있는 그림자, 그라데이션, 반투명 겹침을 쓰지 않는다. 떠 있는 요소는 1px 선으로 구분한다.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Bookend Rule (시작과 끝 규칙)",
+        "body": "묶음의 시작과 끝 선은 노랑 1px, 묶음 안의 선은 `rule` 1px이다. 표 머리글 아래와 마지막 행 아래, 코스 비교 맨 위와 공통 눈금자 아래, 안내 목록 맨 위, 마무리 구역 맨 위가 노랑이고, 그 사이의 행 구분선과 구역 사이의 선은 `rule`이다.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do 페이지 전체를 `k` 바탕 하나로 두고 구역은 1px 선과 여백으로 나눈다.",
+      "Do 고도는 매끄러운 노란 선 한 줄(2px)로 그리고, 코스끼리 비교할 때는 가로와 세로 축척을 똑같이 맞춘다.",
+      "Do 제목과 본문은 LINE Seed Sans KR Regular(400)와 미색(`w`)으로, 설명문은 `dim`으로 적는다.",
+      "Do 값으로 읽는 숫자와 영문 토큰은 Barlow Condensed(값 500, 눈금과 표 수치 400)로 적는다.",
+      "Do 버튼은 테두리만 두고 모서리를 8px로 맞춘다. 채움은 hover에서만 나타난다.",
+      "Do 묶음의 시작과 끝 선은 노랑 1px, 안쪽 선은 `rule` 1px로 맞춘다.",
+      "Do 확정되지 않은 내용에는 제목 옆에 \"임시\" 또는 \"미정\" 태그를 붙이고 문장으로도 밝힌다.",
+      "Do 포커스 링은 노랑 3px 외곽선으로 둔다."
+    ],
+    "donts": [
+      "Don't 밝은 바탕 구역이나 노랑 바탕 구역을 만들지 않는다. 바탕은 하나다.",
+      "Don't 멈춰 있는 버튼을 색으로 채우지 않는다. 참가 신청 버튼도 테두리만이다.",
+      "Don't 제목이나 본문을 굵게 하거나 노랑으로 적지 않는다. 순백(#FFFFFF) 글자도 쓰지 않는다.",
+      "Don't 고도를 1km 막대나 선 아래를 채운 산 실루엣으로 그리지 않는다. 지점을 표시하는 1px 기둥은 여기에 해당하지 않는다.",
+      "Don't 그라데이션, 오프셋이나 흐림이 있는 그림자를 쓰지 않는다. 흐림 없는 안쪽 밑줄(`inset 0 -2px 0`)은 이 규칙에 걸리지 않는다.",
+      "Don't `rule` 색을 글자에 쓰지 않는다(대비 2.1:1).",
+      "Don't 내셔널지오그래픽 로고의 노란 사각 프레임을 로고 대용이나 화면 장식 틀로 그리지 않는다. 버튼의 노랑 테두리와 눈금자의 노랑 눈금선은 조작 요소와 데이터 표식이라 여기에 해당하지 않는다.",
+      "Don't 사진이 없는 자리를 스톡 사진이나 지어낸 수치, 후기로 채우지 않는다."
+    ]
+  }
+}

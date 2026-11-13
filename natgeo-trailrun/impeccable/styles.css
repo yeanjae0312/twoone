@@ -1,0 +1,398 @@
+@font-face {
+  font-family: "LINE Seed Sans KR";
+  src: url("fonts/LINESeedKR-Rg.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LINE Seed Sans KR";
+  src: url("fonts/LINESeedKR-Bd.woff2") format("woff2");
+  font-weight: 700 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("fonts/BarlowCondensed-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("fonts/BarlowCondensed-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  --k: #0D0D0B;        /* 바탕 */
+  --y: #FFC800;        /* 선, 숫자, 주 행동 */
+  --w: #F0EDE3;        /* 본문 글자, 선택 상태 */
+  --dim: #B5B09D;      /* 보조 글자 */
+  --rule: #4A4738;     /* 가는 구분선, 눈금 */
+  --edge: #6E6A55;     /* 누를 수 있는 것의 테두리 (바탕 대비 3:1 이상) */
+  --r: 8px;            /* 버튼 모서리 */
+  --g: clamp(20px, 4.4vw, 64px);
+  --sans: "LINE Seed Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --cond: "Barlow Condensed", "LINE Seed Sans KR", sans-serif;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scrollbar-color: var(--y) var(--k); background: var(--k); }
+body {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--w);
+  background: var(--k);
+  font-variant-numeric: tabular-nums;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--y); color: var(--k); }
+a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--y); outline-offset: 3px; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2, h3 { text-wrap: balance; letter-spacing: -.012em; line-height: 1.16; font-weight: 400; }
+
+.skip {
+  position: absolute; left: var(--g); top: -100px; z-index: 10;
+  background: var(--y); color: var(--k); padding: 12px 18px; font-weight: 400;
+}
+.skip:focus { top: 12px; }
+
+.tag {
+  display: inline-block; vertical-align: .12em;
+  font-size: .8125rem; font-weight: 400; line-height: 1; letter-spacing: 0;
+  padding: 7px 12px; margin-left: 6px;
+  border: 1px solid var(--rule); color: var(--y);
+}
+h2 .tag { vertical-align: .9em; }
+
+/* 영문·숫자 토큰(50K, CP1)은 어디서나 같은 글자 */
+.n { font-family: var(--cond); font-weight: 500; font-size: 1.22em; letter-spacing: .02em; line-height: 1; }
+
+/* ---------- 버튼, 코스 선택 ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  min-height: 60px; padding: 0 28px;
+  background: transparent; color: var(--y);
+  border: 1px solid var(--y); border-radius: var(--r);
+  font-weight: 700; font-size: 1.125rem; text-decoration: none;
+  transition: background-color .18s var(--ease), color .18s var(--ease);
+}
+.btn svg { transition: transform .25s var(--ease); }
+.btn:hover { background: var(--y); color: var(--k); }
+.btn:hover svg { transform: translateX(6px); }
+.btn:active { transform: translateY(1px); }
+.btn-lg { min-height: 76px; padding: 0 40px; font-size: 1.5rem; }
+
+.link { font-weight: 400; padding: 10px 0; color: var(--y); }
+.link:hover { text-decoration-thickness: 4px; }
+
+.picker { display: inline-flex; border: 1px solid var(--edge); border-radius: var(--r); overflow: hidden; }
+.picker button {
+  appearance: none; border: 0; background: transparent; color: var(--dim);
+  font-family: var(--cond); font-weight: 500; font-size: 1.75rem; line-height: 1;
+  padding: 12px 22px 10px; min-width: 88px; min-height: 48px; cursor: pointer;
+  transition: background-color .18s var(--ease), color .18s var(--ease);
+}
+.picker button + button { border-left: 1px solid var(--edge); }
+.picker button:not([aria-pressed="true"]):hover { color: var(--w); }
+.picker button[aria-pressed="true"] { color: var(--y); box-shadow: inset 0 -2px 0 var(--y); }
+.picker button:focus-visible { outline-offset: -6px; outline-color: currentColor; border-radius: var(--r); }
+.picker-sm button { font-size: 1.375rem; min-width: 72px; min-height: 44px; padding: 10px 16px 8px; }
+
+/* ---------- 진행 띠: 스크롤이 곧 코스를 달리는 것 ---------- */
+.trail {
+  position: fixed; inset: 0 0 auto 0; z-index: 5; height: 56px;
+  display: flex; align-items: stretch;
+  background: var(--k); border-bottom: 1px solid var(--rule);
+  transform: translateY(-100%); visibility: hidden;
+  transition: transform .45s var(--ease), visibility 0s .45s;
+}
+.trail[data-on="true"] { transform: none; visibility: visible; transition: transform .45s var(--ease), visibility 0s; }
+.trail-line { position: relative; flex: 1; min-width: 0; margin: 10px 0 8px; }
+.trail-line svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.trail-line path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.trail-line .rest { stroke: var(--rule); stroke-width: 2; }
+.trail-line .done { stroke: var(--y); stroke-width: 2; }
+.trail-done { position: absolute; inset: 0; clip-path: inset(-10px calc(100% - var(--x, 0%)) -10px 0); }
+.trail-dot {
+  position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+  background: var(--w); left: var(--x, 0%); top: var(--yy, 100%);
+}
+.trail-km { align-self: center; padding: 0 22px; font: 400 1.0625rem/1 var(--cond); letter-spacing: .04em; white-space: nowrap; color: var(--dim); }
+.trail-km b { font-weight: 500; font-size: 1.625rem; color: var(--y); }
+.trail-apply {
+  display: flex; align-items: center; padding: 0 20px; margin: 8px var(--g) 8px 0;
+  background: transparent; color: var(--y); border: 1px solid var(--y); border-radius: var(--r);
+  font-weight: 700; text-decoration: none; white-space: nowrap;
+  transition: background-color .18s var(--ease), color .18s var(--ease);
+}
+.trail-apply:hover { background: var(--y); color: var(--k); }
+.sec, .close { scroll-margin-top: 56px; }
+
+/* ---------- 히어로 ---------- */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+.nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 22px var(--g);
+}
+.mark {
+  font-family: var(--cond); font-weight: 500; font-size: 1.375rem;
+  text-transform: uppercase; letter-spacing: .06em; line-height: 1;
+  text-decoration: none; color: var(--y);
+}
+.mark span { font-weight: 400; }
+.nav-links { display: flex; gap: clamp(16px, 2.4vw, 36px); }
+.nav-links a { font-weight: 400; font-size: 1rem; text-decoration: none; padding: 10px 0; }
+.nav-links a:hover { color: var(--y); text-decoration: underline; }
+.nav-toggle {
+  display: none; appearance: none; background: transparent; color: var(--y);
+  border: 1px solid var(--y); border-radius: var(--r); font: 400 1rem var(--sans); padding: 10px 16px; cursor: pointer;
+}
+
+.hero-top {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(28px, 5vw, 88px);
+  padding: clamp(20px, 3.4vh, 48px) var(--g) clamp(20px, 3vh, 40px);
+  align-items: start;
+}
+h1 {
+  font-size: clamp(2.5rem, 5.6vw, 5.5rem);
+  font-weight: 400; line-height: 1.1; letter-spacing: -.02em;
+}
+.lead {
+  margin-top: clamp(16px, 2.2vh, 28px);
+  max-width: 34em; font-size: clamp(1.0625rem, 1.3vw, 1.25rem); font-weight: 400;
+  color: var(--dim);
+}
+.hero-act { padding-top: clamp(4px, 1vh, 14px); }
+.facts { margin-top: 18px; font-size: 1.1875rem; font-weight: 400; line-height: 1.5; }
+.facts b { font-family: var(--cond); font-weight: 500; font-size: 1.5em; letter-spacing: .01em; color: var(--y); }
+.act-row { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.temp { margin-top: 18px; font-size: .9375rem; color: var(--dim); max-width: 30em; }
+
+/* ---------- 고도 선 ---------- */
+.profile { display: flex; flex-direction: column; min-height: 320px; }
+.readout {
+  align-self: flex-start;
+  width: max-content; max-width: calc(100% - 2 * var(--g));
+  margin: 0 var(--g) 10px; transform: translateX(var(--shift, 0px));
+  font-weight: 400; font-size: 1.0625rem; min-height: 2.6em; color: var(--dim);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 26px;
+  transition: transform .35s var(--ease);
+}
+.readout b { font-family: var(--cond); font-weight: 500; font-size: 1.75rem; line-height: 1; letter-spacing: .01em; color: var(--w); }
+.readout span { white-space: nowrap; }
+
+.chart {
+  flex: 1; min-height: 220px; padding-top: 64px;
+  display: flex; cursor: crosshair; touch-action: pan-y;
+}
+.chart:focus-visible { outline-offset: -6px; }
+.plot { position: relative; flex: 1; }
+.plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.plot path {
+  fill: none; stroke: var(--y); stroke-width: 2;
+  vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round;
+}
+/* 선이 왼쪽에서 오른쪽으로 그려진다 */
+.plot svg { animation: draw 2.4s var(--ease) backwards; }
+@keyframes draw { from { clip-path: inset(-20px 100% -20px 0); } to { clip-path: inset(-20px 0 -20px 0); } }
+
+/* 해발 눈금선 */
+.grid {
+  position: absolute; left: 0; right: 0; bottom: var(--b);
+  border-top: 1px dashed var(--rule);
+  font: 400 .9375rem/1 var(--cond); letter-spacing: .04em; color: var(--dim);
+  pointer-events: none;
+}
+.grid span { position: absolute; left: var(--g); bottom: 6px; }
+
+/* 지점 표시: 바닥에서 선까지 올라가는 가는 기둥, 선 위의 점, 깃발 */
+.pin {
+  position: absolute; left: var(--x); bottom: 0; height: var(--b);
+  border-left: 1px solid var(--y);
+  pointer-events: none;
+  animation: show .5s var(--ease) backwards; animation-delay: calc(.5s + var(--t) * 1.5s);
+}
+@keyframes show { from { opacity: 0; } }
+.pin::before {
+  content: ""; position: absolute; left: -5.5px; top: -5px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--k); border: 2px solid var(--y); box-sizing: border-box;
+}
+.pin i {
+  position: absolute; left: -1px; bottom: calc(100% + 14px);
+  background: var(--k); color: var(--y); border: 1px solid var(--rule);
+  font: 500 1.0625rem/1 var(--cond); font-style: normal; letter-spacing: .03em;
+  padding: 8px 12px 7px; white-space: nowrap;
+}
+.pin.end i { left: auto; right: 0; }
+.pin.peak::before { background: var(--y); }
+
+/* 선택한 km */
+.cursor {
+  position: absolute; left: var(--x); bottom: 0; top: 0;
+  border-left: 1px solid var(--w); pointer-events: none;
+}
+.cursor::before {
+  content: ""; position: absolute; left: -7.5px; bottom: calc(var(--b) - 7px);
+  width: 14px; height: 14px; border-radius: 50%; background: var(--w);
+}
+
+.ruler {
+  position: relative; height: 40px; border-top: 1px solid var(--y); color: var(--y);
+  font: 400 1rem/40px var(--cond); letter-spacing: .04em;
+}
+.ruler > span { position: absolute; top: 0; white-space: nowrap; padding-left: 12px; border-left: 1px solid var(--y); height: 100%; }
+.ruler > span.end { border-left: 0; border-right: 1px solid var(--y); padding: 0 12px 0 0; transform: translateX(-100%); }
+
+/* ---------- 섹션 공통 ---------- */
+.sec { padding: clamp(72px, 11vw, 150px) var(--g) clamp(64px, 9vw, 120px); border-top: 1px solid var(--rule); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px clamp(28px, 5vw, 88px); align-items: end; }
+.sec-head h2 { font-size: clamp(2rem, 4.2vw, 3.75rem); font-weight: 400; }
+.sec-head p { max-width: 32em; color: var(--dim); }
+.sec-head .picker { grid-column: 1; justify-self: start; margin-top: 8px; }
+
+/* ---------- 컷오프 표 ---------- */
+.table-wrap { margin-top: clamp(28px, 4vw, 52px); overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 520px; }
+caption { text-align: left; font-weight: 400; padding-bottom: 14px; }
+th, td { text-align: left; padding: 18px 16px 16px 0; border-bottom: 1px solid var(--rule); }
+thead th { font-size: .9375rem; font-weight: 400; color: var(--dim); border-bottom-color: var(--y); padding-bottom: 10px; }
+tbody th { font-weight: 400; font-size: 1.1875rem; }
+.num { text-align: right; padding-right: 0; padding-left: 16px; }
+td.num { font-family: var(--cond); font-weight: 400; font-size: 1.625rem; line-height: 1.1; letter-spacing: .01em; }
+td.cut { font-weight: 500; color: var(--y); }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom-color: var(--y); }
+
+/* ---------- 코스 비교 ---------- */
+.compare { margin-top: clamp(32px, 5vw, 64px); border-top: 1px solid var(--y); }
+.compare li {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr) minmax(220px, 300px);
+  gap: 0 clamp(20px, 3vw, 48px); align-items: end;
+  padding: 34px 0 30px; border-bottom: 1px solid var(--rule);
+}
+.compare li.scale { padding: 0; align-items: stretch; border-bottom-color: var(--y); }
+.scale-ruler {
+  grid-column: 2; position: relative; height: 38px;
+  font: 400 1rem/38px var(--cond); letter-spacing: .04em; color: var(--y);
+}
+.scale-ruler > span { position: absolute; top: 0; height: 100%; padding-left: 10px; border-left: 1px solid var(--y); white-space: nowrap; }
+.scale-ruler > span.end { border-left: 0; border-right: 1px solid var(--y); padding: 0 10px 0 0; transform: translateX(-100%); }
+.compare h3 { font: 500 clamp(3rem, 5vw, 4.5rem)/.9 var(--cond); letter-spacing: .01em; color: var(--y); }
+.mini { position: relative; height: 132px; }
+.mini svg { position: absolute; left: 0; bottom: 0; height: 100%; width: var(--len); overflow: visible; }
+.mini path { fill: none; stroke: var(--y); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+/* 세 행이 공유하는 해발 1,000m 기준선 */
+.mini::after {
+  content: "1,000 m"; position: absolute; left: 0; right: 0; bottom: var(--ref);
+  border-bottom: 1px dashed var(--rule); color: var(--dim);
+  font: 400 .9375rem/1.5 var(--cond); letter-spacing: .04em; text-align: right;
+  pointer-events: none;
+}
+.compare p { color: var(--dim); font-size: 1rem; }
+.compare p b { color: var(--w); font-weight: 400; }
+.compare a { display: inline-block; margin-top: 10px; color: var(--y); font-weight: 400; padding: 6px 0; }
+.compare a:hover { text-decoration-thickness: 4px; }
+
+/* ---------- 참가 안내 ---------- */
+.guide { margin-top: clamp(28px, 4vw, 52px); border-top: 1px solid var(--y); }
+.guide-item {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 12px clamp(28px, 5vw, 88px);
+  padding: 30px 0 28px; border-bottom: 1px solid var(--rule);
+}
+.guide-item h3 { font-size: 1.5rem; font-weight: 400; }
+.guide-item > :not(h3) { grid-column: 2; max-width: 38em; }
+.gear { columns: 2; column-gap: 40px; font-weight: 400; }
+.gear li { padding: 5px 0 5px 22px; position: relative; break-inside: avoid; }
+.gear li::before { content: ""; position: absolute; left: 0; top: .95em; width: 12px; border-top: 2px solid var(--y); }
+.guide-item p { color: var(--dim); }
+
+/* ---------- 마무리, 푸터 ---------- */
+.close {
+  border-top: 1px solid var(--y);
+  padding: clamp(80px, 12vw, 170px) var(--g) clamp(72px, 10vw, 140px);
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 36px clamp(28px, 5vw, 88px); align-items: end;
+}
+.close h2 { font-size: clamp(2.25rem, 5.2vw, 5rem); font-weight: 400; line-height: 1.12; letter-spacing: -.02em; }
+.close-act { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+
+.foot {
+  border-top: 1px solid var(--rule);
+  padding: 44px var(--g) 52px;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px clamp(28px, 5vw, 88px);
+}
+.foot ul { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.foot a { font-weight: 400; text-decoration: none; padding: 8px 0; display: inline-block; }
+.foot a:hover { color: var(--y); text-decoration: underline; }
+.foot-note { grid-column: 1 / -1; color: var(--dim); font-size: .9375rem; max-width: 46em; }
+
+/* ---------- 좁은 화면 ---------- */
+@media (max-width: 900px) {
+  .sec-head, .close, .foot { grid-template-columns: minmax(0, 1fr); }
+  /* 첫 화면에 고도 선이 들어오도록 순서를 바꾼다: 제목 → 코스 → 조건 → 신청 → 선 → 설명 */
+  .hero { display: flex; flex-direction: column; }
+  .hero-top, .hero-copy, .hero-act, .act-row { display: contents; }
+  .hero h1 { order: 1; margin: 8px var(--g) 0; }
+  .hero-act .picker { order: 2; margin: 20px var(--g) 0; align-self: flex-start; }
+  .facts { order: 3; margin: 14px var(--g) 0; }
+  .hero .btn { order: 4; margin: 16px var(--g) 0; align-self: flex-start; }
+  .profile { order: 5; margin-top: 22px; min-height: 0; }
+  .chart { flex: none; height: 230px; min-height: 0; }
+  .lead { order: 6; margin: 26px var(--g) 0; }
+  .hero .link { order: 7; margin: 10px var(--g) 0; align-self: flex-start; }
+  .temp { order: 8; margin: 6px var(--g) 30px; }
+  .nav-toggle { display: block; }
+  .nav { flex-wrap: wrap; }
+  .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; border-top: 1px solid var(--y); }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .compare li { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .scale-ruler { grid-column: 1; }
+  .guide-item { grid-template-columns: minmax(0, 1fr); }
+  .guide-item > :not(h3) { grid-column: 1; }
+}
+@media (max-width: 560px) {
+  .chart { padding-top: 54px; height: 210px; }
+  .hero-act .picker, .hero .btn { align-self: stretch; width: auto; }
+  .ruler .u, .scale-ruler .u { display: none; }
+  .trail { height: 48px; }
+  .trail-km { display: none; }
+  .trail-apply { padding: 0 14px; margin: 6px var(--g) 6px 0; font-size: .9375rem; }
+  .sec, .close { scroll-margin-top: 48px; }
+  .pin i { font-size: .875rem; padding: 7px 8px 6px; bottom: calc(100% + 12px); }
+  .pin .t { display: none; }
+  .grid span { left: 6px; }
+  .btn { justify-content: space-between; }
+  .close .btn { width: 100%; }
+  .picker { display: flex; }
+  .picker button { flex: 1; }
+  .gear { columns: 1; }
+  .mark { font-size: 1.125rem; }
+  .nav-toggle { padding: 8px 12px; }
+  table { min-width: 0; }
+  th:nth-child(3), td:nth-child(3) { display: none; }
+  th, td { padding-right: 0; }
+  .num { padding-left: 8px; }
+  td.num { font-size: 1.25rem; }
+  tbody th { font-size: 1.0625rem; }
+  .readout { font-size: .9375rem; gap: 2px 16px; }
+  .readout b { font-size: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .plot svg, .pin { animation: none; }
+  * { transition: none !important; }
+}
