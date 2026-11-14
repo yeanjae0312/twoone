@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>방향 C 프레임: 내셔널지오그래픽 트레일런 2027</title>
+<link rel="stylesheet" href="dir.css">
+<style>
+  /* C 프레임: 제목 줄 아래 둥근 사진 틀 하나. 숲빛이 도는 어두운 바탕, 표로 읽는 대회 정보. */
+  :root {
+    --bg: #0e1412; --surface: #151d1a; --surface-2: #1c2622;
+    --ink: #e8ece8; --muted: #94a39b; --line: rgba(232, 236, 232, .12);
+    --accent: #e9d9a6; --on-accent: #17160f;
+    --r-lg: 24px; --r-md: 16px; --r-btn: 12px;
+  }
+  .hero .wrap { height: 100%; display: grid; grid-template-rows: auto 1fr; gap: 40px; padding: calc(var(--nav) + 48px) 0 24px; }
+  .hero__head { display: grid; grid-template-columns: 7fr 1fr 4fr; align-items: end; }
+  .hero h1 { font-size: clamp(38px, 5vw, 72px); }
+  .hero__side { grid-column: 3; }
+  .hero__side p { color: var(--muted); margin-bottom: 20px; }
+  .frame { border-radius: var(--r-lg); overflow: hidden; min-height: 0; position: relative; animation: open 1.1s cubic-bezier(.2, .7, .2, 1) both; }
+  @keyframes open { from { clip-path: inset(12% 6% 12% 6% round 24px); opacity: .3; } to { clip-path: inset(0 round 24px); } }
+  .frame img { filter: brightness(.8) saturate(.85); }
+
+  .split { display: grid; grid-template-columns: 5fr 1fr 6fr; height: 100%; }
+  .split h2 { font-size: 48px; }
+  .split__lead { color: var(--muted); margin: 20px 0 32px; max-width: 24em; }
+  .steps { list-style: none; margin: 0; padding: 0; }
+  .steps li { display: grid; grid-template-columns: 136px 1fr; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .steps li span:first-child { color: var(--muted); }
+  .board { grid-column: 3; background: var(--surface); border-radius: var(--r-lg); padding: 16px 36px 28px; align-self: start; }
+  .row { display: grid; grid-template-columns: 1.2fr 1fr 1fr auto; align-items: center; gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--line); transition: padding .25s ease; }
+  .row:hover { padding-left: 8px; }
+  .row--head { padding: 16px 0 12px; font-size: 14px; color: var(--muted); }
+  .row--head:hover { padding-left: 0; }
+  .row b { font-weight: 400; font-size: 40px; letter-spacing: -.03em; }
+  .board__foot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; color: var(--muted); font-size: 14px; }
+  @media (max-width: 900px) {
+    .hero__head, .split { grid-template-columns: 1fr; } .hero__side, .board { grid-column: 1; }
+    .hero__side { margin-top: 20px; } .frame { min-height: 280px; }
+    .split h2 { font-size: 30px; } .board { margin-top: 40px; padding: 8px 20px 20px; }
+    .row { grid-template-columns: 1fr 1fr; } .row--head { display: none; } .row b { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top">National Geographic <b>Trail Run</b></a>
+  <nav class="nav__links"><a href="#courses">코스</a><a href="#courses">일정</a><a href="#courses">참가 안내</a><a href="#courses">대회 설명</a><a href="#top">로그인</a></nav>
+  <a class="btn btn--primary btn--sm" href="#courses">참가 신청하기</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div class="hero__head">
+    <h1>내셔널지오그래픽<br>트레일런 2027</h1>
+    <div class="hero__side">
+      <p>산을 달리는 50K, 25K, 10K 대회입니다. 참가 신청은 2027년 1월 말에 시작합니다.</p>
+      <div class="btn-row"><a class="btn btn--primary" href="#courses">참가 신청하기</a><a class="btn btn--secondary" href="#courses">대회 설명 보기</a></div>
+    </div>
+  </div>
+  <div class="frame"><img src="../assets/img/photo-f111539170.jpg" alt="산봉우리 사이를 가득 채운 운해와 멀리 이어지는 능선"></div>
+</div></section>
+
+<section class="section" id="courses"><div class="wrap split">
+  <div>
+    <h2>코스와 참가 순서</h2>
+    <p class="split__lead">거리를 고르고, 신청하고, 대회 전날 장비 검사를 받습니다. 날짜는 확정되는 대로 이 자리에 올립니다.</p>
+    <ol class="steps">
+      <li><span>2027년 1월 말</span><span>참가 신청 시작</span></li>
+      <li><span>미정</span><span>참가 신청 마감</span></li>
+      <li><span>대회 전날</span><span>배번 수령과 장비 검사</span></li>
+      <li><span>대회일</span><span>50K 05:00부터 차례로 출발</span></li>
+    </ol>
+  </div>
+  <div class="board">
+    <div class="row row--head"><span>코스</span><span>출발</span><span>제한 시간</span><span></span></div>
+    <a class="row" href="#courses"><b class="num">50K</b><span class="num">05:00</span><span>12시간</span><span class="btn btn--secondary btn--sm">50K 신청하기</span></a>
+    <a class="row" href="#courses"><b class="num">25K</b><span class="num">06:30</span><span>7시간</span><span class="btn btn--secondary btn--sm">25K 신청하기</span></a>
+    <a class="row" href="#courses"><b class="num">10K</b><span class="num">08:00</span><span>3시간</span><span class="btn btn--secondary btn--sm">10K 신청하기</span></a>
+    <div class="board__foot"><span>출발 시각과 제한 시간은 시안용 임시 값입니다.</span><a class="link" href="#courses">대회 설명 보기</a></div>
+  </div>
+</div></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* 방향 시안 공통 바탕. 색·모서리는 각 시안의 :root에서 바꾼다. */
+@font-face { font-family: "LINE Seed Sans KR"; src: url("../../impeccable/fonts/LINESeedKR-Rg.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "LINE Seed Sans KR"; src: url("../../impeccable/fonts/LINESeedKR-Bd.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface-2: #1d232c;
+  --ink: #e9ecef; --muted: #9aa4af; --line: rgba(233, 236, 239, .12);
+  --accent: #ffce00; --on-accent: #14110a;
+  --r-lg: 20px; --r-md: 14px; --r-btn: 10px;
+  --nav: 72px; --gut: 80px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 16px/1.65 "LINE Seed Sans KR", "Apple SD Gothic Neo", sans-serif;
+  -webkit-font-smoothing: antialiased; word-break: keep-all;
+}
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-weight: 400; letter-spacing: -.03em; line-height: 1.14; }
+.wrap { width: min(100% - 2 * var(--gut), 1280px); margin-inline: auto; }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* 상단 메뉴 */
+.nav { position: fixed; inset: 0 0 auto; height: var(--nav); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.nav .wrap { height: 100%; display: flex; align-items: center; gap: 40px; }
+.brand { font-size: 17px; letter-spacing: -.01em; margin-right: auto; }
+.brand b { font-weight: 700; }
+.nav__links { display: flex; gap: 32px; font-size: 15px; color: var(--muted); }
+.nav__links a { transition: color .2s; }
+.nav__links a:hover { color: var(--ink); }
+
+/* 버튼 */
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: var(--r-btn); font-size: 16px; border: 1px solid transparent; transition: transform .18s ease, background .18s ease, border-color .18s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(1px); }
+.btn--primary { background: var(--accent); color: var(--on-accent); }
+.btn--secondary { border-color: rgba(233, 236, 239, .28); }
+.btn--secondary:hover { border-color: rgba(233, 236, 239, .6); }
+.btn--sm { height: 40px; padding: 0 18px; font-size: 15px; }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.link { color: var(--ink); border-bottom: 1px solid rgba(233, 236, 239, .35); padding-bottom: 2px; transition: border-color .2s; }
+.link:hover { border-color: var(--ink); }
+
+/* 한 화면에 한 섹션 */
+.hero, .section { height: 100svh; min-height: 720px; position: relative; overflow: hidden; }
+.section { padding: 120px 0 72px; }
+.tag { display: inline-block; font-size: 13px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; vertical-align: middle; }
+
+@media (max-width: 900px) {
+  :root { --gut: 24px; --nav: 56px; }
+  .nav__links { display: none; }
+  .hero, .section { height: auto; min-height: 100svh; }
+  .section { padding: 96px 0 48px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

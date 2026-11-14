@@ -1,0 +1,195 @@
+/* 세 페이지가 함께 쓰는 페이지 CSS. 키트(assets/)의 system.css 뒤에 불러온다.
+   색: start.mjs brand 로 뽑은 다크 팔레트. 글꼴: LINE Seed Sans KR (Impeccable 시안과 같은 선택). */
+@font-face { font-family: "LINE Seed Sans KR"; src: url("fonts/LINESeedKR-Rg.woff2") format("woff2"); font-weight: 400 600; font-display: swap; }
+@font-face { font-family: "LINE Seed Sans KR"; src: url("fonts/LINESeedKR-Bd.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  --p-bg: #0c1016; --p-surface: #141a22; --p-ink: #e9ecef; --p-muted: #9aa4af;
+  --p-accent: #ffce00; --p-accent-ink: #0c1016; --p-action: #ffce00; --p-action-ink: #0c1016;
+  --p-inv-bg: #e9ecef; --p-inv-surface: #d7dade; --p-inv-ink: #0c1016; --p-inv-muted: #555a5f;
+  --p-inv-accent: #0c1016; --p-inv-accent-ink: #e9ecef; --p-inv-action: #0c1016; --p-inv-action-ink: #e9ecef;
+  --font-display: "LINE Seed Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-text: "LINE Seed Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.035em;
+}
+body { word-break: keep-all; overflow-wrap: anywhere; }
+h1, h2, h3 { hyphens: manual; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* 히어로 사진: 글자가 놓이는 쪽이 충분히 어둡도록 사진 자체의 톤을 낮춘다 (위에 덧씌우는 막 없음) */
+.hero--photo > .hero__bg { filter: brightness(.66) saturate(.9); }
+@media (max-width: 1023px) { .hero--photo > .hero__bg { filter: brightness(.86) saturate(.92); } }
+
+/* 섹션 안 사진 한 장 (picture-develops 가 붙는 틀) */
+.develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(720px, calc(100svh - var(--padt) - var(--padb))); }
+.develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 1023px) { .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-6); } }
+
+/* 사진 두 장 */
+.pair { margin: 0; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 3 / 2; }
+.pair > img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
+@media (max-width: 639px) { .pair { aspect-ratio: 16 / 10; } }
+
+/* 일정·코스 줄: 값이 긴 줄은 이름 아래로 */
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+
+/* 큰 거리 숫자 */
+.dist { font: 400 clamp(44px, 5.2vw, 76px)/1 var(--font-display); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+
+/* 단계 카드 안 사진 */
+#apply .panel { --p-h: 320px; }
+@media (max-width: 1023px) { #apply .panel { --p-h: 200px; } }
+@media (max-width: 639px) { #apply .panel { --p-h: 132px; } }
+
+/* 시안 안내 한 줄 (푸터) */
+.draft-note { color: var(--muted); font-size: var(--t-small); max-width: 70ch; }
+
+/* 사진 두 장이 섹션 높이를 채운다 (데스크톱) */
+@media (min-width: 1024px) { .grid.fill > .pair { aspect-ratio: auto; height: 100%; min-height: 0; } }
+
+/* ── 대회 안내: 코스 비교 카드 ── */
+.course { display: grid; gap: var(--s-5); align-content: start; }
+.course .rows > li { padding-block: var(--s-3); }
+.gear > li { padding-block: var(--s-3); }
+@media (max-width: 639px) { .course { gap: var(--s-4); } }
+
+/* ── 참가 신청 ── */
+.reg { padding: calc(var(--nav) + var(--s-7)) 0 var(--s-9); }
+.reg__head { display: grid; gap: var(--s-4); max-width: 760px; margin-bottom: var(--s-7); }
+.reg__head h1 { font: var(--display-weight) clamp(32px, 4.4vw, 56px)/1.12 var(--font-display); letter-spacing: var(--display-tracking); }
+.reg__steps { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); list-style: none; margin: var(--s-3) 0 0; padding: 0; }
+.reg__steps a { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; color: var(--muted); }
+.reg__steps a:hover { color: var(--ink); }
+.reg__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--s-8); align-items: start; }
+.reg__main { display: grid; gap: var(--s-6); min-width: 0; }
+.reg__block { margin: 0; min-width: 0; padding: var(--s-6); border: 0; border-radius: var(--r-lg); background: var(--p-surface); scroll-margin-top: calc(var(--nav) + var(--s-4)); }
+.reg__block > legend { float: left; width: 100%; display: flex; align-items: center; gap: var(--s-3); padding: 0; margin-bottom: var(--s-5); font: 500 var(--t-lead)/1.3 var(--font-text); }
+.reg__block > legend + * { clear: both; }
+.reg__hint { margin-top: var(--s-4); }
+.reg__fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5) var(--s-4); }
+.reg__fields .field--full { grid-column: 1 / -1; }
+.reg .field :is(input, select) { height: 52px; font-size: 16px; background: var(--p-bg); border-radius: var(--r-md); }
+.reg .field input::placeholder { color: color-mix(in oklab, var(--muted) 60%, transparent); }
+.reg { --error: color-mix(in oklab, #ff6b5e 80%, var(--ink)); }
+.field__label, .field__hint { font-size: var(--t-small); font-weight: 500; }
+.field__label { display: block; margin-bottom: var(--s-2); }
+.field__hint { color: var(--muted); font-weight: 400; margin-left: var(--s-2); }
+
+/* 코스 고르기: 큰 선택 카드 */
+.opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+.opt { position: relative; display: block; cursor: pointer; }
+.opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.opt__body { display: grid; gap: var(--s-1); height: 100%; padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--p-bg); transition: border-color 160ms var(--ease), background 160ms var(--ease), transform 160ms var(--ease); }
+.opt:hover .opt__body { border-color: var(--ink); }
+.opt:active .opt__body { transform: scale(.985); }
+.opt input:checked + .opt__body { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: color-mix(in oklab, var(--accent) 8%, var(--p-bg)); }
+.opt input:focus-visible + .opt__body { outline: 2px solid var(--accent); outline-offset: 3px; }
+.opt__dist { font: 400 40px/1 var(--font-display); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; margin-bottom: var(--s-2); }
+.opt__meta { font-size: var(--t-small); color: var(--muted); }
+.opt__fee { font-size: var(--t-small); }
+
+/* 둘·셋·넷 중 하나 고르기 */
+.seg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+.seg--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.seg--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.seg span { display: grid; place-items: center; height: 52px; padding: 0 var(--s-2); border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--p-bg); font-size: 16px; font-weight: 400; transition: border-color 160ms var(--ease), background 160ms var(--ease); }
+.seg label:hover span { border-color: var(--ink); }
+.seg input:checked + span { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: color-mix(in oklab, var(--accent) 8%, var(--p-bg)); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* 동의 */
+.agree { display: grid; margin-bottom: var(--s-6); }
+.check { display: flex; align-items: center; gap: var(--s-3); min-height: 52px; cursor: pointer; border-bottom: 1px solid var(--line); }
+.check--all { font-weight: 500; }
+.check input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--accent); }
+.check em { font-style: normal; font-size: var(--t-small); color: var(--accent); margin-left: var(--s-1); }
+.check em.opt-tag { color: var(--muted); }
+.agree .field__error { margin-top: var(--s-3); }
+
+/* 신청 내용: 데스크톱에서는 옆에 붙어 따라온다 */
+.reg__side { position: sticky; top: calc(var(--nav) + var(--s-5)); }
+.summary { display: grid; gap: var(--s-4); padding: var(--s-6); border-radius: var(--r-lg); background: var(--p-surface); }
+.summary__title { font: 500 var(--t-small)/1.3 var(--font-text); letter-spacing: 0; color: var(--muted); }
+.summary__dist { font: 400 48px/1 var(--font-display); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.summary__rows { margin: 0; }
+.summary__rows > div { display: flex; justify-content: space-between; padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+.summary__rows dt { color: var(--muted); }
+.summary__rows dd { margin: 0; font-variant-numeric: tabular-nums; }
+.summary__btn { width: 100%; height: 52px; }
+
+.reg-foot { padding: var(--s-6) 0 var(--s-7); border-top: 1px solid var(--line); font-size: var(--t-small); color: var(--muted); }
+.reg-foot .wrap { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); justify-content: space-between; }
+
+
+@media (max-width: 1023px) {
+  .reg { padding: calc(var(--nav) + var(--s-6)) 0 var(--s-7); }
+  .reg__grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); }
+  .reg__side { position: static; }
+}
+@media (max-width: 639px) {
+  .reg__head { margin-bottom: var(--s-6); }
+  .reg__steps { gap: 0 var(--s-4); }
+  .reg__block { padding: var(--s-5) var(--s-4); border-radius: var(--r-md); }
+  .reg__fields { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+  /* 코스 카드는 가로로 한 줄씩: 엄지로 누르기 쉽게 */
+  .opts { grid-template-columns: minmax(0, 1fr); }
+  .opt__body { grid-template-columns: auto 1fr; align-items: center; column-gap: var(--s-4); padding: var(--s-4); }
+  .opt__dist { grid-row: 1 / span 2; font-size: 34px; margin: 0; min-width: 76px; }
+}
+
+/* 참가 신청 섹션은 화면 수에 맞추지 않고 내용만큼 길어진다 */
+main > section.reg { height: auto; min-height: 100svh; display: block; }
+
+/* 코스 비교 카드 위 사진 */
+.course__pic { margin: calc(-1 * var(--c-pad, 32px)) calc(-1 * var(--c-pad, 32px)) 0; height: 132px; overflow: hidden; border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.course__pic > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.course { gap: var(--s-4); overflow: hidden; }
+.course .dist { font-size: clamp(40px, 4.2vw, 60px); }
+@media (max-width: 639px) { .course__pic { height: 120px; } }
+.course .dist { margin-top: var(--s-3); }
+.course > .link { justify-self: start; }
+
+/* ── 휴대전화: 섹션을 화면 높이에 맞추지 않고 내용만큼만 ──
+   키트는 휴대전화에서도 섹션마다 한 화면 이상을 잡아 빈 공간이 길게 남는다. 사용자 요청으로 줄인다.
+   스크롤로 사진이 넘어가는 코스 섹션(.is-live)은 그대로 둔다. */
+@media (max-width: 639px) {
+  :root { --padt: 64px; --padb: 40px; }
+  main > :is(section, .section):not(.hero, .section--hero):not(.is-live), footer.closing { min-height: 0; }
+  footer.closing:has(> .wrap > .closing__cta > .close__media) > .wrap { grid-template-rows: auto auto; row-gap: var(--s-8); }
+  .closing__cta > .close__media { flex: none; aspect-ratio: 16 / 10; min-height: 0; }
+  .develop { margin-top: var(--s-5); }
+}
+@media (max-width: 639px) {
+  /* 높이를 내용에 맞추면 '남는 높이를 채우는' 틀이 0으로 접히므로, 사진에 제 비율을 준다 */
+  main > :is(section, .section) > .wrap > .grid.fill { flex: none; }
+  .grid.fill > .pair { height: auto; aspect-ratio: 16 / 10; }
+}
+
+/* ── 휴대전화의 떠 있는 신청 버튼: 노랑으로 채우지 않고 테두리만 ──
+   키트의 .actionbar 는 첫 화면에서 숨고 같은 버튼이 보이면 또 숨는다. 여기서는 처음부터 끝까지 떠 있어야 해서 따로 만든다.
+   휴대전화에서는 헤더의 신청 버튼을 감추고(메뉴를 열면 그 안에는 있다) 이 버튼이 대신한다. */
+.floatbar { display: none; }
+@media (max-width: 639px) {
+  .nav:not(.is-open) .nav__actions { display: none; }
+  .nav:not(.is-open) .nav__actions + .nav__toggle, .nav:not(.is-open) .nav__toggle { margin-left: auto; }
+  .floatbar { display: block; position: fixed; z-index: 9; left: var(--gut); right: var(--gut); bottom: calc(var(--s-4) + env(safe-area-inset-bottom)); pointer-events: none; }
+  .floatbar__btn { pointer-events: auto; display: flex; align-items: center; justify-content: center; gap: var(--s-2); height: 54px; border-radius: 999px;
+    font-size: 17px; font-weight: 700; color: var(--p-ink);
+    background: color-mix(in oklab, var(--p-bg) 88%, transparent);
+    border: 2px solid var(--accent);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgb(0 0 0 / .45);
+    transition: background 160ms var(--ease), transform 160ms var(--ease); }
+  .floatbar__btn:active { transform: scale(.98); background: color-mix(in oklab, var(--accent) 16%, var(--p-bg)); }
+  .floatbar__btn .m-arrow { width: 12px; height: 12px; fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  /* 떠 있는 버튼이 마지막 내용을 가리지 않게 푸터 아래를 띄운다 */
+  body:has(> .floatbar) footer.closing { padding-bottom: calc(var(--padb) + 76px + env(safe-area-inset-bottom)); }
+  /* 메뉴가 열려 있을 때는 숨긴다 (메뉴 안에 같은 버튼이 있다) */
+  body.nav-locked > .floatbar { display: none; }
+}
+/* 히어로에 버튼이 하나만 남았을 때 글줄 왼쪽 선에 맞춘다 */
+.hero .btn-row > .btn--secondary:first-child { padding-left: 0; }

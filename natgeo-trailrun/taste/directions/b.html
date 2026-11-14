@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>방향 B 타일: 내셔널지오그래픽 트레일런 2027</title>
+<link rel="stylesheet" href="dir.css">
+<style>
+  /* B 타일: 글이 먼저 오고, 둥근 타일이 정보를 나눠 담는다. 따뜻한 먹색 바탕. */
+  :root {
+    --bg: #111110; --surface: #1b1b19; --surface-2: #242421;
+    --ink: #f1efea; --muted: #a3a097; --line: rgba(241, 239, 234, .1);
+    --accent: #f1efea; --on-accent: #111110;
+    --r-lg: 28px; --r-md: 18px; --r-btn: 999px;
+  }
+  .hero .wrap { height: 100%; display: grid; grid-template-rows: auto 1fr; gap: 40px; padding: calc(var(--nav) + 56px) 0 48px; }
+  .hero__text { display: grid; grid-template-columns: 7fr 5fr; gap: 24px; align-items: end; }
+  .hero h1 { font-size: clamp(36px, 4.6vw, 66px); }
+  .hero h1 span { color: var(--muted); }
+  .hero__side p { font-size: 18px; color: var(--muted); margin-bottom: 24px; }
+  .bento { display: grid; grid-template-columns: 7fr 5fr; grid-template-rows: 1fr 1fr; gap: 16px; min-height: 0; }
+  .tile { background: var(--surface); border-radius: var(--r-lg); overflow: hidden; position: relative; transition: transform .25s ease, background .25s ease; animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
+  .tile:nth-child(2) { animation-delay: .08s; } .tile:nth-child(3) { animation-delay: .16s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+  a.tile:hover { transform: translateY(-2px); background: var(--surface-2); }
+  .tile--photo { grid-row: span 2; }
+  .tile--photo img { filter: brightness(.86) saturate(.92); transition: transform .6s ease; }
+  .tile--photo:hover img { transform: scale(1.03); }
+  .tile__pad { padding: 28px 32px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .tile__label { font-size: 14px; color: var(--muted); }
+  .dist { display: flex; gap: 28px; align-items: baseline; }
+  .dist b { font-weight: 400; font-size: 44px; letter-spacing: -.03em; }
+  .dist b:nth-child(2) { color: #cfccc3; } .dist b:nth-child(3) { color: #8e8b83; }
+  .tile__big { font-size: 28px; letter-spacing: -.02em; line-height: 1.25; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ffce00; margin-right: 8px; vertical-align: middle; }
+
+  .section h2 { font-size: 48px; margin-bottom: 40px; }
+  .section h2 span { color: var(--muted); }
+  .stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; height: calc(100% - 98px); }
+  .module { background: var(--surface); border-radius: var(--r-lg); overflow: hidden; display: grid; grid-template-rows: 1fr auto; transition: transform .25s ease; }
+  .module:hover { transform: translateY(-2px); }
+  .module__photo { overflow: hidden; min-height: 0; }
+  .module__photo img { filter: brightness(.84) saturate(.92); transition: transform .6s ease; }
+  .module:hover img { transform: scale(1.03); }
+  .module__body { padding: 28px 32px 32px; }
+  .module h3 { font-size: 32px; margin: 6px 0 20px; line-height: 1.2; }
+  .module .btn-row { align-items: center; gap: 20px; }
+  @media (max-width: 900px) {
+    .hero__text, .bento, .stack { grid-template-columns: 1fr; }
+    .bento { grid-template-rows: 280px auto auto; } .tile--photo { grid-row: auto; }
+    .section h2 { font-size: 30px; } .stack { height: auto; } .module__photo { height: 220px; }
+  }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top">National Geographic <b>Trail Run</b></a>
+  <nav class="nav__links"><a href="#courses">코스</a><a href="#courses">일정</a><a href="#courses">참가 안내</a><a href="#courses">대회 설명</a><a href="#top">로그인</a></nav>
+  <a class="btn btn--primary btn--sm" href="#courses">참가 신청하기</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div class="hero__text">
+    <h1>내셔널지오그래픽 트레일런 2027. <span>산을 달리는 대회.</span></h1>
+    <div class="hero__side">
+      <p>50K, 25K, 10K 세 코스로 열리는 트레일러닝 대회입니다. 참가 신청은 2027년 1월 말에 시작합니다.</p>
+      <div class="btn-row"><a class="btn btn--primary" href="#courses">참가 신청하기</a><a class="btn btn--secondary" href="#courses">대회 설명 보기</a></div>
+    </div>
+  </div>
+  <div class="bento">
+    <a class="tile tile--photo" href="#courses"><img src="../assets/img/photo-f63441418-960.jpg" alt="산 능선 길을 달려 오르는 러너와 뒤로 펼쳐진 봉우리들"></a>
+    <a class="tile" href="#courses"><div class="tile__pad">
+      <span class="tile__label">코스</span>
+      <div class="dist num"><b>50K</b><b>25K</b><b>10K</b></div>
+    </div></a>
+    <a class="tile" href="#courses"><div class="tile__pad">
+      <span class="tile__label"><i class="dot"></i>참가 신청</span>
+      <p class="tile__big">2027년 1월 말 시작.<br><span class="muted">대회일과 장소는 미정입니다.</span></p>
+    </div></a>
+  </div>
+</div></section>
+
+<section class="section" id="courses"><div class="wrap" style="height:100%">
+  <h2>코스 세 가지. <span>거리로 고르세요.</span></h2>
+  <div class="stack">
+    <a class="module" href="#courses">
+      <div class="module__photo"><img src="../assets/img/photo-f59338871-960.jpg" alt="안개에 싸인 바위 능선"></div>
+      <div class="module__body"><span class="tile__label">05:00 출발 · 제한 12시간 <span class="tag">임시</span></span><h3>50K</h3>
+        <div class="btn-row"><span class="btn btn--secondary btn--sm">50K 신청하기</span><span class="link">코스 보기</span></div></div>
+    </a>
+    <a class="module" href="#courses">
+      <div class="module__photo"><img src="../assets/img/photo-f111539170-960.jpg" alt="산봉우리 사이를 채운 운해"></div>
+      <div class="module__body"><span class="tile__label">06:30 출발 · 제한 7시간 <span class="tag">임시</span></span><h3>25K</h3>
+        <div class="btn-row"><span class="btn btn--secondary btn--sm">25K 신청하기</span><span class="link">코스 보기</span></div></div>
+    </a>
+    <a class="module" href="#courses">
+      <div class="module__photo"><img src="../assets/img/photo-f89167164-500.jpg" alt="숲길을 달리는 러너"></div>
+      <div class="module__body"><span class="tile__label">08:00 출발 · 제한 3시간 <span class="tag">임시</span></span><h3>10K</h3>
+        <div class="btn-row"><span class="btn btn--secondary btn--sm">10K 신청하기</span><span class="link">코스 보기</span></div></div>
+    </a>
+  </div>
+</div></section>
+</main>
+</body>
+</html>

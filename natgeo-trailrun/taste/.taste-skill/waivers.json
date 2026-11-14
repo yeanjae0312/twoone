@@ -1,0 +1,4 @@
+[
+  {"check": "hero-lines", "target": "section.hero h1", "reason": "대회명 h1은 확정된 17자(내셔널지오그래픽 트레일런 2027)이고 1440에서 2줄, 390에서 2줄로 들어간다. 32자 채움 시험은 이 제목에 해당하지 않는다."},
+  {"check": "hero-maxchars", "target": "section.hero.hero--photo", "reason": "32자 h1을 가정한 시험이다. 실제 제목 17자로는 390에서 첫 화면 안에 끝난다(hero-fold, fold-action 통과)."}
+]

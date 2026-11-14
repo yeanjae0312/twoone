@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>방향 A 능선: 내셔널지오그래픽 트레일런 2027</title>
+<link rel="stylesheet" href="dir.css">
+<style>
+  /* A 능선: 사진이 화면을 채우고 글이 그 위에 놓인다. 푸른 기운의 어두운 바탕. */
+  :root { --bg: #0c1016; --surface: #141a22; --surface-2: #1b222c; }
+  .hero > img { position: absolute; inset: 0; filter: brightness(.62) saturate(.9); animation: settle 1.6s cubic-bezier(.2, .7, .2, 1) both; }
+  @keyframes settle { from { transform: scale(1.05); opacity: .4; } }
+  .hero .wrap { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: calc(var(--nav) + 48px) 0 56px; }
+  .hero h1 { font-size: clamp(40px, 6.1vw, 88px); max-width: 11em; }
+  .hero__lead { font-size: 20px; line-height: 1.6; max-width: 30em; margin-top: 24px; color: #dfe4ea; }
+  .hero .btn-row { margin-top: 32px; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(233, 236, 239, .22); }
+  .facts dt { font-size: 13px; color: #b9c2cc; }
+  .facts dd { margin: 4px 0 0; font-size: 20px; }
+
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; margin-bottom: 48px; }
+  .head h2 { font-size: 48px; }
+  .head p { max-width: 26em; color: var(--muted); }
+  .courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .course { background: var(--surface); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform .25s ease; }
+  .course:hover { transform: translateY(-2px); }
+  .course__photo { height: 240px; overflow: hidden; }
+  .course__photo img { filter: brightness(.82) saturate(.9); transition: transform .5s ease; }
+  .course:hover .course__photo img { transform: scale(1.03); }
+  .course__body { padding: 28px 28px 32px; }
+  .course h3 { font-size: 44px; }
+  .course dl { margin: 20px 0 24px; }
+  .course dl div { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .course dt { color: var(--muted); }
+  .course dd { margin: 0; }
+  @media (max-width: 900px) {
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .head { display: block; } .head h2 { font-size: 30px; margin-bottom: 16px; }
+    .courses { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top">National Geographic <b>Trail Run</b></a>
+  <nav class="nav__links"><a href="#courses">코스</a><a href="#courses">일정</a><a href="#courses">참가 안내</a><a href="#courses">대회 설명</a><a href="#top">로그인</a></nav>
+  <a class="btn btn--primary btn--sm" href="#courses">참가 신청하기</a>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  <img src="../assets/img/photo-f1811490.jpg" alt="겹겹이 이어지는 산 능선이 아침 안개 속으로 멀어지는 풍경">
+  <div class="wrap">
+    <h1>내셔널지오그래픽 트레일런 2027</h1>
+    <p class="hero__lead">산 능선을 따라 달리는 50K, 25K, 10K 트레일러닝 대회입니다. 참가 신청은 2027년 1월 말 이 사이트에서 시작합니다.</p>
+    <div class="btn-row"><a class="btn btn--primary" href="#courses">참가 신청하기</a><a class="btn btn--secondary" href="#courses">대회 설명 보기</a></div>
+    <dl class="facts">
+      <div><dt>대회일</dt><dd>미정</dd></div>
+      <div><dt>장소</dt><dd>미정</dd></div>
+      <div><dt>코스</dt><dd>50K · 25K · 10K</dd></div>
+      <div><dt>참가 신청</dt><dd>2027년 1월 말 시작</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section" id="courses"><div class="wrap">
+  <div class="head">
+    <h2>코스 세 가지</h2>
+    <p>출발 시각과 제한 시간은 시안용 임시 값입니다. 코스가 확정되면 누적 고도와 컷오프를 함께 공개합니다.</p>
+  </div>
+  <div class="courses">
+    <a class="course" href="#courses">
+      <div class="course__photo"><img src="../assets/img/photo-f59338871-960.jpg" alt="안개에 싸인 바위 능선"></div>
+      <div class="course__body"><h3>50K</h3>
+        <dl><div><dt>출발</dt><dd class="num">05:00</dd></div><div><dt>제한 시간</dt><dd>12시간</dd></div><div><dt>체크포인트</dt><dd>4곳</dd></div></dl>
+        <span class="link">50K 코스 보기</span></div>
+    </a>
+    <a class="course" href="#courses">
+      <div class="course__photo"><img src="../assets/img/photo-f63441418-960.jpg" alt="능선 길을 달려 오르는 러너"></div>
+      <div class="course__body"><h3>25K</h3>
+        <dl><div><dt>출발</dt><dd class="num">06:30</dd></div><div><dt>제한 시간</dt><dd>7시간</dd></div><div><dt>체크포인트</dt><dd>2곳</dd></div></dl>
+        <span class="link">25K 코스 보기</span></div>
+    </a>
+    <a class="course" href="#courses">
+      <div class="course__photo"><img src="../assets/img/photo-f89167164-500.jpg" alt="숲길을 달리는 러너"></div>
+      <div class="course__body"><h3>10K</h3>
+        <dl><div><dt>출발</dt><dd class="num">08:00</dd></div><div><dt>제한 시간</dt><dd>3시간</dd></div><div><dt>체크포인트</dt><dd>1곳</dd></div></dl>
+        <span class="link">10K 코스 보기</span></div>
+    </a>
+  </div>
+</div></section>
+</main>
+</body>
+</html>

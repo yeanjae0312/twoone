@@ -1,0 +1,312 @@
+{
+ "start": "2026-11-14T04:32:18.459Z",
+ "round": 1,
+ "idle": 0,
+ "errors": 0,
+ "status": "pass",
+ "history": [
+  {
+   "at": "2026-11-14T04:51:36.035Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 2,
+   "round": 1,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-14T04:51:45.325Z",
+   "mode": "manual",
+   "status": "pass",
+   "fails": 0,
+   "round": 1,
+   "reused": true,
+   "stopHookActive": false
+  }
+ ],
+ "max": 3,
+ "marker": {
+  "page": "index.html",
+  "url": null,
+  "root": null,
+  "kind": "service",
+  "category": "트레일러닝 대회 참가 신청",
+  "primary": "참가 신청하기",
+  "rounds": 3,
+  "start": "2026-11-14T04:32:18.459Z",
+  "by": "gate.mjs --start"
+ },
+ "manual": true,
+ "roundKey": "5a944c8236353caf:da39a3ee",
+ "roundFree": false,
+ "idleFree": false,
+ "blockKey": null,
+ "fp": "5a944c8236353caf",
+ "page": "index.html",
+ "found": {
+  "fails": [
+   {
+    "check": "hero-lines",
+    "where": "section.hero h1",
+    "msg": "the check fills the h1 to 32 characters (this hero's maxChars in heroes.json), not the page's own: it takes 4 lines at 1440, 3 at most",
+    "fix": "the check fills the h1 to this hero's maxChars, not your own: take the next type pairing the deal printed (start.mjs); when the h1 is final and fits, waive it (target: section.hero h1)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "hero-lines"
+    ],
+    "wheres": [
+     "section.hero h1"
+    ]
+   },
+   {
+    "check": "hero-maxchars",
+    "where": "section.hero.hero--photo section.hero.hero--photo \"내셔널지오그래픽 트레일런 2027 능선을 달리는 트레일러닝\"",
+    "msg": "with a 32-character h1 (heroes.json maxChars): ends at y 886, past the fold (844): 1.05 screens tall",
+    "fix": "shorten the h1 or give the hero room for the longest headline",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "hero-maxchars"
+    ],
+    "wheres": [
+     "section.hero.hero--photo section.hero.hero--photo \"내셔널지오그래픽 트레일런 2027 능선을 달리는 트레일러닝\""
+    ]
+   }
+  ],
+  "warns": [
+   {
+    "check": "scroll-reveal",
+    "where": "section#schedule > div.wrap.grid > figure.develop.span-6",
+    "msg": "starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "pinned",
+    "where": "section#courses > div.wrap.mo-ph \"코스 세 가지 50K는 해 뜨기 전에, 10K는 아침 8시에 출발합니다.\"",
+    "msg": "held on screen for 2 screens of scroll (position: sticky) while the page moves on (inside a dealt moment's section, [data-moment]: expected on every kind, two moments at most, house rule; its still is judged under reduced motion)",
+    "fix": "let the section scroll with the page",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "section#courses \"코스 세 가지\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-headline",
+    "where": "h1#hero-h \"내셔널지오그래픽 트레일런 2027\"",
+    "msg": "\"내셔널지오그래픽 트레일런 2027\": no category known to check it against (pass --category, or write the <title> as \"Name: what it is for whom\")",
+    "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "busy-ground",
+    "where": "div.hero-text > dl.hero__facts > div:nth-of-type(4) > dt \"참가 신청\"",
+    "msg": "text over a detailed part of a picture (its ground changes by 1.7 L* from one pixel to the next under the words)",
+    "fix": "move the text to a calm part of the picture, or put it on a panel",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "main#top > section.hero.hero--photo / section#courses",
+    "msg": "98px between these sections, -33% against the median 146px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#about / section#apply",
+    "msg": "186px between these sections, +27% against the median 146px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#apply / footer#contact",
+    "msg": "248px between these sections, +33% against the median 186px of gaps at a change of ground",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#schedule / section#about",
+    "msg": "uneven space at the edge of a band: 72px outside its edge, 114px inside it (the space on either side of a change of ground reads as one gap only when the two match)",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "div.wrap > div.closing__cta.close--photo > div.close__media > img \"photo-f50695436.jpg\"",
+    "msg": "7 photographs in more than one look: saturation from 0.21 to 0.92; warm and cool photographs mixed (b* -48 to +14); the odd one out is photo-f50695436.jpg",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-credit",
+    "where": "(the page text)",
+    "msg": "1 library source (wikimedia): the page credits wikimedia; confirm each shows the client's own product, place or people",
+    "fix": "confirm the library photograph shows the client's own product, place or people; otherwise replace it",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "label-centre",
+    "where": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"참가 신청하기\"",
+    "msg": "its label sits 18px off-centre (25px of room at the left, 43px at the right)",
+    "fix": "centre the label in its button, or fill the empty side with an icon",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-current",
+    "where": "header.nav",
+    "msg": "the nav stays on screen with 3 links to the page's sections, but never marks the one you are in (no link changes as the page scrolls)",
+    "fix": "mark the link of the section on screen (a colour, a weight or a line under it) as the visitor scrolls",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "skip-link",
+    "where": "header.nav > div.wrap.nav__bar > a.skip-link:nth-of-type(1) \"본문으로 건너뛰기\"",
+    "msg": "the first Tab stop is \"본문으로 건너뛰기\", not a skip link: a keyboard user tabs through the whole nav on every visit",
+    "fix": "add the starter's skip link as the header's first child: <a class=\"skip-link\" href=\"#top\">Skip to content</a>",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "action-repeat",
+    "where": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"참가 신청하기\"",
+    "msg": "\"참가 신청하기\" shows 2 times on the first screen at 1440px (nav, hero): the nav's button and the hero's; nothing else on the screen may repeat it",
+    "fix": "show the action once a screen besides the nav's button: the hero's, the close's or the phone bar's, never all at once",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "assumed",
+    "where": "li.mo-ph__ch:nth-of-type(1) > div.mo-ph__words > p > span \"05:00 출발, 제한 12시간.\"",
+    "msg": "4 facts marked as assumed, for the report: \"05:00 출발, 제한 12시간.\", \"06:30 출발, 제한 7시간.\", \"08:00 출발, 제한 3시간.\", \"50K 05:00, 25K 06:30, 10K 08:00\"",
+    "fix": "list each assumed fact in the report for the client to confirm, or take it from the brief",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "div.wrap > div.closing__cta.close--photo > div.close__media > img \"photo-f50695436-960.jpg\"",
+    "msg": "7 photographs in more than one look: saturation from 0.19 to 0.84; warm and cool photographs mixed (b* -24 to +16); the odd one out is photo-f50695436-960.jpg",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-stat-strip",
+    "msg": "stat strip x1",
+    "fix": "a strip only of figures the brief gives (a price, hours, a count); otherwise put each number in the sentence it proves, or leave it out (references/copy-tells.md)",
+    "widths": [],
+    "from": "copy",
+    "where": "copy x1: \"1 / 2 / 3\"",
+    "exact": false
+   }
+  ],
+  "crashed": [],
+  "seconds": {
+   "consistency": 98,
+   "layout": 3
+  }
+ },
+ "open": [],
+ "waived": [
+  {
+   "check": "hero-lines",
+   "where": "section.hero h1",
+   "msg": "the check fills the h1 to 32 characters (this hero's maxChars in heroes.json), not the page's own: it takes 4 lines at 1440, 3 at most",
+   "fix": "the check fills the h1 to this hero's maxChars, not your own: take the next type pairing the deal printed (start.mjs); when the h1 is final and fits, waive it (target: section.hero h1)",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "hero-lines"
+   ],
+   "wheres": [
+    "section.hero h1"
+   ],
+   "reason": "대회명 h1은 확정된 17자(내셔널지오그래픽 트레일런 2027)이고 1440에서 2줄, 390에서 2줄로 들어간다. 32자 채움 시험은 이 제목에 해당하지 않는다."
+  },
+  {
+   "check": "hero-maxchars",
+   "where": "section.hero.hero--photo section.hero.hero--photo \"내셔널지오그래픽 트레일런 2027 능선을 달리는 트레일러닝\"",
+   "msg": "with a 32-character h1 (heroes.json maxChars): ends at y 886, past the fold (844): 1.05 screens tall",
+   "fix": "shorten the h1 or give the hero room for the longest headline",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "hero-maxchars"
+   ],
+   "wheres": [
+    "section.hero.hero--photo section.hero.hero--photo \"내셔널지오그래픽 트레일런 2027 능선을 달리는 트레일러닝\""
+   ],
+   "reason": "32자 h1을 가정한 시험이다. 실제 제목 17자로는 390에서 첫 화면 안에 끝난다(hero-fold, fold-action 통과)."
+  }
+ ],
+ "warnCount": 18,
+ "at": "2026-11-14T04:51:45.326Z"
+}
