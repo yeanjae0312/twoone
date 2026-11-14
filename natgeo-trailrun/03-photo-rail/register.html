@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>참가 신청: 트레일런 2027</title>
+<meta name="description" content="트레일런 코스를 고르고 참가자 정보를 입력한 뒤 참가비를 결제합니다. 세 단계로 진행합니다.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- 고른 테마를 첫 화면이 그려지기 전에 적용한다 (깜빡임 방지). 기본은 밝은 테마. -->
+<script>try{if(localStorage.getItem('trailrun3-theme')==='dark'){document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#000000'}}catch(e){}</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="reg-page">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__bar">
+    <a class="nav__title" href="index.html">트레일런 2027</a>
+    <button class="nav__more" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="메뉴 열기"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5"/></svg></button>
+    <nav class="nav__links" id="nav-links" aria-label="주 메뉴">
+      <a href="index.html">개요</a>
+      <a href="info.html">대회 안내</a>
+      <a href="info.html#cutoff">컷오프</a>
+      <a href="info.html#gear">필수 장비</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="reg" aria-labelledby="reg-h">
+    <div class="wrap">
+      <h1 id="reg-h" style="font-size:clamp(40px,5.6vw,64px)">참가 신청</h1>
+      <ol class="wiz" aria-label="신청 단계">
+        <li data-wiz="1" aria-current="step"><span class="n">1</span>코스 선택</li>
+        <li data-wiz="2"><span class="n">2</span>참가자·기념품 정보</li>
+        <li data-wiz="3"><span class="n">3</span>결제와 신청 완료</li>
+      </ol>
+
+      <form id="reg-form" novalidate>
+        <input type="hidden" name="course" value="">
+
+        <section class="step" data-step="1" aria-labelledby="s1-h">
+          <h2 class="step__title" id="s1-h" tabindex="-1">어느 코스로 신청할까요?</h2>
+          <div class="notice">
+            <h3>신청 전에 확인하세요</h3>
+            <ul>
+              <li>대회 전날 필수 장비 검사를 통과해야 배번을 받습니다.</li>
+              <li>참가비와 환불 규정은 접수 시작 전에 공개합니다.</li>
+              <li>신청한 뒤 코스를 바꾸는 방법은 환불 규정과 함께 안내합니다.</li>
+            </ul>
+          </div>
+          <div class="pkgs">
+            <article class="pkg" data-pkg="50" data-start="05:00" data-limit="12시간">
+              <div class="pkg__pic"><img src="assets/img/photo-f59338871-960.jpg" srcset="assets/img/photo-f59338871-500.jpg 500w, assets/img/photo-f59338871-960.jpg 960w" sizes="(max-width: 899px) 100vw, 36vw" alt="안개에 싸인 바위 능선과 그 아래 숲" loading="lazy" decoding="async"></div>
+              <div class="pkg__body">
+                <div class="pkg__top"><h3 class="big">50K</h3><p>능선 종주 · 05:00 출발 · 제한 12시간 · 체크포인트 4곳</p></div>
+                <dl class="pkg__facts">
+                  <div><dt>참가 자격</dt><dd>미정 (완주 경험 확인 가능)</dd></div>
+                  <div><dt>신청 기간</dt><dd>2027년 1월 말부터</dd></div>
+                  <div><dt>정원</dt><dd>미정</dd></div>
+                </dl>
+                <ul class="chips" aria-label="참가권 구성"><li>배번과 기록 칩</li><li>기념 티셔츠</li><li>완주 메달</li></ul>
+                <details class="pkg__more"><summary>구성 자세히 보기<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5"/></svg></summary><p>배번과 기록 칩은 대회 전날 장비 검사 뒤에 받습니다. 기념 티셔츠는 다음 단계에서 사이즈를 고르고, 완주 메달은 결승선에서 받습니다.</p></details>
+                <div class="pkg__act">
+                  <p class="pkg__fee">참가비<b>미정</b></p>
+                  <button class="btn" type="button" data-pick="50">50K로 신청하기</button>
+                </div>
+              </div>
+            </article>
+            <article class="pkg" data-pkg="25" data-start="06:30" data-limit="7시간">
+              <div class="pkg__pic"><img src="assets/img/photo-f63441418-960.jpg" srcset="assets/img/photo-f63441418-500.jpg 500w, assets/img/photo-f63441418-960.jpg 960w" sizes="(max-width: 899px) 100vw, 36vw" alt="산 능선 길을 달려 오르는 러너" loading="lazy" decoding="async"></div>
+              <div class="pkg__body">
+                <div class="pkg__top"><h3 class="big">25K</h3><p>하프 코스 · 06:30 출발 · 제한 7시간 · 체크포인트 2곳</p></div>
+                <dl class="pkg__facts">
+                  <div><dt>참가 자격</dt><dd>미정</dd></div>
+                  <div><dt>신청 기간</dt><dd>2027년 1월 말부터</dd></div>
+                  <div><dt>정원</dt><dd>미정</dd></div>
+                </dl>
+                <ul class="chips" aria-label="참가권 구성"><li>배번과 기록 칩</li><li>기념 티셔츠</li><li>완주 메달</li></ul>
+                <details class="pkg__more"><summary>구성 자세히 보기<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5"/></svg></summary><p>배번과 기록 칩은 대회 전날 장비 검사 뒤에 받습니다. 기념 티셔츠는 다음 단계에서 사이즈를 고르고, 완주 메달은 결승선에서 받습니다.</p></details>
+                <div class="pkg__act">
+                  <p class="pkg__fee">참가비<b>미정</b></p>
+                  <button class="btn" type="button" data-pick="25">25K로 신청하기</button>
+                </div>
+              </div>
+            </article>
+            <article class="pkg" data-pkg="10" data-start="08:00" data-limit="3시간">
+              <div class="pkg__pic"><img src="assets/img/photo-f108236280-960.jpg" srcset="assets/img/photo-f108236280-500.jpg 500w, assets/img/photo-f108236280-960.jpg 960w" sizes="(max-width: 899px) 100vw, 36vw" alt="초록 숲으로 덮인 산줄기와 바위 봉우리" loading="lazy" decoding="async"></div>
+              <div class="pkg__body">
+                <div class="pkg__top"><h3 class="big">10K</h3><p>숲길 코스 · 08:00 출발 · 제한 3시간 · 체크포인트 1곳</p></div>
+                <dl class="pkg__facts">
+                  <div><dt>참가 자격</dt><dd>미정</dd></div>
+                  <div><dt>신청 기간</dt><dd>2027년 1월 말부터</dd></div>
+                  <div><dt>정원</dt><dd>미정</dd></div>
+                </dl>
+                <ul class="chips" aria-label="참가권 구성"><li>배번과 기록 칩</li><li>기념 티셔츠</li><li>완주 메달</li></ul>
+                <details class="pkg__more"><summary>구성 자세히 보기<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5"/></svg></summary><p>배번과 기록 칩은 대회 전날 장비 검사 뒤에 받습니다. 기념 티셔츠는 다음 단계에서 사이즈를 고르고, 완주 메달은 결승선에서 받습니다.</p></details>
+                <div class="pkg__act">
+                  <p class="pkg__fee">참가비<b>미정</b></p>
+                  <button class="btn" type="button" data-pick="10">10K로 신청하기</button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="doc__note">출발 시각, 제한 시간, 체크포인트 수, 참가권 구성은 시안용 임시 값입니다. <a class="link" href="info.html#courses">코스 비교 보기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></p>
+        </section>
+
+        <section class="step" data-step="2" aria-labelledby="s2-h">
+          <h2 class="step__title" id="s2-h" tabindex="-1">참가자와 기념품 정보를 적어 주세요</h2>
+          <p class="picked"><span><b data-sum="dist">50K</b><span data-sum="line">05:00 출발 · 제한 12시간</span></span><button class="link" type="button" data-go="1" style="background:none;border:0;cursor:pointer;font:inherit">코스 바꾸기</button></p>
+          <fieldset class="block">
+            <legend>참가자</legend>
+            <div class="fields">
+              <div class="field"><label for="r-name">이름</label>
+                <input id="r-name" name="name" type="text" autocomplete="name" enterkeyhint="next" required aria-describedby="r-name-err">
+                <p class="err" id="r-name-err" hidden>신분증에 적힌 이름을 적어 주세요.</p></div>
+              <div class="field"><label for="r-birth">생년월일 <span class="field__hint">8자리 숫자</span></label>
+                <input id="r-birth" name="birth" type="text" inputmode="numeric" autocomplete="bday" maxlength="8" pattern="[0-9]{8}" placeholder="19900412" enterkeyhint="next" required aria-describedby="r-birth-err">
+                <p class="err" id="r-birth-err" hidden>생년월일을 숫자 8자리로 적어 주세요. 예: 19900412</p></div>
+              <div class="field field--full"><span class="field__label" id="r-sex-l">성별</span>
+                <div class="seg" role="radiogroup" aria-labelledby="r-sex-l" aria-describedby="r-sex-err">
+                  <label><input type="radio" name="sex" value="m"><span>남성</span></label>
+                  <label><input type="radio" name="sex" value="f"><span>여성</span></label>
+                </div>
+                <p class="err" id="r-sex-err" hidden>성별을 골라 주세요. 순위 부문을 나누는 데 씁니다.</p></div>
+              <div class="field"><label for="r-tel">휴대전화</label>
+                <input id="r-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" required aria-describedby="r-tel-err">
+                <p class="err" id="r-tel-err" hidden>신청 내역을 받을 휴대전화 번호를 적어 주세요.</p></div>
+              <div class="field"><label for="r-email">이메일</label>
+                <input id="r-email" name="email" type="email" inputmode="email" autocomplete="email" enterkeyhint="next" required aria-describedby="r-email-err">
+                <p class="err" id="r-email-err" hidden>@가 들어간 이메일 주소를 적어 주세요.</p></div>
+            </div>
+          </fieldset>
+          <fieldset class="block">
+            <legend>비상 연락처</legend>
+            <div class="fields">
+              <div class="field"><label for="r-ename">비상 연락처 이름</label>
+                <input id="r-ename" name="ename" type="text" autocomplete="off" enterkeyhint="next" required aria-describedby="r-ename-err">
+                <p class="err" id="r-ename-err" hidden>대회 중 연락할 사람의 이름을 적어 주세요.</p></div>
+              <div class="field"><label for="r-etel">비상 연락처 전화</label>
+                <input id="r-etel" name="etel" type="tel" inputmode="tel" autocomplete="off" enterkeyhint="done" required aria-describedby="r-etel-err">
+                <p class="err" id="r-etel-err" hidden>대회 중 연락할 사람의 전화번호를 적어 주세요.</p></div>
+            </div>
+          </fieldset>
+          <fieldset class="block">
+            <legend>기념품</legend>
+            <div class="field"><span class="field__label" id="r-size-l">기념 티셔츠 사이즈</span>
+              <div class="seg seg--4" role="radiogroup" aria-labelledby="r-size-l" aria-describedby="r-size-err">
+                <label><input type="radio" name="size" value="S"><span>S</span></label>
+                <label><input type="radio" name="size" value="M"><span>M</span></label>
+                <label><input type="radio" name="size" value="L"><span>L</span></label>
+                <label><input type="radio" name="size" value="XL"><span>XL</span></label>
+              </div>
+              <p class="err" id="r-size-err" hidden>티셔츠 사이즈를 골라 주세요.</p></div>
+          </fieldset>
+          <p class="status" role="status" data-step-status></p>
+          <div class="step__nav">
+            <button class="btn btn--ghost" type="button" data-go="1">이전</button>
+            <button class="btn btn--lg" type="button" data-next>다음: 결제</button>
+          </div>
+        </section>
+
+        <section class="step" data-step="3" aria-labelledby="s3-h">
+          <h2 class="step__title" id="s3-h" tabindex="-1">내용을 확인하고 결제합니다</h2>
+          <div class="review">
+            <div class="block sum">
+              <h3 class="sum__title">신청 내용</h3>
+              <p class="sum__dist" data-sum="dist">50K</p>
+              <dl class="rows">
+                <div><dt>출발</dt><dd data-sum="start">05:00</dd></div>
+                <div><dt>제한 시간</dt><dd data-sum="limit">12시간</dd></div>
+                <div><dt>참가자</dt><dd data-sum="name">-</dd></div>
+                <div><dt>티셔츠</dt><dd data-sum="size">-</dd></div>
+                <div><dt>참가비</dt><dd>미정</dd></div>
+              </dl>
+            </div>
+            <fieldset class="block">
+              <legend>동의와 결제 수단</legend>
+              <div class="agree">
+                <label class="check"><input type="checkbox" id="agree-all"><span>전체 동의</span></label>
+                <label class="check"><input type="checkbox" name="agree-rules" required data-agree><span>대회 규정과 안전 서약에 동의합니다 <em class="must">필수</em></span></label>
+                <label class="check"><input type="checkbox" name="agree-privacy" required data-agree><span>개인정보 수집과 이용에 동의합니다 <em class="must">필수</em></span></label>
+                <label class="check"><input type="checkbox" name="agree-news" data-agree><span>대회 소식을 문자와 이메일로 받습니다 <em>선택</em></span></label>
+                <p class="err" id="r-agree-err" hidden>필수 항목 두 가지에 동의해 주세요.</p>
+              </div>
+              <div class="seg seg--3" role="radiogroup" aria-label="결제 수단">
+                <label><input type="radio" name="pay" value="card" checked><span>신용카드</span></label>
+                <label><input type="radio" name="pay" value="easy"><span>간편결제</span></label>
+                <label><input type="radio" name="pay" value="bank"><span>계좌이체</span></label>
+              </div>
+            </fieldset>
+          </div>
+          <p class="status" role="status" data-reg-status></p>
+          <div class="step__nav">
+            <button class="btn btn--ghost" type="button" data-go="2">이전</button>
+            <button class="btn btn--lg" type="submit">결제하기</button>
+          </div>
+        </section>
+      </form>
+
+      <section class="policy" aria-labelledby="policy-h">
+        <h2 id="policy-h">수정, 취소, 환불</h2>
+        <dl class="qa">
+          <div><dt>수정과 취소 기간</dt><dd>아직 정해지지 않았습니다. 접수 일정과 함께 공개합니다.</dd></div>
+          <div><dt>환불</dt><dd>환불 기간과 수수료는 아직 정해지지 않았습니다.</dd></div>
+          <div><dt>코스 변경</dt><dd>변경 방법은 환불 규정과 함께 안내합니다.</dd></div>
+        </dl>
+      </section>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>참고 디자인 시안입니다. 실제 결제는 연결되어 있지 않고, 일정·참가비·참가권 구성은 확정된 내용이 아닙니다. 사진과 영상은 Wikimedia Commons의 임시 자료입니다.</p>
+    <div class="foot__row">
+      <span>Copyright &copy; 2026 National Geographic Trail Run.</span>
+      <nav class="foot__links" aria-label="바닥 메뉴"><a href="index.html">개요</a><a href="info.html">대회 안내</a><a href="register.html">참가 신청</a><a href="credits.html">사진·영상 출처</a></nav>
+    </div>
+  </div>
+</footer>
+
+<button class="theme" type="button" data-theme-toggle aria-label="어두운 테마로 바꾸기"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-moon" d="M20 14.2A8 8 0 0 1 9.8 4a8 8 0 1 0 10.2 10.2z"/><g class="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg></button>
+
+<script src="main.js" defer></script>
+<script src="register.js" defer></script>
+</body>
+</html>

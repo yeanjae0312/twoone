@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>대회 안내: 트레일런 2027</title>
+<meta name="description" content="50K, 25K, 10K 트레일런 코스 비교, 체크포인트 컷오프, 필수 장비, 일정, 취소와 환불 규정을 참가 신청 전에 확인합니다.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- 고른 테마를 첫 화면이 그려지기 전에 적용한다 (깜빡임 방지). 기본은 밝은 테마. -->
+<script>try{if(localStorage.getItem('trailrun3-theme')==='dark'){document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#000000'}}catch(e){}</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__bar">
+    <a class="nav__title" href="index.html">트레일런 2027</a>
+    <button class="nav__more" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="메뉴 열기"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5"/></svg></button>
+    <nav class="nav__links" id="nav-links" aria-label="주 메뉴">
+      <a href="index.html">개요</a>
+      <a href="info.html" aria-current="page">대회 안내</a>
+      <a href="info.html#cutoff">컷오프</a>
+      <a href="info.html#gear">필수 장비</a>
+    </nav>
+    <a class="btn btn--sm" href="register.html">신청하기</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <header class="doc-hero">
+      <h1>대회 안내</h1>
+      <p class="sub">코스별 출발 시각과 컷오프, 필수 장비, 일정, 취소 규정. 신청 전에 확인할 것을 한 장에 모았습니다.</p>
+    </header>
+
+    <div class="doc">
+      <nav class="doc__nav" aria-label="이 페이지의 항목" data-toc>
+        <a href="#courses">코스</a>
+        <a href="#cutoff">컷오프</a>
+        <a href="#gear">필수 장비</a>
+        <a href="#schedule">일정</a>
+        <a href="#rules">취소와 환불</a>
+      </nav>
+
+      <div class="doc__body">
+        <section class="doc__sec" id="courses" aria-labelledby="courses-h">
+          <h2 id="courses-h">코스<small>세 코스 모두 같은 곳에서 출발하고 같은 곳으로 돌아옵니다.</small></h2>
+          <div>
+            <table class="spec">
+              <thead><tr><th scope="col"><span class="sr">항목</span></th><th scope="col">50K</th><th scope="col">25K</th><th scope="col">10K</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">성격</th><td>능선 종주</td><td>하프 코스</td><td>숲길 코스</td></tr>
+                <tr><th scope="row">출발</th><td>05:00</td><td>06:30</td><td>08:00</td></tr>
+                <tr><th scope="row">제한 시간</th><td>12시간</td><td>7시간</td><td>3시간</td></tr>
+                <tr><th scope="row">체크포인트</th><td>4곳</td><td>2곳</td><td>1곳</td></tr>
+                <tr><th scope="row">참가비</th><td>미정</td><td>미정</td><td>미정</td></tr>
+                <tr><th scope="row">신청</th><td><a class="link" href="register.html?course=50">신청하기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></td><td><a class="link" href="register.html?course=25">신청하기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></td><td><a class="link" href="register.html?course=10">신청하기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></td></tr>
+              </tbody>
+            </table>
+            <p class="doc__note">출발 시각, 제한 시간, 체크포인트 수는 시안용 임시 값입니다. 참가비는 접수 시작 전에 공개합니다.</p>
+          </div>
+        </section>
+
+        <section class="doc__sec" id="cutoff" aria-labelledby="cutoff-h">
+          <h2 id="cutoff-h">50K 컷오프<small>이 시각까지 체크포인트를 지나지 못하면 레이스를 이어 갈 수 없습니다.</small></h2>
+          <div>
+            <table class="spec spec--2">
+              <tbody>
+                <tr><th scope="row">CP1 <small>11km 지점</small></th><td>07:30</td></tr>
+                <tr><th scope="row">CP2 <small>22km 지점</small></th><td>10:00</td></tr>
+                <tr><th scope="row">CP3 <small>33km 지점</small></th><td>13:00</td></tr>
+                <tr><th scope="row">CP4 <small>42km 지점</small></th><td>15:30</td></tr>
+                <tr><th scope="row">결승선 <small>50km</small></th><td>17:00</td></tr>
+              </tbody>
+            </table>
+            <p class="doc__note">컷오프 시각과 지점은 시안용 임시 값입니다.</p>
+          </div>
+        </section>
+
+        <section class="doc__sec" id="gear" aria-labelledby="gear-h">
+          <h2 id="gear-h">필수 장비<small>대회 전날 장비 검사에서 하나라도 빠지면 배번을 받을 수 없습니다.</small></h2>
+          <div>
+            <ul class="list2">
+              <li>헤드램프와 여분 배터리</li><li>방수 재킷</li><li>서바이벌 블랭킷</li><li>호루라기</li><li>물 1L 이상과 개인 컵</li><li>비상식</li><li>충전된 휴대전화</li>
+            </ul>
+            <p class="doc__note">장비 목록은 시안용 임시 값입니다.</p>
+          </div>
+        </section>
+
+        <section class="doc__sec" id="schedule" aria-labelledby="schedule-h">
+          <h2 id="schedule-h">일정<small>날짜는 확정되는 대로 이 자리에 올립니다.</small></h2>
+          <div>
+            <table class="spec spec--2">
+              <tbody>
+                <tr><th scope="row">참가 신청 시작 <small>이 사이트에서 코스를 고르고 결제</small></th><td>2027년 1월 말</td></tr>
+                <tr><th scope="row">참가 신청 마감 <small>코스별 정원이 차면 먼저 마감</small></th><td>미정</td></tr>
+                <tr><th scope="row">배번 수령과 장비 검사</th><td>대회 전날</td></tr>
+                <tr><th scope="row">레이스 <small>50K 05:00, 25K 06:30, 10K 08:00</small></th><td>대회일</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc__sec" id="rules" aria-labelledby="rules-h">
+          <h2 id="rules-h">취소와 환불, 참가 자격<small>정해지지 않은 항목은 접수 시작 전에 올립니다.</small></h2>
+          <dl class="qa">
+            <div><dt>신청을 취소하면 환불받을 수 있나요?</dt><dd>환불 기간과 수수료는 아직 정해지지 않았습니다. 접수 일정과 함께 공개합니다.</dd></div>
+            <div><dt>누구나 신청할 수 있나요?</dt><dd>코스별 참가 자격은 아직 정해지지 않았습니다. 50K는 완주 경험을 확인할 수 있습니다.</dd></div>
+            <div><dt>신청한 뒤 코스를 바꿀 수 있나요?</dt><dd>코스 변경 방법은 환불 규정과 함께 안내합니다.</dd></div>
+            <div><dt>접수는 선착순인가요?</dt><dd>선착순인지 추첨인지 아직 정해지지 않았습니다.</dd></div>
+          </dl>
+        </section>
+
+        <div class="doc__cta">
+          <p>코스를 정했다면 신청할 차례.</p>
+          <a class="btn btn--lg" href="register.html">참가 신청하기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>참고 디자인 시안입니다. 일정, 장소, 코스, 컷오프, 장비 목록은 확정된 내용이 아닙니다. 사진과 영상은 Wikimedia Commons의 임시 자료입니다.</p>
+    <div class="foot__row">
+      <span>Copyright &copy; 2026 National Geographic Trail Run.</span>
+      <nav class="foot__links" aria-label="바닥 메뉴"><a href="index.html">개요</a><a href="info.html">대회 안내</a><a href="register.html">참가 신청</a><a href="credits.html">사진·영상 출처</a></nav>
+    </div>
+  </div>
+</footer>
+
+<button class="theme" type="button" data-theme-toggle aria-label="어두운 테마로 바꾸기"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-moon" d="M20 14.2A8 8 0 0 1 9.8 4a8 8 0 1 0 10.2 10.2z"/><g class="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg></button>
+
+<script src="main.js" defer></script>
+</body>
+</html>

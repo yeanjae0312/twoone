@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>트레일런 2027: 내셔널지오그래픽이 여는 산악 달리기 대회</title>
+<meta name="description" content="50K, 25K, 10K 트레일러닝 대회. 코스 풍경을 영상과 사진으로 보고 참가 신청까지 이어집니다. 신청은 2027년 1월 말에 시작합니다.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- 고른 테마를 첫 화면이 그려지기 전에 적용한다 (깜빡임 방지). 기본은 밝은 테마. -->
+<script>try{if(localStorage.getItem('trailrun3-theme')==='dark'){document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#000000'}}catch(e){}</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__bar">
+    <a class="nav__title" href="index.html">트레일런 2027</a>
+    <button class="nav__more" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="메뉴 열기"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5"/></svg></button>
+    <nav class="nav__links" id="nav-links" aria-label="주 메뉴">
+      <a href="index.html" aria-current="page">개요</a>
+      <a href="info.html">대회 안내</a>
+      <a href="info.html#cutoff">컷오프</a>
+      <a href="info.html#gear">필수 장비</a>
+    </nav>
+    <a class="btn btn--sm" href="register.html">신청하기</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero__text">
+        <h1 id="hero-h">트레일런 2027</h1>
+        <p class="lead">내셔널지오그래픽이 여는, 산을 달리는 대회.</p>
+        <p class="sub">50K, 25K, 10K. 참가 신청은 2027년 1월 말 시작.</p>
+        <p class="cta"><a class="btn" href="register.html">참가 신청하기</a><a class="link" href="info.html">대회 안내 보기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></p>
+      </div>
+      <div class="film" data-film>
+        <video muted loop playsinline autoplay preload="metadata" poster="assets/video/clouds-poster.jpg" aria-label="숲이 덮인 산비탈 위로 구름이 빠르게 흘러가는 영상">
+          <source src="assets/video/clouds-1080.webm" type="video/webm">
+          <source src="assets/video/clouds-540.mp4" type="video/mp4">
+        </video>
+        <button class="ctrl film__ctrl" type="button" data-film-toggle aria-pressed="false" aria-label="영상 일시정지"><svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-pause" d="M5 3.5v9M11 3.5v9"/><path class="i-play" d="M5.5 3.2v9.6l7.4-4.8z"/></svg></button>
+      </div>
+      <dl class="facts">
+        <div><dd>미정</dd><dt>대회일</dt></div>
+        <div><dd>미정</dd><dt>장소</dt></div>
+        <div><dd>50K · 25K · 10K</dd><dt>코스</dt></div>
+        <div><dd>2027년 1월 말</dd><dt>참가 신청 시작</dt></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band band--alt" id="scenes" aria-labelledby="scenes-h">
+    <div class="wrap band__head">
+      <h2 id="scenes-h">능선, 운해, 숲길.</h2>
+      <p class="sub">코스에서 만나게 될 풍경입니다.</p>
+    </div>
+    <div class="rail" data-rail>
+      <ul class="rail__track">
+        <li class="rail__item rail__item--w"><img src="assets/img/photo-f1811490-960.jpg" srcset="assets/img/photo-f1811490-500.jpg 500w, assets/img/photo-f1811490-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="겹겹이 이어지는 산 능선이 아침 안개 속으로 멀어지는 풍경" decoding="async"></li>
+        <li class="rail__item rail__item--s"><img src="assets/img/photo-f63441418-960.jpg" srcset="assets/img/photo-f63441418-500.jpg 500w, assets/img/photo-f63441418-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="산 능선 길을 달려 오르는 러너" decoding="async"></li>
+        <li class="rail__item rail__item--w"><img src="assets/img/photo-f111539170-960.jpg" srcset="assets/img/photo-f111539170-500.jpg 500w, assets/img/photo-f111539170-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="산봉우리 사이를 가득 채운 운해" decoding="async"></li>
+        <li class="rail__item rail__item--t"><img src="assets/img/photo-f59338871-960.jpg" srcset="assets/img/photo-f59338871-500.jpg 500w, assets/img/photo-f59338871-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="안개에 싸인 바위 능선과 그 아래 숲" decoding="async"></li>
+        <li class="rail__item rail__item--w"><img src="assets/img/photo-f89167164-960.jpg" srcset="assets/img/photo-f89167164-500.jpg 500w, assets/img/photo-f89167164-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="산악 호수가 내려다보이는 능선을 달리는 러너" decoding="async"></li>
+        <li class="rail__item rail__item--s"><img src="assets/img/photo-f108236280-960.jpg" srcset="assets/img/photo-f108236280-500.jpg 500w, assets/img/photo-f108236280-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="초록 숲으로 덮인 산줄기와 바위 봉우리" decoding="async"></li>
+        <li class="rail__item rail__item--w"><img src="assets/img/photo-f30106867-960.jpg" srcset="assets/img/photo-f30106867-500.jpg 500w, assets/img/photo-f30106867-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="풀밭 언덕길을 달리는 대회 참가자" decoding="async"></li>
+        <li class="rail__item rail__item--w"><img src="assets/img/photo-f50695436-960.jpg" srcset="assets/img/photo-f50695436-500.jpg 500w, assets/img/photo-f50695436-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="푸른 산줄기가 겹겹이 이어지는 전망" decoding="async"></li>
+        <li class="rail__item rail__item--t"><img src="assets/img/photo-f30106720-960.jpg" srcset="assets/img/photo-f30106720-500.jpg 500w, assets/img/photo-f30106720-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="호숫가 언덕길을 배번을 달고 달리는 참가자" decoding="async"></li>
+        <li class="rail__item rail__item--w"><img src="assets/img/photo-f73672450-960.jpg" srcset="assets/img/photo-f73672450-500.jpg 500w, assets/img/photo-f73672450-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="눈 덮인 바위 구간을 줄을 잡고 오르는 러너" decoding="async"></li>
+        <li class="rail__item rail__item--w" aria-hidden="true"><img src="assets/img/photo-f1811490-960.jpg" srcset="assets/img/photo-f1811490-500.jpg 500w, assets/img/photo-f1811490-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--s" aria-hidden="true"><img src="assets/img/photo-f63441418-960.jpg" srcset="assets/img/photo-f63441418-500.jpg 500w, assets/img/photo-f63441418-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--w" aria-hidden="true"><img src="assets/img/photo-f111539170-960.jpg" srcset="assets/img/photo-f111539170-500.jpg 500w, assets/img/photo-f111539170-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--t" aria-hidden="true"><img src="assets/img/photo-f59338871-960.jpg" srcset="assets/img/photo-f59338871-500.jpg 500w, assets/img/photo-f59338871-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--w" aria-hidden="true"><img src="assets/img/photo-f89167164-960.jpg" srcset="assets/img/photo-f89167164-500.jpg 500w, assets/img/photo-f89167164-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--s" aria-hidden="true"><img src="assets/img/photo-f108236280-960.jpg" srcset="assets/img/photo-f108236280-500.jpg 500w, assets/img/photo-f108236280-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--w" aria-hidden="true"><img src="assets/img/photo-f30106867-960.jpg" srcset="assets/img/photo-f30106867-500.jpg 500w, assets/img/photo-f30106867-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--w" aria-hidden="true"><img src="assets/img/photo-f50695436-960.jpg" srcset="assets/img/photo-f50695436-500.jpg 500w, assets/img/photo-f50695436-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--t" aria-hidden="true"><img src="assets/img/photo-f30106720-960.jpg" srcset="assets/img/photo-f30106720-500.jpg 500w, assets/img/photo-f30106720-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+        <li class="rail__item rail__item--w" aria-hidden="true"><img src="assets/img/photo-f73672450-960.jpg" srcset="assets/img/photo-f73672450-500.jpg 500w, assets/img/photo-f73672450-960.jpg 960w" sizes="(max-width: 639px) 90vw, 46vw" alt="" decoding="async"></li>
+      </ul>
+    </div>
+    <div class="rail-ctrl"><button class="ctrl" type="button" data-rail-toggle aria-pressed="false" aria-label="사진 흐름 멈추기"><svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-pause" d="M5 3.5v9M11 3.5v9"/><path class="i-play" d="M5.5 3.2v9.6l7.4-4.8z"/></svg></button></div>
+  </section>
+
+  <section class="band" id="courses" aria-labelledby="courses-h">
+    <div class="wrap">
+      <div class="band__head">
+        <h2 id="courses-h">코스 세 가지.</h2>
+        <p class="sub">해 뜨기 전에 출발하는 50K부터 아침 숲길의 10K까지.</p>
+      </div>
+      <div class="tiles">
+        <article class="tile">
+          <div class="tile__text">
+            <h3>능선 종주</h3>
+            <p class="big">50K</p>
+            <p>05:00 출발 · 제한 12시간</p>
+            <p class="cta"><a class="link" href="register.html?course=50">신청하기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a><a class="link" href="info.html#cutoff">컷오프 보기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></p>
+          </div>
+          <div class="tile__pic"><img src="assets/img/photo-f59338871-960.jpg" srcset="assets/img/photo-f59338871-500.jpg 500w, assets/img/photo-f59338871-960.jpg 960w" sizes="(max-width: 899px) 100vw, 33vw" alt="안개에 싸인 바위 능선과 그 아래 숲" loading="lazy" decoding="async"></div>
+        </article>
+        <article class="tile">
+          <div class="tile__text">
+            <h3>하프 코스</h3>
+            <p class="big">25K</p>
+            <p>06:30 출발 · 제한 7시간</p>
+            <p class="cta"><a class="link" href="register.html?course=25">신청하기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></p>
+          </div>
+          <div class="tile__pic"><img src="assets/img/photo-f63441418-960.jpg" srcset="assets/img/photo-f63441418-500.jpg 500w, assets/img/photo-f63441418-960.jpg 960w" sizes="(max-width: 899px) 100vw, 33vw" alt="산 능선 길을 달려 오르는 러너" loading="lazy" decoding="async"></div>
+        </article>
+        <article class="tile">
+          <div class="tile__text">
+            <h3>숲길 코스</h3>
+            <p class="big">10K</p>
+            <p>08:00 출발 · 제한 3시간</p>
+            <p class="cta"><a class="link" href="register.html?course=10">신청하기<svg class="arr" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5"/></svg></a></p>
+          </div>
+          <div class="tile__pic"><img src="assets/img/photo-f108236280-960.jpg" srcset="assets/img/photo-f108236280-500.jpg 500w, assets/img/photo-f108236280-960.jpg 960w" sizes="(max-width: 899px) 100vw, 33vw" alt="초록 숲으로 덮인 산줄기와 바위 봉우리" loading="lazy" decoding="async"></div>
+        </article>
+      </div>
+      <p class="foot-note">출발 시각과 제한 시간은 시안용 임시 값입니다.</p>
+    </div>
+  </section>
+
+  <section class="band band--alt" id="schedule" aria-labelledby="schedule-h">
+    <div class="wrap">
+      <div class="band__head">
+        <h2 id="schedule-h">신청부터 레이스까지.</h2>
+        <p class="sub">날짜는 확정되는 대로 이 자리에 올립니다.</p>
+      </div>
+      <ol class="steps">
+        <li><p class="when">2027년 1월 말</p><h3>참가 신청 시작</h3><p>이 사이트에서 코스를 고르고 결제합니다.</p></li>
+        <li><p class="when">미정</p><h3>참가 신청 마감</h3><p>코스별 정원이 차면 먼저 닫힙니다.</p></li>
+        <li><p class="when">대회 전날</p><h3>배번 수령과 장비 검사</h3><p>필수 장비를 모두 확인받아야 배번을 받습니다.</p></li>
+        <li><p class="when">대회일</p><h3>레이스</h3><p>50K 05:00, 25K 06:30, 10K 08:00 순서로 출발합니다.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band close" aria-labelledby="close-h">
+    <div class="wrap band__head">
+      <h2 id="close-h">2027년 1월 말,<br>신청이 열립니다.</h2>
+      <p class="sub">코스별 정원이 차면 먼저 마감합니다.</p>
+      <a class="btn btn--lg" href="register.html">참가 신청하기</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>참고 디자인 시안입니다. 일정, 장소, 코스, 출발 시각은 확정된 내용이 아닙니다. 사진과 영상은 Wikimedia Commons의 임시 자료입니다.</p>
+    <div class="foot__row">
+      <span>Copyright &copy; 2026 National Geographic Trail Run.</span>
+      <nav class="foot__links" aria-label="바닥 메뉴"><a href="index.html">개요</a><a href="info.html">대회 안내</a><a href="register.html">참가 신청</a><a href="credits.html">사진·영상 출처</a></nav>
+    </div>
+  </div>
+</footer>
+
+<button class="theme" type="button" data-theme-toggle aria-label="어두운 테마로 바꾸기"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-moon" d="M20 14.2A8 8 0 0 1 9.8 4a8 8 0 1 0 10.2 10.2z"/><g class="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg></button>
+
+<script src="main.js" defer></script>
+</body>
+</html>
