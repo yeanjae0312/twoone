@@ -7,7 +7,7 @@
         "rule": "cramped-padding",
         "value": "*",
         "files": [
-          "impeccable/index.html"
+          "01-elevation-line/index.html"
         ],
         "createdAt": "2026-11-13T01:17:05.815Z",
         "reason": "agent: false positive, .sec and .close have clamp() padding the static scan cannot resolve; 64px inset confirmed in desktop screenshots, 20px on mobile"

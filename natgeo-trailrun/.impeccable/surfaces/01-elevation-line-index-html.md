@@ -1,11 +1,11 @@
 ---
 version: 1
-slug: "impeccable-index-html"
-primary_target: "impeccable/index.html"
+slug: "01-elevation-line-index-html"
+primary_target: "01-elevation-line/index.html"
 related_targets: []
 ---
 
-# 메인 페이지 (impeccable/index.html)
+# 메인 페이지 (01-elevation-line/index.html)
 
 - 범위: 브랜드 사이트 메인. 모드: Persuade.
 - 방문자: 경험 많은 트레일러너. 할 일: 대회 조건 확인 후 참가 신청.

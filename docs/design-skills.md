@@ -22,7 +22,7 @@
 ### 새 화면 만들기
 명령 없이 요청하면 된다.
 ```
-/impeccable 트레일런 대회 메인 페이지를 만들어줘. 결과는 natgeo-trailrun/impeccable/ 에.
+/impeccable 트레일런 대회 메인 페이지를 만들어줘. 결과는 natgeo-trailrun/01-elevation-line/ 에.
 ```
 - 먼저 화면 구성부터 잡고 싶으면 `/impeccable shape 메인 페이지`
 - 화면 성격(mode)에 따라 접근이 달라진다. 메인·대회 소개는 Persuade(설득), 신청·회원·결제 화면은 Operate(작업 완료)로 다룬다.
@@ -56,7 +56,7 @@
 
 ### 만들기
 ```
-/design-taste-frontend 트레일런 대회 브랜드 사이트 메인 페이지. 결과는 natgeo-trailrun/taste/ 에.
+/design-taste-frontend 트레일런 대회 브랜드 사이트 메인 페이지. 결과는 natgeo-trailrun/02-ridge-photo/ 에.
 ```
 스킬이 정해진 순서대로 진행한다.
 1. 브리프 읽기: 사업 종류, 무엇을 파는지, 핵심 행동(예: 대회 참가 신청)을 정한다
@@ -75,11 +75,11 @@
 - 작업 폴더에 `.taste-skill/`(이력, 검사 결과)과 `shots/`(스크린샷)가 생긴다.
 
 ## 두 스킬 비교하는 법
-같은 브리프를 두 스킬에 각각 주고, 결과를 폴더로 나눈다.
+같은 브리프를 두 스킬에 각각 주고, 결과를 시안별 폴더로 나눈다. 폴더 이름은 스킬 이름이 아니라 `{번호}-{시안 특징}`으로 짓는다.
 ```
 natgeo-trailrun/
-  impeccable/
-  taste/
+  01-elevation-line/   고도를 노란 선으로 그린 시안 (Impeccable로 제작)
+  02-ridge-photo/      능선 사진 히어로 시안 (Taste Skill로 제작)
 ```
 브리프는 [노션 페이지](https://app.notion.com/p/yeoonzai/4161da7c454080bca016d114c3bfab62)의 요건과 참고 사이트를 그대로 쓴다.
 

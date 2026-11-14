@@ -1,6 +1,6 @@
 /* 방향 시안 공통 바탕. 색·모서리는 각 시안의 :root에서 바꾼다. */
-@font-face { font-family: "LINE Seed Sans KR"; src: url("../../impeccable/fonts/LINESeedKR-Rg.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "LINE Seed Sans KR"; src: url("../../impeccable/fonts/LINESeedKR-Bd.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "LINE Seed Sans KR"; src: url("../fonts/LINESeedKR-Rg.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "LINE Seed Sans KR"; src: url("../fonts/LINESeedKR-Bd.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 
 :root {
   --bg: #0d1117; --surface: #161b22; --surface-2: #1d232c;
