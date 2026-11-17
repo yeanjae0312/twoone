@@ -1,6 +1,6 @@
 # 디자인 스킬 사용법
 
-이 저장소에는 디자인 스킬 두 개가 `.claude/skills/`에 들어 있다. pull 받고 이 폴더에서 Claude Code를 열면 바로 쓸 수 있다.
+이 저장소에는 디자인 스킬 네 개가 `.claude/skills/`에 들어 있다. 화면을 만드는 스킬 두 개(Impeccable, Taste Skill)와 다듬기·검사용 보조 스킬 두 개다. pull 받고 이 폴더에서 Claude Code를 열면 바로 쓸 수 있다.
 
 | | Impeccable | Taste Skill |
 |---|---|---|
@@ -73,6 +73,25 @@
 - 보라색 계열은 쓰지 않는다.
 - 셰이더 효과 같은 화려한 연출은 테크·게임 사이트에만 쓴다. 대회 사이트는 사진 중심이 된다.
 - 작업 폴더에 `.taste-skill/`(이력, 검사 결과)과 `shots/`(스크린샷)가 생긴다.
+
+## 보조 스킬 (다듬기·검사)
+
+화면을 새로 만드는 스킬이 아니라, 위 두 스킬로 만든 시안에 덧붙여 쓰는 스킬이다. 둘 다 지침 문서(`SKILL.md`) 하나뿐이라 따로 설치할 것이 없다.
+
+| | emil-design-eng | web-design-guidelines |
+|---|---|---|
+| 만든 곳 | Emil Kowalski | Vercel |
+| 부르는 법 | `/emil-design-eng` | `/web-design-guidelines <파일 또는 패턴>` |
+| 하는 일 | 모션과 세부 마감의 원칙: 누름·hover 상태, 전환 속도와 가속 곡선, 팝오버가 열리는 기준점 등 | UI 코드를 Vercel의 웹 인터페이스 지침과 대조해 위반을 `파일:줄`로 보고 |
+| 고쳐 주는가 | 요청하면 고친다 | 지적만 한다 |
+| 필요한 것 | 없음 | 인터넷 연결 (실행할 때마다 최신 규칙을 받아 옴) |
+
+```
+/emil-design-eng natgeo-trailrun/03-photo-rail/ 의 버튼과 메뉴 모션을 봐줘
+/web-design-guidelines natgeo-trailrun/03-photo-rail/*.html
+```
+
+- 업데이트: `npx skills update` (출처와 버전은 저장소 루트의 `skills-lock.json`에 기록됨. Node 필요)
 
 ## 두 스킬 비교하는 법
 같은 브리프를 두 스킬에 각각 주고, 결과를 시안별 폴더로 나눈다. 폴더 이름은 스킬 이름이 아니라 `{번호}-{시안 특징}`으로 짓는다.
