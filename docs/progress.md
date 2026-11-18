@@ -97,7 +97,7 @@
 
 - 2026-11-18 조직 저장소 `twoooone/natgeo-design-drafts`를 새로 만들어 `natgeo-trailrun/`, `.claude/`, `CLAUDE.md`, `docs/`를 옮김(krds 템플릿 제외, 커밋 기록 없이 현재 상태만). 로컬 경로는 `C:/workspace/yeonjae/natgeo-design-drafts`. 이 PC에서는 원격 주소의 `github.com`을 `github-personal`로 바꿔 써야 접속됨
 - 2026-11-18 사용자 결정으로 이 저장소에서 04 시안 삭제(`natgeo-trailrun/04-ng-yellow/`, `.impeccable/surfaces/04-ng-yellow.md`). 이유: 받은 내셔널지오그래픽 로고가 이 저장소에 들어가면 안 됨. 04는 조직 저장소에만 있음. 위의 04 관련 기록은 조직 저장소 기준으로 읽을 것
-  - 로고 PNG는 이전 커밋(`3d5d348`)에 남아 있고 그 커밋은 이미 원격에 올라가 있음. 기록에서도 지우려면 기록을 다시 쓰고 강제 푸시해야 함(사용자 결정 대기)
+  - 같은 날 사용자 결정으로 04를 담았던 커밋 두 개를 기록에서 빼고 강제 푸시함. 지금 기록에는 04와 로고 파일이 없음. 다른 PC의 복제본은 다시 받아야 함. GitHub 서버에는 옛 커밋이 한동안 남을 수 있음
 
 ## 다음 할 일
 - 04 시안(조직 저장소 `natgeo-design-drafts`에서 진행): 사용자 확인 후 다듬기. 담당 PD에게 확인할 것: Geograph 글꼴 파일과 웹 사용 허가, 로고 SVG 원본, 로고 여백·최소 크기, 대회명 표기 규칙, 실제 사진과 모델 동의
